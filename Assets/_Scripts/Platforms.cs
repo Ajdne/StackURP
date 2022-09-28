@@ -6,6 +6,7 @@ public class Platforms : MonoBehaviour
 {
     [SerializeField] private List<GameObject> crossingLocations;
     [SerializeField] private StackSpawn stackSpawnScript;
+    [SerializeField] private GameObject respawnPosObj;
 
     private void Start()
     {
@@ -27,7 +28,12 @@ public class Platforms : MonoBehaviour
     {
         if(other.gameObject.layer == 3) // player layer
         {
+            // activate stack spawning
             stackSpawnScript.enabled = true;
+
+            // set respawn position
+            GameManager.Instance.PlayerRespawnPos = respawnPosObj.transform.position;
+            //print(GameManager.Instance.PlayerRespawnPos);
         }
     }
 }

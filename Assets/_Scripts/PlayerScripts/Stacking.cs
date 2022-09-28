@@ -17,6 +17,7 @@ public class Stacking : MonoBehaviour
 
     [Header("Camera Settings")]
     [SerializeField] private CinemachineTargetGroup cineCameraTargetGroup;    // set component
+    //[SerializeField] private int maxSizeOfTargetGroup;
 
     //private CinemachineTargetGroup.Target cameraTarget;     // target to add
 
@@ -32,7 +33,7 @@ public class Stacking : MonoBehaviour
         // set the 1st target to be the player
         if (cineCameraTargetGroup.IsEmpty)
         {
-            cineCameraTargetGroup.AddMember(this.gameObject.transform, 0, 0); // AddMember(Transform t, float weight, float radius)
+            cineCameraTargetGroup.AddMember(this.gameObject.transform, 40, 5); // AddMember(Transform t, float weight, float radius)
         }
 
     }
@@ -60,10 +61,11 @@ public class Stacking : MonoBehaviour
         moneyObj.GetComponent<BoxCollider>().enabled = false;
 
         // set the 2nd target of the camera to the last added stacked object
-        cineCameraTargetGroup.AddMember(moneyObj.transform, 5, 1);
+        cineCameraTargetGroup.AddMember(moneyObj.transform, 1, 1f);
 
+        // ---------- STACK AUDIO ------------
         audioSource.clip = stackClip;
-        audioSource.pitch = 0.8f + stacked.Count * 0.05f;
+        audioSource.pitch = 0.5f + stacked.Count * 0.05f;
         audioSource.Play();
     }
 
@@ -108,7 +110,6 @@ public class Stacking : MonoBehaviour
         }
     }
 
-    // ------------------ IMA GRESKU ---------------------
     public void DivideStack(int divideTheStackBy)
     {
         float removeThisAmountOfStacks = GetStackCount() - Mathf.Round((float)GetStackCount() / (float)divideTheStackBy);
@@ -128,19 +129,6 @@ public class Stacking : MonoBehaviour
             Destroy(moneyobj);
         }
     }
-
-    private IEnumerator SetJoint(GameObject jointedObj)
-    {
-        yield return new WaitForSeconds(1);
-
-        SpringJoint blunt = jointedObj.AddComponent<SpringJoint>();
-        blunt.autoConfigureConnectedAnchor = false;
-        blunt.spring = 10;
-        blunt.damper = 0;
-
-        blunt.connectedBody= stacked[stacked.Count - 1].GetComponent<Rigidbody>();
-    }
-
 
     //public void AddToStack(GameObject moneyObj)
     //{
@@ -196,11 +184,8 @@ public class Stacking : MonoBehaviour
         // remove the object from cinemachine target group
         cineCameraTargetGroup.RemoveMember(moneyObj.transform);
 
-
         // ----------- AUDIO ----------------------
-        audioSource.clip = payClip;
-        audioSource.pitch = 0.5f + stacked.Count * 0.05f;
-        audioSource.Play();
+        PlayUnloadAudio();
     }
 
     public void RemoveStackToShortcut(Vector3 objPos)
@@ -219,22 +204,25 @@ public class Stacking : MonoBehaviour
 
         // set position
         moneyObj.transform.position = objPos;
+        // scale up
+        moneyObj.transform.localScale *= 1.5f;
 
         //set rotation
         moneyObj.transform.rotation = Quaternion.Euler(transform.localEulerAngles);
-
-        // scale up
-        //moneyObj.transform.localScale *= 2;
 
         // add box collider because enabling it will enable the trigger one
         moneyObj.AddComponent<BoxCollider>();
 
         // ----------- AUDIO ----------------------
-        audioSource.clip = payClip;
-        audioSource.pitch = 0.5f + stacked.Count * 0.05f;
-        audioSource.Play();
+        PlayUnloadAudio();
     }
 
+    private void PlayUnloadAudio()
+    {
+        audioSource.clip = payClip;
+        audioSource.pitch = 0.5f + stacked.Count * 0.025f;
+        audioSource.Play();
+    }
     public int GetStackCount()
     {
         return stacked.Count;

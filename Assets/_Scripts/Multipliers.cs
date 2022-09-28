@@ -44,7 +44,7 @@ public class Multipliers : MonoBehaviour
                 break;
             case 2:
                 // multiply
-                randomValue = Random.Range(2, 5);
+                randomValue = Random.Range(2, 4);
                 multiplierValue.text = "x" + randomValue.ToString();
                 break;
             case 3:

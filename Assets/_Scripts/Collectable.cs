@@ -4,12 +4,7 @@ using UnityEngine;
 
 public class Collectable : MonoBehaviour
 {
-    private List<GameObject> moneys = new List<GameObject>();
-    public List<GameObject> Moneys { get { return moneys; } set { moneys = value; } }
-
     // [SerializeField] private GameObject unlockParticles;
-
-    private IEnumerator stackCoroutine;
 
     void OnTriggerEnter(Collider other)
     {

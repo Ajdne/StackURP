@@ -7,12 +7,17 @@ public class Movement2 : MonoBehaviour
     [SerializeField] private Joystick joystick;
     public Joystick Joystick { get { return joystick; } }
 
-    [SerializeField] private CharacterController player;
+    public CharacterController player;
     [SerializeField] private Animator animator;
 
     [SerializeField] private float moveSpeed;
     [SerializeField] private float rotateSpeed;
     public float RotateSpeed { get { return rotateSpeed; } }
+
+    private void Start()
+    {
+        player = GetComponent<CharacterController>();   
+    }
 
     private void Update()
     {
@@ -30,10 +35,10 @@ public class Movement2 : MonoBehaviour
         }
         else
         {
-            animator.SetBool("Run", false);
             animator.SetBool("Idle", true);
+            animator.SetBool("Run", false);
         }
-
+        
         player.SimpleMove(moveDirection.normalized * moveSpeed);
     }
 }

@@ -18,10 +18,13 @@ public class GameManager : MonoBehaviour
 
     [Header("Player Settings")]
     public GameObject Player;
+    private Vector3 playerRespawnPosition;
+    public Vector3 PlayerRespawnPos { get { return playerRespawnPosition; } set { playerRespawnPosition = value; } }
 
     [Header("Stacks")]
     [SerializeField] private GameObject stackPref;
     public GameObject StackPref { get { return stackPref; } }
+
 
     // *******************************************************************
     private void Awake()
@@ -63,5 +66,18 @@ public class GameManager : MonoBehaviour
         GameObject spawn = Instantiate(spawnPref, locationObj.transform.position + new Vector3(randomX, 0.5f, randomZ), Quaternion.identity);
 
         return spawn;
+    }
+
+    public void RespawnPlayer()
+    {
+        Player.GetComponent<Movement2>().player.enabled = false;
+        Player.transform.position = playerRespawnPosition;
+        print(playerRespawnPosition);
+        Player.GetComponent<Movement2>().player.enabled = true;
+    }
+
+    public void SetPlayerPosition(Vector3 newPos)
+    {
+        Player.transform.position = newPos;
     }
 }

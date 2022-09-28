@@ -25,9 +25,14 @@ public class MoneyMovement : MonoBehaviour
     {
         backpack = backpackObj;
     }
+    private void Start()
+    {
+        print(transform.position);
 
+    }
     void Update()
     {
+        
         transform.position = Vector3.MoveTowards(transform.position, moveToVector, speed * Time.deltaTime);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(Vector3.forward), rotateSpeed * Time.deltaTime);
 
@@ -45,12 +50,8 @@ public class MoneyMovement : MonoBehaviour
                 collider.enabled = true;
             }
 
-            // dosable this script
+            // disable this script
             this.enabled = false;
-
-            //speed = 0;
-
-            
         }
     }
 }

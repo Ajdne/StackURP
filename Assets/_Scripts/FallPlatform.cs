@@ -9,8 +9,9 @@ public class FallPlatform : MonoBehaviour
     {
         if(other.gameObject.layer == 3) // player layer
         {
-            print("ALOBRE");
-            SceneManager.LoadScene(0);
+            GameManager.Instance.RespawnPlayer();
+
+            //SceneManager.LoadScene(0);
         }
     }
 }
