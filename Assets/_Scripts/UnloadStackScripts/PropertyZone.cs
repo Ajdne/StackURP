@@ -9,12 +9,8 @@ public class PropertyZone : MonoBehaviour
     [SerializeField] private GameObject propertyObj;
 
     [SerializeField] private int stacksNeeded;
-    [SerializeField] private Animator gateAnimator;
-
+    
     private float stayTimer;
-
-    //[SerializeField] private GameObject grayModel;
-    //[SerializeField] private GameObject coloredModel;
 
     private List<GameObject> buildElements = new List<GameObject>();
     public List<GameObject> BuildElements { get { return buildElements; } set { buildElements = value; } }
@@ -34,14 +30,14 @@ public class PropertyZone : MonoBehaviour
                 other.GetComponent<Stacking>().RemoveMoneyToProperty(propertyObj.transform.position + new Vector3(0, 0 , -5 + buildCount * 0.75f), false);
 
                 stayTimer = 0;
-
-                if(buildCount == stacksNeeded)
-                {
-                    gateAnimator.enabled = true;
-                }
             }
         }
     }
 
+    public bool IsGateUnlocked()
+    {
+        if (buildCount == stacksNeeded) return true;
+        return false;
+    }
 
 }

@@ -25,11 +25,7 @@ public class MoneyMovement : MonoBehaviour
     {
         backpack = backpackObj;
     }
-    private void Start()
-    {
-        print(transform.position);
 
-    }
     void Update()
     {
         

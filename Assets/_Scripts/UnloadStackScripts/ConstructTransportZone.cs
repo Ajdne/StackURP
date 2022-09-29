@@ -5,7 +5,7 @@ using UnityEngine;
 public class ConstructTransportZone : MonoBehaviour
 {
     [SerializeField] private List<GameObject> elements = new List<GameObject>();
-    [SerializeField] private GameObject elementsParent;
+    [SerializeField] private GameObject fragmentsParent;
     [SerializeField] private GameObject completeTransport;
 
     private float stayTimer;
@@ -41,7 +41,7 @@ public class ConstructTransportZone : MonoBehaviour
                     completeTransport.SetActive(true);
 
                     // deactivate elements
-                    elementsParent.SetActive(false);
+                    fragmentsParent.SetActive(false);
                 }
             }
         }
