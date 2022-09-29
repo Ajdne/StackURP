@@ -9,6 +9,7 @@ public class PropertyZone : MonoBehaviour
     [SerializeField] private GameObject propertyObj;
 
     [SerializeField] private int stacksNeeded;
+    [SerializeField] private Animator gateAnimator;
 
     private float stayTimer;
 
@@ -33,6 +34,11 @@ public class PropertyZone : MonoBehaviour
                 other.GetComponent<Stacking>().RemoveMoneyToProperty(propertyObj.transform.position + new Vector3(0, 0 , -5 + buildCount * 0.75f), false);
 
                 stayTimer = 0;
+
+                if(buildCount == stacksNeeded)
+                {
+                    gateAnimator.enabled = true;
+                }
             }
         }
     }

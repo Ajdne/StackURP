@@ -61,7 +61,7 @@ public class Stacking : MonoBehaviour
         moneyObj.GetComponent<BoxCollider>().enabled = false;
 
         // set the 2nd target of the camera to the last added stacked object
-        cineCameraTargetGroup.AddMember(moneyObj.transform, 1, 1f);
+        cineCameraTargetGroup.AddMember(moneyObj.transform, 2, 1f);
 
         // ---------- STACK AUDIO ------------
         audioSource.clip = stackClip;
