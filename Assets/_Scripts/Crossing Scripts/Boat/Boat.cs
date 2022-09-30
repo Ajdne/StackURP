@@ -48,5 +48,4 @@ public class Boat : MonoBehaviour
         // activate movement script
         boatMovement.enabled = true;
     }
-
 }

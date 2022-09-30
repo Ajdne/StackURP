@@ -63,6 +63,9 @@ public class Stacking : MonoBehaviour
         // set the 2nd target of the camera to the last added stacked object
         cineCameraTargetGroup.AddMember(moneyObj.transform, 2, 1f);
 
+        // play stack particle
+        moneyObj.GetComponent<Collectable>().ActivateStackParticle();
+
         // ---------- STACK AUDIO ------------
         audioSource.clip = stackClip;
         audioSource.pitch = 0.5f + stacked.Count * 0.05f;

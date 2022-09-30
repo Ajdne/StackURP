@@ -7,6 +7,8 @@ public class BridgeGate : MonoBehaviour
     [SerializeField] private Animator gateAnimator;
     [SerializeField] private PropertyZone bridgeScript;
 
+    [SerializeField] private GameObject particles;
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.layer == 3) // player layer
