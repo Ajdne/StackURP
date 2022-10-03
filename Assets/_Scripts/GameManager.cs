@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
     {
         level++;
 
-        SpawnRandomPlatforms();
+        //SpawnRandomPlatforms();
     }
     private void SpawnRandomPlatforms()
     {

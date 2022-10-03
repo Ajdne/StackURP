@@ -11,6 +11,7 @@ public class Movement2 : MonoBehaviour
     [SerializeField] private Animator animator;
 
     [SerializeField] private float moveSpeed;
+    public float MoveSpeed { get { return rotateSpeed; } set { moveSpeed = value; } }
     [SerializeField] private float rotateSpeed;
     public float RotateSpeed { get { return rotateSpeed; } }
 
