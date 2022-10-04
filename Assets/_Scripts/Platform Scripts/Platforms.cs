@@ -9,19 +9,23 @@ public class Platforms : MonoBehaviour
     [SerializeField] private GameObject respawnPosObj;
     [SerializeField] private GameObject triggerCollider;
 
+    [SerializeField] private bool canUseShortcut;
+    public bool CanUseShortcut { get { return canUseShortcut; } }
+   
+
     private void Start()
     {
-        if (stackSpawnScript == null)
-        {
-            stackSpawnScript = GetComponent<StackSpawn>();
-            stackSpawnScript.enabled = false;
-        }
+        //if (stackSpawnScript == null)
+        //{
+        //    stackSpawnScript = GetComponent<StackSpawn>();
+        //    stackSpawnScript.enabled = false;
+        //}
 
         int randomCrossing = Random.Range(0, GameManager.Instance.Crossings.Count);
 
         for (int i = 0; i < crossingLocations.Count; i++)
         {
-            Instantiate(GameManager.Instance.Crossings[randomCrossing], crossingLocations[i].transform.position + new Vector3(0, -0.5f, 5f), Quaternion.identity);
+            Instantiate(GameManager.Instance.Crossings[randomCrossing], crossingLocations[i].transform.position + new Vector3(0, 0, 0), Quaternion.identity);
         }
     }
 }

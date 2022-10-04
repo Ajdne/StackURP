@@ -20,7 +20,7 @@ public class ShortCutRun : MonoBehaviour
         waitTimer += Time.deltaTime;
 
         if (Physics.Raycast(raycastObj.transform.position, Vector3.down, 10)) return;
-        else if (stacking.GetStackCount() > 0 && waitTimer > 0.02f)
+        else if (stacking.GetStackCount() > 0 && waitTimer > 0.04f)
         {
             stacking.RemoveStackToShortcut(new Vector3(raycastObj.transform.position.x, -0.25f, raycastObj.transform.position.z));
 

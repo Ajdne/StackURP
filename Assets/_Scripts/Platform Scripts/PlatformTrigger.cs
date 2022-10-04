@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class PlatformTrigger : MonoBehaviour
 {
+    //[SerializeField] 
     private StackSpawn stackSpawnScript;
+    private bool canShortcut;
 
     private void Start()
     {
-        stackSpawnScript = GetComponentInParent<StackSpawn>();
+        canShortcut = GetComponentInParent<Platforms>().CanUseShortcut;
+        //stackSpawnScript = GetComponentInParent<StackSpawn>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -16,10 +19,14 @@ public class PlatformTrigger : MonoBehaviour
         if (other.gameObject.layer == 3) // player layer
         {
             // activate stack spawning
-            stackSpawnScript.enabled = true;
+            GetComponentInParent<StackSpawn>().enabled = true;
+            //stackSpawnScript.enabled = true;
 
             // set respawn position
-            GameManager.Instance.PlayerRespawnPos = transform.position + new Vector3(0, 2, 0);
+            GameManager.Instance.PlayerRespawnPos = transform.position + new Vector3(0, 1, 4);
+
+            // enable/disable shortcut run script
+            other.gameObject.GetComponent<ShortCutRun>().enabled = canShortcut;
         }
     }
 }

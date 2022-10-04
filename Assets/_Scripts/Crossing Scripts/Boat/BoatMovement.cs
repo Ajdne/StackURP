@@ -30,17 +30,17 @@ public class BoatMovement : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if(collision.gameObject.layer == 6) // platform layer
+        if (other.gameObject.layer == 7) // BOAT layer
         {
             // smoke
             destroyParticle.SetActive(true);
 
-            
+
 
             // player jump animation and move to the platform
-            //gm.Player.GetComponent<JumpInto>().SetMoveToVector(transform.position + new Vector3(0, 0, 3));
+            //gm.Player.GetComponent<JumpInto>().SetMoveToVector(other.transform.position);
             //gm.Player.GetComponent<JumpInto>().enabled = true;
 
             // enable player movement
@@ -51,7 +51,7 @@ public class BoatMovement : MonoBehaviour
             gm.Player.transform.parent = null;
 
             // move the player to the platform
-            gm.SetPlayerPosition(collision.transform.position);
+            gm.SetPlayerPosition(transform.position + new Vector3(0, 0, 3));
 
             // deactivate the ship
             Invoke("DestroyBoat", 0.5f);

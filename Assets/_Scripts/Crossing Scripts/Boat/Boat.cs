@@ -16,7 +16,7 @@ public class Boat : MonoBehaviour
     private void Start()
     {
         gm = GameManager.Instance;
-        movementScript = gm.Player.GetComponent<Movement2>();
+        //movementScript = gm.Player.GetComponent<Movement2>();
 
         // start the player onboarding
         StartCoroutine(SpawnRowerMan());
@@ -25,14 +25,16 @@ public class Boat : MonoBehaviour
     IEnumerator SpawnRowerMan()
     {
         yield return new WaitForSeconds(0.5f);
+        // deactivate player movement, collider etc
+        gm.RevertPlayerControls();
+
         // activate player JumpInto script
         gm.Player.GetComponent<JumpInto>().SetMoveToVector(transform.position + new Vector3(0, 0, 1));
         gm.Player.GetComponent<JumpInto>().enabled = true;
 
         yield return new WaitForSeconds(1);
         // position the player
-        movementScript.enabled = false;
-        gm.Player.GetComponent<Rigidbody>().isKinematic = true;
+        
         //gm.Player.transform.position = transform.position + new Vector3(0, 0, 1);
         gm.Player.transform.parent = this.gameObject.transform;
 

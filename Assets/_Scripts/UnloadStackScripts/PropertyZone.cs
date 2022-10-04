@@ -27,7 +27,7 @@ public class PropertyZone : MonoBehaviour
             {
                 buildCount++;
                 // remove money from the stack
-                other.GetComponent<Stacking>().RemoveMoneyToProperty(propertyObj.transform.position + new Vector3(0, 0 , -5 + buildCount * 0.75f), false);
+                other.GetComponent<Stacking>().RemoveMoneyToProperty(propertyObj.transform.position + new Vector3(0, 0 , -8 + buildCount * 0.75f), false);
 
                 stayTimer = 0;
             }

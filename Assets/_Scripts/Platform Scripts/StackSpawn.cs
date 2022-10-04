@@ -10,6 +10,8 @@ public class StackSpawn : MonoBehaviour
     [SerializeField] private float stackSpawnTime;
     private float spawnTime;
 
+    private MeshCollider collider;
+
     //public List<GameObject> stacksOnPlat = new List<GameObject>();
     private RaycastHit hit;
     private Ray ray;
@@ -18,6 +20,8 @@ public class StackSpawn : MonoBehaviour
     void Start()
     {
         gm = GameManager.Instance;
+
+        collider = GetComponent<MeshCollider>();
 
         for (int i = 0; i < initialNumberOfStacks; i++)
         {
@@ -46,50 +50,22 @@ public class StackSpawn : MonoBehaviour
         }
     }
 
-    //private void FindSpawnPosition()
-    //{
-    //    while()
-    //    {
-    //        int randomX = Random.Range(-(int)transform.localScale.x + 10, (int)transform.localScale.x - 10);
-    //        int randomZ = Random.Range(-(int)transform.localScale.z + 10, (int)transform.localScale.z - 10);
-    //        ray = new Ray(new Vector3(randomX, 10, randomZ), Vector3.down);
-
-    //        if (Physics.Raycast(ray, out hit))
-    //        {
-    //            if (hit.transform.gameObject.layer == 6) // platform layer
-    //            {
-    //                break;
-    //                //GameObject spawn = Instantiate(gm.StackPref, hit.point, Quaternion.identity);
-    //            }
-    //            Debug.DrawRay(new Vector3(randomX, 10, randomZ), Vector3.down, Color.red);
-
-    //        }
-    //    }
-    //    GameObject spawn = Instantiate(gm.StackPref, hit.point, Quaternion.identity);
-    //    //return spawnPos;
-    //}
-
     private void SpawnWithRayCast()
     {
-        int randomX = Random.Range(-(int)transform.localScale.x, (int)transform.localScale.x);
-        int randomZ = Random.Range(-(int)transform.localScale.z, (int)transform.localScale.z);
-        ray = new Ray(new Vector3(randomX, 10, transform.position.z + randomZ), Vector3.down);
-        print(ray);
+        int randomX = Random.Range((int)collider.bounds.min.x + 2, (int)collider.bounds.max.x - 1);
+        int randomZ = Random.Range((int)collider.bounds.min.z + 2, (int)collider.bounds.max.z - 1);
+        //int randomZ = Random.Range(-(int)transform.localScale.z, (int)transform.localScale.z);
+        ray = new Ray(new Vector3(randomX, 10, randomZ), Vector3.down);
 
         Debug.DrawRay(new Vector3(randomX, 100, randomZ), Vector3.down, Color.red);
 
         if (Physics.Raycast(ray, out hit))
         {
-            //print("etonas");
-            //print(hit.transform.gameObject.layer.ToString());
             if (hit.transform.gameObject.layer == 6) // platform layer
             {
                 GameObject spawn = Instantiate(gm.StackPref, hit.point + new Vector3(0, gm.StackPref.transform.localScale.y /2, 0), Quaternion.identity);
-                print("opet");
             }
         }
-
-
     }
 
     // ovo moze sa listom kolajdera

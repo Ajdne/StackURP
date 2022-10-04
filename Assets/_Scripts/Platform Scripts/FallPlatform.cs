@@ -1,17 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class FallPlatform : MonoBehaviour
 {
+    [SerializeField] private GameObject waterSplashParticle;
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.layer == 3) // player layer
         {
-            GameManager.Instance.RespawnPlayer();
+            // spawn splash particle
+            Instantiate(waterSplashParticle, other.transform.position, Quaternion.identity);
 
-            //SceneManager.LoadScene(0);
+            // change player position
+            GameManager.Instance.RespawnPlayer();
         }
     }
 }

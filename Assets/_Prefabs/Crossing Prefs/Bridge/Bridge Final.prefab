@@ -74,7 +74,7 @@ PrefabInstance:
     - target: {fileID: 3296324682260626817, guid: 034c5e8196c311f4f94af2b1f300c1a1,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 8.89
       objectReference: {fileID: 0}
     - target: {fileID: 3296324682260626817, guid: 034c5e8196c311f4f94af2b1f300c1a1,
         type: 3}
@@ -120,6 +120,11 @@ PrefabInstance:
         type: 3}
       propertyPath: gateAnimator
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3296324682260626818, guid: 034c5e8196c311f4f94af2b1f300c1a1,
+        type: 3}
+      propertyPath: stacksNeeded
+      value: 39
       objectReference: {fileID: 0}
     - target: {fileID: 3296324682260626845, guid: 034c5e8196c311f4f94af2b1f300c1a1,
         type: 3}
@@ -212,7 +217,7 @@ PrefabInstance:
     - target: {fileID: 5041675327591910569, guid: 8fe02d59b17eafa42a0da00b964622c7,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 21.631
+      value: 30.521
       objectReference: {fileID: 0}
     - target: {fileID: 5041675327591910569, guid: 8fe02d59b17eafa42a0da00b964622c7,
         type: 3}
@@ -473,7 +478,7 @@ PrefabInstance:
     - target: {fileID: 7751246127088468581, guid: 6f63c0702b613b54d951e37276aaa485,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 8.89
       objectReference: {fileID: 0}
     - target: {fileID: 7751246127088468581, guid: 6f63c0702b613b54d951e37276aaa485,
         type: 3}

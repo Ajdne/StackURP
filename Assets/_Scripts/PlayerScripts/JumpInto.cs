@@ -17,7 +17,7 @@ public class JumpInto : MonoBehaviour
         moveToVector = obj;
     }
 
-    private void Start()
+    private void OnEnable()
     {
         animator.SetBool("Run", false);
         animator.SetBool("Idle", false);
@@ -42,6 +42,9 @@ public class JumpInto : MonoBehaviour
             {
                 animator.SetBool("Jump", false);
                 animator.SetBool("Idle", true);
+
+                // set bool
+                jumped = false; 
 
                 // disable this script
                 this.enabled = false;
