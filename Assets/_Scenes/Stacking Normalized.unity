@@ -6654,7 +6654,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialNumberOfStacks: 20
-  maxStacks: 100
   stackSpawnTime: 1
 --- !u!114 &542854295
 MonoBehaviour:
@@ -7438,7 +7437,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialNumberOfStacks: 10
-  maxStacks: 30
   stackSpawnTime: 1
 --- !u!114 &616115444
 MonoBehaviour:
@@ -8594,7 +8592,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 712886315}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -50, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11772,13 +11770,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8469758ec53a3df43b46d8f302244002, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platforms:
-  - {fileID: 2795545302905989229, guid: 860672ed2b7242b4b9654d4a512a5184, type: 3}
-  - {fileID: 4157069324386087012, guid: 668531978f1f7f24b97c1741ef34c464, type: 3}
-  - {fileID: 1716011226309002361, guid: 4708105334134de4482d6515514ed999, type: 3}
-  - {fileID: 3422002758093120088, guid: c73ece37dc9b15d42a294a5921b39d9a, type: 3}
-  - {fileID: 793442215162841530, guid: 5ee4b25ca005949409af17575838896e, type: 3}
-  - {fileID: 1366342902983908646, guid: a53573275e2c46e4ea3fe5f728c86803, type: 3}
+  platforms: []
   crossings:
   - {fileID: 537156187898883820, guid: a6ee060d22ce4384784fa3cbf9d0006c, type: 3}
   Player: {fileID: 1703753203728121327}
@@ -15030,7 +15022,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialNumberOfStacks: 30
-  maxStacks: 50
   stackSpawnTime: 1
 --- !u!65 &1355901058
 BoxCollider:
@@ -20111,7 +20102,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialNumberOfStacks: 20
-  maxStacks: 50
   stackSpawnTime: 0.1
 --- !u!65 &1663962619
 BoxCollider:

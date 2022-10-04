@@ -5,7 +5,7 @@ using UnityEngine;
 public class StackSpawn : MonoBehaviour
 {
     [SerializeField] private int initialNumberOfStacks;
-    [SerializeField] private int maxStacks;
+    //[SerializeField] private int maxStacks;
 
     [SerializeField] private float stackSpawnTime;
     private float spawnTime;
