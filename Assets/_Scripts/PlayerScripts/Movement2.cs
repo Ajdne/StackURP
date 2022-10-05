@@ -11,13 +11,14 @@ public class Movement2 : MonoBehaviour
     [SerializeField] private Animator animator;
 
     [SerializeField] private float moveSpeed;
-    public float MoveSpeed { get { return rotateSpeed; } set { moveSpeed = value; } }
+    public float MoveSpeed { get { return moveSpeed; } set { moveSpeed = value; } }
     [SerializeField] private float rotateSpeed;
     public float RotateSpeed { get { return rotateSpeed; } }
 
     private void Start()
     {
-        player = GetComponent<CharacterController>();   
+        player = GetComponent<CharacterController>();
+        
     }
 
     private void Update()

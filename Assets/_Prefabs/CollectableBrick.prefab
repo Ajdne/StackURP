@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5539087755334498334}
   - component: {fileID: 4717091326383489693}
   - component: {fileID: 4706717320868743876}
+  - component: {fileID: 6746228724515510626}
   m_Layer: 0
   m_Name: CollectableBrick
   m_TagString: Untagged
@@ -108,6 +109,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!95 &6746228724515510626
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4496396300652943561}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d9c8b9386b77aa141ab27986ccf065c9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &4487711099184370173
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -171,6 +171,9 @@ public class Stacking : MonoBehaviour
         // local obj
         GameObject moneyObj = stacked[stacked.Count - 1];
 
+        //remove animator from stackables
+        Destroy(moneyObj.GetComponent<Animator>());
+
         // remove parent
         moneyObj.gameObject.transform.SetParent(null);
 
@@ -200,6 +203,9 @@ public class Stacking : MonoBehaviour
 
         // remove parent
         moneyObj.gameObject.transform.SetParent(null);
+
+        //remove animator from stackables
+        Destroy(moneyObj.GetComponent<Animator>());
 
         // remove it from list
         stacked.Remove(moneyObj);

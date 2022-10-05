@@ -23,16 +23,23 @@ public class GameManager : MonoBehaviour
     private Vector3 playerRespawnPosition;
     public Vector3 PlayerRespawnPos { get { return playerRespawnPosition; } set { playerRespawnPosition = value; } }
     private Stacking stackingScript;
+    private Movement2 playerMovement;
 
     [Header("Stacks")]
     [SerializeField] private GameObject stackPref;
     public GameObject StackPref { get { return stackPref; } }
 
+    // ENDGAME
+    private bool isEndGame;
+    private Animator playerAnimator;
+    public bool IsEndGame { get { return isEndGame; } set { isEndGame = value; } }
 
     // *******************************************************************
     private void Awake()
     {
         Instance = this;
+
+        Application.targetFrameRate = 60;   // this fixes everything
     }
 
     private void Start()
@@ -41,6 +48,8 @@ public class GameManager : MonoBehaviour
         Physics.gravity *= 2;
 
         stackingScript = Player.GetComponent<Stacking>();
+        playerMovement = Player.GetComponent<Movement2>();
+        playerAnimator = Player.GetComponent<Animator>();
 
         SpawnRandomPlatforms();
     }
@@ -88,9 +97,25 @@ public class GameManager : MonoBehaviour
         stackingScript.RemoveFromStack(stackingScript.GetStackCount());
 
         // need to disable movement script in order to move him
-        Player.GetComponent<Movement2>().player.enabled = false;
+        playerMovement.enabled = false;
+        Player.transform.rotation = Quaternion.Euler(0, 180, 0);
         Player.transform.position = playerRespawnPosition;
-        Player.GetComponent<Movement2>().player.enabled = true;
+
+        if (IsEndGame)
+        {
+            playerAnimator.SetBool("Idle", false);
+            playerAnimator.SetBool("Run", false);
+            playerAnimator.SetBool("Dance", true);
+
+            // dont activate player movement
+            //Player.GetComponent<CapsuleCollider>().enabled = false;
+            Player.GetComponent<Rigidbody>().isKinematic = true;
+        }
+        else
+        {
+            // activate player movement controller
+            playerMovement.enabled = true;
+        }
     }
 
     public void SetPlayerPosition(Vector3 newPos)

@@ -1394,7 +1394,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 8
-  rotateSpeed: 100
+  rotateSpeed: 50
   boatController: {fileID: 0}
   animator: {fileID: 8502466085575242502}
   destroyParticle: {fileID: 5258140960273287622}

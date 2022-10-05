@@ -7,14 +7,8 @@ public class EndPlatform : MonoBehaviour
     [SerializeField] private List<GameObject> endPlatformMultipliers;
     [SerializeField] private GameObject multiplierPlatformPrefab;
     [SerializeField] private int numberOfEndPlatforms;
+
     private bool isTriggered;
-
-    //private Stacking stackScript;
-
-    //private void Start()
-    //{
-    //    stackScript = GameManager.Instance.Player.GetComponent<Stacking>();
-    //}
 
     private void OnTriggerEnter(Collider other)
     {
@@ -24,6 +18,9 @@ public class EndPlatform : MonoBehaviour
             isTriggered = true;
 
             GameManager.Instance.Player.GetComponent<Movement2>().MoveSpeed *= 1.1f;
+
+            // activate BOOL for dance animation
+            GameManager.Instance.IsEndGame = true;
         }
     }
    
@@ -38,6 +35,11 @@ public class EndPlatform : MonoBehaviour
             // spawn platform prefab
             GameObject multiPlat = Instantiate(multiplierPlatformPrefab, new Vector3(transform.position.x + randomX, -20, transform.position.z + (1 + i) * (15 + i)), Quaternion.identity);
             endPlatformMultipliers.Add(multiPlat);
+
+            // set multiplier value for bonus platforms
+            multiPlat.GetComponent<MultiplierPlatform>().SetMultiplierValue(i + 1);
+
+            // scaling
             float platSize = multiPlat.transform.localScale.x + endPlatformMultipliers.Count - 1;
             multiPlat.transform.localScale = new Vector3(platSize, 1, platSize);
 

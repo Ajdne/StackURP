@@ -51,7 +51,7 @@ public class BoatMovement : MonoBehaviour
             gm.Player.transform.parent = null;
 
             // move the player to the platform
-            gm.SetPlayerPosition(transform.position + new Vector3(0, 0, 3));
+            gm.SetPlayerPosition(transform.position + new Vector3(0, 0, 5));
 
             // deactivate the ship
             Invoke("DestroyBoat", 0.5f);
