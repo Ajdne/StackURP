@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class CinemachineState : MonoBehaviour
 {
@@ -8,6 +9,10 @@ public class CinemachineState : MonoBehaviour
 
     private Animator animator;
     private bool camera1 = true;
+
+   
+
+   
 
     private void Awake()
     {
