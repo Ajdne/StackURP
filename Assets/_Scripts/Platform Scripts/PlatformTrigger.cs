@@ -8,6 +8,8 @@ public class PlatformTrigger : MonoBehaviour
     private StackSpawn stackSpawnScript;
     private bool canShortcut;
 
+    private bool isTriggered;
+
     private void Start()
     {
         canShortcut = GetComponentInParent<Platforms>().CanUseShortcut;
@@ -23,10 +25,27 @@ public class PlatformTrigger : MonoBehaviour
             //stackSpawnScript.enabled = true;
 
             // set respawn position
-            GameManager.Instance.PlayerRespawnPos = transform.position + new Vector3(0, 1, 4);
+            GameManager.Instance.PlayerRespawnPos = transform.position + new Vector3(0, 0, 3);
+
+            if(!canShortcut && !isTriggered)
+            {
+                StartCoroutine(DisableShortCutRun(other));
+
+                isTriggered = true;
+            }
 
             // enable/disable shortcut run script
             other.gameObject.GetComponent<ShortCutRun>().enabled = canShortcut;
         }
+    }
+
+    IEnumerator DisableShortCutRun(Collider other)
+    {
+        yield return new WaitForSeconds(0.5f);
+        //first disable boost
+        other.gameObject.GetComponent<ShortCutRun>().DisableBoost();
+
+        // then disable the script
+        other.gameObject.GetComponent<ShortCutRun>().enabled = canShortcut;
     }
 }

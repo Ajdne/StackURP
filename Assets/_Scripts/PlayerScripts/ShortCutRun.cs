@@ -55,16 +55,21 @@ public class ShortCutRun : MonoBehaviour
 
         if (waitTimer > endComboTime && !GameManager.Instance.IsEndGame)
         {
-            // reset move speed to original value
-            movement.MoveSpeed = originalMoveSpeed;
-
-            speedTrailParticle.SetActive(false);
-
-            // reset the bool
-            gotBonus = false;
-
-            // reset the counter
-            stackComboCounter = 0;
+            DisableBoost();
         }
+    }
+
+    public void DisableBoost()
+    {
+        // reset move speed to original value
+        movement.MoveSpeed = originalMoveSpeed;
+
+        speedTrailParticle.SetActive(false);
+
+        // reset the bool
+        gotBonus = false;
+
+        // reset the counter
+        stackComboCounter = 0;
     }
 }
