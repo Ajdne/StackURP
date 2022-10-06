@@ -19,7 +19,7 @@ public class Stacking : MonoBehaviour
     [Header("Camera Settings")]
     [SerializeField] private CinemachineTargetGroup cineCameraTargetGroup;    // set component
     public CinemachineTargetGroup TargetGroup { get { return cineCameraTargetGroup; } set { cineCameraTargetGroup = value; } }
-    //[SerializeField] private int maxSizeOfTargetGroup;
+    [SerializeField] private int maxSizeOfTargetGroup;
 
     //private CinemachineTargetGroup.Target cameraTarget;     // target to add
 
@@ -62,8 +62,11 @@ public class Stacking : MonoBehaviour
         // disable colliders
         moneyObj.GetComponent<BoxCollider>().enabled = false;
 
-        // set the 2nd target of the camera to the last added stacked object
-        cineCameraTargetGroup.AddMember(moneyObj.transform, 2, 1f);
+        if(stacked.Count < maxSizeOfTargetGroup)
+        {
+            // set the 2nd target of the camera to the last added stacked object
+            cineCameraTargetGroup.AddMember(moneyObj.transform, 2, 1f);
+        }
 
         // play stack particle
         moneyObj.GetComponent<Collectable>().ActivateStackParticle();
@@ -107,6 +110,12 @@ public class Stacking : MonoBehaviour
 
             // local obj
             GameObject moneyobj = stacked[stacked.Count - 1];
+
+            if (stacked.Count <= maxSizeOfTargetGroup)
+            {
+                // remove the object from cinemachine target group
+                cineCameraTargetGroup.RemoveMember(moneyobj.transform);
+            }
 
             // remove it from list
             stacked.Remove(moneyobj);

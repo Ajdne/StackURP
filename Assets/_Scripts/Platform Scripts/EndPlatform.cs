@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,9 @@ public class EndPlatform : MonoBehaviour
     [SerializeField] private GameObject multiplierPlatformPrefab;
     [SerializeField] private int numberOfEndPlatforms;
 
+    [Space]
+    //[SerializeField] private Animator camAnimator;
+
     private bool isTriggered;
 
     private void OnTriggerEnter(Collider other)
@@ -15,6 +19,7 @@ public class EndPlatform : MonoBehaviour
         if(other.gameObject.layer == 3 && !isTriggered)
         {
             StartCoroutine(EndPlatformSpawn());
+
             isTriggered = true;
 
             GameManager.Instance.Player.GetComponent<Movement2>().MoveSpeed *= 1.1f;
@@ -26,6 +31,8 @@ public class EndPlatform : MonoBehaviour
    
     IEnumerator EndPlatformSpawn()
     {
+        // change camera angle
+
         for (int i = 0; i < numberOfEndPlatforms; i++)
         {
             int xRange = 6 + endPlatformMultipliers.Count * 2;

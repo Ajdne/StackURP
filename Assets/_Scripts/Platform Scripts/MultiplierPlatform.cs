@@ -36,7 +36,7 @@ public class MultiplierPlatform : MonoBehaviour
             popAnimator.enabled = true;
 
             // increase player speed
-            GameManager.Instance.Player.GetComponent<Movement2>().MoveSpeed += 3f;
+            GameManager.Instance.Player.GetComponent<Movement2>().MoveSpeed += 1f;
 
             // save player location
             GameManager.Instance.PlayerRespawnPos = transform.position + new Vector3(0, 1, 0);

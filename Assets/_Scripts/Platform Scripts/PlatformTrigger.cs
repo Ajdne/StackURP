@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlatformTrigger : MonoBehaviour
 {
-    //[SerializeField] 
+    [SerializeField] private Transform respawnLocation;
+
     private StackSpawn stackSpawnScript;
     private bool canShortcut;
 
@@ -25,9 +26,11 @@ public class PlatformTrigger : MonoBehaviour
             //stackSpawnScript.enabled = true;
 
             // set respawn position
-            GameManager.Instance.PlayerRespawnPos = transform.position + new Vector3(0, 0, 3);
+            GameManager.Instance.PlayerRespawnPos = respawnLocation.position;
 
-            if(!canShortcut && !isTriggered)
+            //GameManager.Instance.PlayerRespawnPos = transform.position + new Vector3(0, 0, 3);
+
+            if (!canShortcut && !isTriggered)
             {
                 StartCoroutine(DisableShortCutRun(other));
 
