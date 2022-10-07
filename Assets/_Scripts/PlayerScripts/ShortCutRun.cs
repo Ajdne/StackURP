@@ -43,7 +43,7 @@ public class ShortCutRun : MonoBehaviour
             if (stackComboCounter == 10 && !gotBonus)
             {
                 // increase movement speed
-                movement.MoveSpeed *= 2f;
+                movement.MoveSpeed *= 1.5f;
 
                 speedTrailParticle.SetActive(true);
 

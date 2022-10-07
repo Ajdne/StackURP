@@ -45,6 +45,7 @@ public class PlatformTrigger : MonoBehaviour
     IEnumerator DisableShortCutRun(Collider other)
     {
         yield return new WaitForSeconds(0.5f);
+
         //first disable boost
         other.gameObject.GetComponent<ShortCutRun>().DisableBoost();
 

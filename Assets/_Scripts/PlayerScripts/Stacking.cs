@@ -65,7 +65,7 @@ public class Stacking : MonoBehaviour
         if(stacked.Count < maxSizeOfTargetGroup)
         {
             // set the 2nd target of the camera to the last added stacked object
-            cineCameraTargetGroup.AddMember(moneyObj.transform, 2, 1f);
+            cineCameraTargetGroup.AddMember(moneyObj.transform, 3, 1f);
         }
 
         // play stack particle

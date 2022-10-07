@@ -12,6 +12,8 @@ public class MultiplierPlatform : MonoBehaviour
     [SerializeField] private Animator popAnimator;
 
     private bool isTriggered;
+    private bool isLastPlatform;
+    public bool IsLastPlatform { set { isLastPlatform = value; } }
 
     void Update()
     {
@@ -27,7 +29,7 @@ public class MultiplierPlatform : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.layer == 3 && !isTriggered)
+        if (other.gameObject.layer == 3 && !isTriggered)
         {
             // POP!
             particle.SetActive(false);
@@ -41,13 +43,11 @@ public class MultiplierPlatform : MonoBehaviour
             // save player location
             GameManager.Instance.PlayerRespawnPos = transform.position + new Vector3(0, 1, 0);
 
-            if (GameManager.Instance.Player.GetComponent<Stacking>().GetStackCount() == 0)
+            // if the player has no stacks left or the platform reached is the last platform, end the game level
+            if (other.gameObject.GetComponent<Stacking>().GetStackCount() == 0 || isLastPlatform)
             {
-
+                GameManager.Instance.Invoke("RespawnPlayer", 0.5f);
             }
-
-            // increase stacks
-            //GameManager.Instance.Player.GetComponent<Stacking>().MultiplyStack(multiplierValue);
 
             isTriggered = true;
         }
@@ -60,4 +60,5 @@ public class MultiplierPlatform : MonoBehaviour
         // update canvas
         multiplierValueCanvas.text = "x" + multiplierValue.ToString();
     }
+
 }

@@ -7,9 +7,9 @@ public class PropertyZone : MonoBehaviour
 {
     [Header("Connected Prefabs")]
     [SerializeField] private GameObject propertyObj;
-
-    [SerializeField] private int stacksNeeded;
+    [SerializeField] private GameObject endGate;
     
+    private int stacksToUnlockGate;
     private float stayTimer;
 
     private List<GameObject> buildElements = new List<GameObject>();
@@ -17,13 +17,18 @@ public class PropertyZone : MonoBehaviour
 
     private int buildCount = 0;
 
+    private void Start()
+    {
+        stacksToUnlockGate = endGate.GetComponent<BridgeGate>().StacksNeeded;
+    }
+
     void OnTriggerStay(Collider other)
     {
         if (other.gameObject.layer == 3) // player layer
         {
             stayTimer += Time.deltaTime;
 
-            if (stayTimer > 0.05f && other.GetComponent<Stacking>().GetStackCount() > 0 && buildCount < stacksNeeded)
+            if (stayTimer > 0.05f && other.GetComponent<Stacking>().GetStackCount() > 0 && buildCount < stacksToUnlockGate)
             {
                 buildCount++;
                 // remove money from the stack
@@ -34,9 +39,9 @@ public class PropertyZone : MonoBehaviour
         }
     }
 
-    public bool IsGateUnlocked()
+    public bool IsGateUnlocked(int stacks)
     {
-        if (buildCount == stacksNeeded) return true;
+        if (buildCount == stacks) return true;
         return false;
     }
 

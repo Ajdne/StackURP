@@ -18,6 +18,9 @@ public class EndPlatform : MonoBehaviour
     {
         if(other.gameObject.layer == 3 && !isTriggered)
         {
+            // save player location
+            GameManager.Instance.PlayerRespawnPos = transform.position + new Vector3(0, 1, 0);
+
             StartCoroutine(EndPlatformSpawn());
 
             isTriggered = true;
@@ -31,11 +34,10 @@ public class EndPlatform : MonoBehaviour
    
     IEnumerator EndPlatformSpawn()
     {
-        // change camera angle
-
         for (int i = 0; i < numberOfEndPlatforms; i++)
         {
-            int xRange = 6 + endPlatformMultipliers.Count * 2;
+            //int xRange = 1 + endPlatformMultipliers.Count * 2;
+            int xRange = (int)(1 + endPlatformMultipliers.Count * 1.3f);
             int randomX = Random.Range(-xRange, xRange + 1);
             yield return new WaitForSeconds(0.5f);
 
@@ -46,9 +48,15 @@ public class EndPlatform : MonoBehaviour
             // set multiplier value for bonus platforms
             multiPlat.GetComponent<MultiplierPlatform>().SetMultiplierValue(i + 1);
 
+
+            if (i == numberOfEndPlatforms - 1)
+            {
+                multiPlat.GetComponent<MultiplierPlatform>().IsLastPlatform = true;
+            }
             // scaling
-            float platSize = multiPlat.transform.localScale.x + endPlatformMultipliers.Count - 1;
+            float platSize = multiPlat.transform.localScale.x + i * 0.5f;
             multiPlat.transform.localScale = new Vector3(platSize, 1, platSize);
+
 
             //stackScript.TargetGroup.AddMember(multiPlat.transform, 30, 5f);
 
