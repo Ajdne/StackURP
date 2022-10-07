@@ -46,7 +46,7 @@ public class MultiplierPlatform : MonoBehaviour
             // if the player has no stacks left or the platform reached is the last platform, end the game level
             if (other.gameObject.GetComponent<Stacking>().GetStackCount() == 0 || isLastPlatform)
             {
-                GameManager.Instance.Invoke("RespawnPlayer", 0.5f);
+                StartCoroutine(GameManager.Instance.RespawnPlayer());
             }
 
             isTriggered = true;

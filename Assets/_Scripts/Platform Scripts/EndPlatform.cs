@@ -21,6 +21,9 @@ public class EndPlatform : MonoBehaviour
             // save player location
             GameManager.Instance.PlayerRespawnPos = transform.position + new Vector3(0, 1, 0);
 
+            // camera transition by changing vcam priority
+            GameManager.Instance.CineCamera.Priority += 2;
+
             StartCoroutine(EndPlatformSpawn());
 
             isTriggered = true;

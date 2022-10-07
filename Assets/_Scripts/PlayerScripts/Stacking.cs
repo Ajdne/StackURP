@@ -13,9 +13,6 @@ public class Stacking : MonoBehaviour
     private List<GameObject> stacked = new List<GameObject>();
     public List<GameObject> Stacked { get { return stacked; } }
 
-    //[SerializeField] private int maxStacks;
-    //public int MaxStacks { get { return maxStacks; } set { maxStacks = value; } }
-
     [Header("Camera Settings")]
     [SerializeField] private CinemachineTargetGroup cineCameraTargetGroup;    // set component
     public CinemachineTargetGroup TargetGroup { get { return cineCameraTargetGroup; } set { cineCameraTargetGroup = value; } }

@@ -7,17 +7,37 @@ public class FallPlatform : MonoBehaviour
     [SerializeField] private GameObject waterSplashParticle;
     private bool isTriggered;
 
+    [Header("Audio Settings")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip waterSplashClip;
+
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.layer == 3) // player layer
+        if (other.gameObject.layer == 3) // player layer
         {
-            // spawn splash particle
-            Instantiate(waterSplashParticle, other.transform.position, Quaternion.identity);
+            // play water splash audio
+            if(!isTriggered)
+            {
+                // spawn splash particle
+                Instantiate(waterSplashParticle, other.transform.position, Quaternion.identity);
+
+                audioSource.PlayOneShot(waterSplashClip);
+                isTriggered = true;
+            }
 
             // change player position
-            GameManager.Instance.Invoke("RespawnPlayer", 0.5f);
+            StartCoroutine(GameManager.Instance.RespawnPlayer());
+            
+            //GameManager.Instance.Invoke("RespawnPlayer", 0.5f);
 
-            //if()
+            StartCoroutine(ResetBool());
         }
     }
+
+    private IEnumerator ResetBool()
+    {
+        yield return new WaitForSeconds(0.2f);
+        isTriggered = false;
+    }
 }
+

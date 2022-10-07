@@ -28,4 +28,9 @@ public class Platforms : MonoBehaviour
             Instantiate(GameManager.Instance.Crossings[randomCrossing], crossingLocations[i].transform.position + new Vector3(0, 0, 0), Quaternion.identity);
         }
     }
+
+    public Transform GetRespawnLocation()
+    {
+        return respawnPosObj.transform;
+    }
 }

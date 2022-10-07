@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,7 +17,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int maxNumberOfPlatforms = 4;
     public List<GameObject> Crossings { get { return crossings; } }
 
-    
+    [Header("Camera Settings"), Space]
+    [SerializeField] private CinemachineVirtualCamera cineCamera;
+    public CinemachineVirtualCamera CineCamera { get { return cineCamera; } }
 
     [Header("Player Settings")]
     public GameObject Player;
@@ -91,8 +94,10 @@ public class GameManager : MonoBehaviour
         return spawn;
     }
 
-    public void RespawnPlayer()
+    public IEnumerator RespawnPlayer()
     {
+        yield return new WaitForSeconds(0.4f);
+
         // remove leftover stacks from player
         stackingScript.RemoveFromStack(stackingScript.GetStackCount());
 

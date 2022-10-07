@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlatformTrigger : MonoBehaviour
 {
-    [SerializeField] private Transform respawnLocation;
+    private Transform respawnLocation;
 
     private StackSpawn stackSpawnScript;
     private bool canShortcut;
@@ -13,6 +13,7 @@ public class PlatformTrigger : MonoBehaviour
 
     private void Start()
     {
+        respawnLocation = GetComponentInParent<Platforms>().GetRespawnLocation();
         canShortcut = GetComponentInParent<Platforms>().CanUseShortcut;
         //stackSpawnScript = GetComponentInParent<StackSpawn>();
     }
