@@ -10,21 +10,40 @@ public class PlatformTrigger : MonoBehaviour
     private bool canShortcut;
 
     private bool isTriggered;
+    private bool isOnPlatform;
 
+    private int layerValue;
+
+    private GameManager gm;
     private void Start()
     {
+        gm = GameManager.Instance;
+
         respawnLocation = GetComponentInParent<Platforms>().GetRespawnLocation();
         canShortcut = GetComponentInParent<Platforms>().CanUseShortcut;
-        //stackSpawnScript = GetComponentInParent<StackSpawn>();
+        stackSpawnScript = GetComponentInParent<StackSpawn>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == 3) // player layer
+        if (other.CompareTag("Player")) // player layer
         {
-            // activate stack spawning
-            GetComponentInParent<StackSpawn>().enabled = true;
-            //stackSpawnScript.enabled = true;
+            // pass the tag of the player that reached the trigger
+            if(!stackSpawnScript.UnlockedStacksToSpawn.Contains(gm.StackPrefs[other.gameObject.layer - 10]))
+            {
+                // pass in the prefab that we want to spawn
+                stackSpawnScript.UnlockedStacksToSpawn.Add(gm.StackPrefs[other.gameObject.layer - 10]);
+
+
+                // PROBLEM JE REDOSLED POVECANJA LISTE
+
+
+                // spawn several stacks when the platform is entered
+                //stackSpawnScript.SpawnInitialStacks(gm.StackPrefs[other.gameObject.layer - 10]);
+            }
+
+            // activate stack spawning - the initial stacks are spawned ONLY ONCE
+            stackSpawnScript.enabled = true;
 
             // set respawn position
             GameManager.Instance.PlayerRespawnPos = respawnLocation.position;

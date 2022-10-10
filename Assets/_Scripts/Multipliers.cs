@@ -80,7 +80,7 @@ public class Multipliers : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.layer == 3) // player layer
+        if(other.CompareTag("Player")) // player layer
         {
             DoRandomEffect(randomValue, other.gameObject);
 

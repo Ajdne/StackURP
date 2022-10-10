@@ -13,7 +13,7 @@ public class FallPlatform : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == 3) // player layer
+        if (other.CompareTag("Player"))
         {
             // play water splash audio
             if(!isTriggered)

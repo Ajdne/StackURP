@@ -27,7 +27,8 @@ public class Stacking : MonoBehaviour
 
     private void Start()
     {
-        stackPref = GameManager.Instance.StackPref;
+        // take the stack prefab from game manager list that coresponds to player layer - 10
+        stackPref = GameManager.Instance.StackPrefs[this.gameObject.layer - 10];
 
         // set the 1st target to be the player
         if (cineCameraTargetGroup.IsEmpty)

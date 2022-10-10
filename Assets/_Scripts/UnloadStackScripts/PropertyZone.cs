@@ -24,7 +24,7 @@ public class PropertyZone : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.layer == 3) // player layer
+        if (other.CompareTag("Player")) // player layer
         {
             stayTimer += Time.deltaTime;
 

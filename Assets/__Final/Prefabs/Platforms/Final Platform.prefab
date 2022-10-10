@@ -30,6 +30,7 @@ Transform:
   m_Children:
   - {fileID: 8583358242068950695}
   - {fileID: 6531034514145534064}
+  - {fileID: 3118213367754150682}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -100,6 +101,92 @@ Transform:
   m_Father: {fileID: 8583358241178393804}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1776510107615494574
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8583358241178393804}
+    m_Modifications:
+    - target: {fileID: 3738392373920289459, guid: d49e0292bd0f4a64ea48101933c5d4a0,
+        type: 3}
+      propertyPath: m_Name
+      value: Hollywood Spark Shower
+      objectReference: {fileID: 0}
+    - target: {fileID: 3738392373920289459, guid: d49e0292bd0f4a64ea48101933c5d4a0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3738392373920289460, guid: d49e0292bd0f4a64ea48101933c5d4a0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3738392373920289460, guid: d49e0292bd0f4a64ea48101933c5d4a0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3738392373920289460, guid: d49e0292bd0f4a64ea48101933c5d4a0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3738392373920289460, guid: d49e0292bd0f4a64ea48101933c5d4a0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3738392373920289460, guid: d49e0292bd0f4a64ea48101933c5d4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3738392373920289460, guid: d49e0292bd0f4a64ea48101933c5d4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3738392373920289460, guid: d49e0292bd0f4a64ea48101933c5d4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3738392373920289460, guid: d49e0292bd0f4a64ea48101933c5d4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3738392373920289460, guid: d49e0292bd0f4a64ea48101933c5d4a0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3738392373920289460, guid: d49e0292bd0f4a64ea48101933c5d4a0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3738392373920289460, guid: d49e0292bd0f4a64ea48101933c5d4a0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d49e0292bd0f4a64ea48101933c5d4a0, type: 3}
+--- !u!4 &3118213367754150682 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3738392373920289460, guid: d49e0292bd0f4a64ea48101933c5d4a0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1776510107615494574}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3118213367754150685 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3738392373920289459, guid: d49e0292bd0f4a64ea48101933c5d4a0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1776510107615494574}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8583358241304017822
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -453,6 +540,7 @@ MonoBehaviour:
   multiplierPlatformPrefab: {fileID: 5174468478857700337, guid: af201209f38b38441b7a7107f84f6b56,
     type: 3}
   numberOfEndPlatforms: 8
+  particle: {fileID: 3118213367754150685}
 --- !u!4 &6531034514145534064 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3295741650073377140, guid: aa92fbcf0807de44a9e9868fcb230323,

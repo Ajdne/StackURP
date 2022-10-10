@@ -22,7 +22,7 @@ public class CanonZone : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.layer == 3) // player layer
+        if (other.CompareTag("Player")) // player layer
         {
             stayTimer += Time.deltaTime;
 
@@ -53,7 +53,7 @@ public class CanonZone : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.layer == 3) // player layer
+        if (other.CompareTag("Player")) // player layer
         {
             // reset the timer
             stayTimer = 0;

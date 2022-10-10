@@ -13,7 +13,7 @@ public class BridgeGate : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if(other.gameObject.layer == 3) // player layer
+        if(other.CompareTag("Player")) // player layer
         {
             if (bridgeScript.IsGateUnlocked(stacksNeeded))
             {

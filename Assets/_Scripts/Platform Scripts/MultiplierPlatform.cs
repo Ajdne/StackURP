@@ -10,6 +10,7 @@ public class MultiplierPlatform : MonoBehaviour
     [SerializeField] private TextMeshProUGUI multiplierValueCanvas;
     [SerializeField] private GameObject particle;
     [SerializeField] private Animator popAnimator;
+    [SerializeField] private AudioSource audioSource;
 
     private bool isTriggered;
     private bool isLastPlatform;
@@ -29,13 +30,17 @@ public class MultiplierPlatform : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == 3 && !isTriggered)
+        if (other.gameObject.tag == "Player" && !isTriggered)
         {
             // POP!
             particle.SetActive(false);
             popAnimator.enabled = false;
             particle.SetActive(true);
             popAnimator.enabled = true;
+
+            // play audio
+            audioSource.pitch = 0.5f + multiplierValue * 0.1f;
+            audioSource.Play();
 
             // increase player speed
             GameManager.Instance.Player.GetComponent<Movement2>().MoveSpeed += 1f;

@@ -29,8 +29,8 @@ public class GameManager : MonoBehaviour
     private Movement2 playerMovement;
 
     [Header("Stacks")]
-    [SerializeField] private GameObject stackPref;
-    public GameObject StackPref { get { return stackPref; } }
+    [SerializeField] private List<GameObject> stackPrefs = new List<GameObject>();
+    public List<GameObject> StackPrefs { get { return stackPrefs; } set { stackPrefs = value;  } }
 
     // ENDGAME
     private bool isEndGame;

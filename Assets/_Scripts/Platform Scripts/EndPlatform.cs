@@ -8,7 +8,7 @@ public class EndPlatform : MonoBehaviour
     [SerializeField] private List<GameObject> endPlatformMultipliers;
     [SerializeField] private GameObject multiplierPlatformPrefab;
     [SerializeField] private int numberOfEndPlatforms;
-
+    [SerializeField] private GameObject particle;
     [Space]
     //[SerializeField] private Animator camAnimator;
 
@@ -16,7 +16,7 @@ public class EndPlatform : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.layer == 3 && !isTriggered)
+        if(other.gameObject.tag == "Player" && !isTriggered)
         {
             // save player location
             GameManager.Instance.PlayerRespawnPos = transform.position + new Vector3(0, 1, 0);
@@ -25,6 +25,9 @@ public class EndPlatform : MonoBehaviour
             GameManager.Instance.CineCamera.Priority += 2;
 
             StartCoroutine(EndPlatformSpawn());
+
+            // activate particle
+            particle.SetActive(true);
 
             isTriggered = true;
 

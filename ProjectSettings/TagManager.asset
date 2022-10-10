@@ -8,17 +8,17 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Player
+  - 
   - Water
   - UI
   - Platform
   - Boat Collision
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - Blue
+  - Red
+  - Green
+  - Purple
   - 
   - 
   - 
