@@ -28,18 +28,19 @@ public class PlatformTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player")) // player layer
         {
-            // pass the tag of the player that reached the trigger
-            if(!stackSpawnScript.UnlockedStacksToSpawn.Contains(gm.StackPrefs[other.gameObject.layer - 10]))
+            // pass the layer of the player that reached the trigger
+            // player stack prefabs are in a list in Game manager, and they are arranged as the layer number of players - 10
+            if (!stackSpawnScript.UnlockedStacksToSpawn.Contains(gm.StackPrefs[other.gameObject.layer - 10]))
             {
                 // pass in the prefab that we want to spawn
                 stackSpawnScript.UnlockedStacksToSpawn.Add(gm.StackPrefs[other.gameObject.layer - 10]);
 
-
-                // PROBLEM JE REDOSLED POVECANJA LISTE
-
+                // activate stack spawning - the initial stacks are spawned ONLY ONCE
+                stackSpawnScript.enabled = true;
 
                 // spawn several stacks when the platform is entered
-                //stackSpawnScript.SpawnInitialStacks(gm.StackPrefs[other.gameObject.layer - 10]);
+                stackSpawnScript.SpawnInitialStacks(other.gameObject);
+                print(stackSpawnScript);
             }
 
             // activate stack spawning - the initial stacks are spawned ONLY ONCE
@@ -65,6 +66,9 @@ public class PlatformTrigger : MonoBehaviour
     IEnumerator DisableShortCutRun(Collider other)
     {
         yield return new WaitForSeconds(0.5f);
+
+        // if boost is already disabled
+        if (!other.gameObject.GetComponent<ShortCutRun>().GotBoost) yield break;
 
         //first disable boost
         other.gameObject.GetComponent<ShortCutRun>().DisableBoost();

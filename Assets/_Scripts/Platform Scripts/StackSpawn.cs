@@ -50,17 +50,23 @@ public class StackSpawn : MonoBehaviour
         }    
     }
 
-    public void SpawnInitialStacks(GameObject stacksPref)
+    public void SpawnInitialStacks(GameObject player)
     {
+        print(gm.GetObjectFormList(0));
+        print(gm.GetObjectFormList(1));
         // spawn a number of initial stacks when the player reaches the platform
         for (int i = 0; i < initialNumberOfStacks; i++)
         {
-            SpawnWithRayCast(stacksPref);
+            SpawnWithRayCast(gm.GetObjectFormList(player.gameObject.layer - 10));
+            print("2");
+            //print(gm.StackPrefs[player.gameObject.layer - 10].ToString());
+            //SpawnWithRayCast(gm.StackPrefs[player.gameObject.layer - 10]);
         }
     }
 
     private void SpawnWithRayCast(GameObject stackPref)
     {
+        print("3");
         int randomX = Random.Range((int)collider.bounds.min.x + 2, (int)collider.bounds.max.x - 1);
         int randomZ = Random.Range((int)collider.bounds.min.z + 2, (int)collider.bounds.max.z - 1);
 

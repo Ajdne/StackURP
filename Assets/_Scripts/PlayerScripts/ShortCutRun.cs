@@ -11,7 +11,8 @@ public class ShortCutRun : MonoBehaviour
     [SerializeField] private float endComboTime;
     [SerializeField] private GameObject speedTrailParticle;
     private float originalMoveSpeed;    // save initial move speed value\
-    private bool gotBonus;
+    private bool gotBoost;
+    public bool GotBoost { get { return gotBoost; } }
 
     private float waitTimer;
     private int stackComboCounter;  // used to activate bonus movement speed
@@ -40,14 +41,14 @@ public class ShortCutRun : MonoBehaviour
 
             stackComboCounter++;
 
-            if (stackComboCounter == 10 && !gotBonus)
+            if (stackComboCounter == 10 && !gotBoost)
             {
                 // increase movement speed
                 movement.MoveSpeed *= 1.5f;
 
                 speedTrailParticle.SetActive(true);
 
-                gotBonus = true;
+                gotBoost = true;
             }
 
             waitTimer = 0;
@@ -67,7 +68,7 @@ public class ShortCutRun : MonoBehaviour
         speedTrailParticle.SetActive(false);
 
         // reset the bool
-        gotBonus = false;
+        gotBoost = false;
 
         // reset the counter
         stackComboCounter = 0;

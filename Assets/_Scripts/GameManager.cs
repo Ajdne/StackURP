@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     private Movement2 playerMovement;
 
     [Header("Stacks")]
-    [SerializeField] private List<GameObject> stackPrefs = new List<GameObject>();
+    [SerializeField] private List<GameObject> stackPrefs; // = new List<GameObject>();
     public List<GameObject> StackPrefs { get { return stackPrefs; } set { stackPrefs = value;  } }
 
     // ENDGAME
@@ -55,7 +55,10 @@ public class GameManager : MonoBehaviour
         playerAnimator = Player.GetComponent<Animator>();
 
         SpawnRandomPlatforms();
+
+        print(StackPrefs.Count);
     }
+
     private void SpawnRandomPlatforms()
     {
         for (int i = 0; i < maxNumberOfPlatforms; i++)
@@ -73,6 +76,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+   
     public GameObject GetRandomItem(List<GameObject> itemList)
     {
         int randomVal = Random.Range(0, itemList.Count);
@@ -82,17 +86,18 @@ public class GameManager : MonoBehaviour
         return randomItem;
     }
 
-    public GameObject SpawnOnRandomPosition(GameObject spawnPref, GameObject locationObj)
-    {
-        // randomize position
-        int randomX = Random.Range((int)-locationObj.transform.localScale.x + 1, (int)locationObj.transform.localScale.x - 1);
-        int randomZ = Random.Range((int)-locationObj.transform.localScale.z + 1, (int)locationObj.transform.localScale.z - 1);
+    // MOZDA CE KORISTITI KASNIJE
+    //public GameObject SpawnOnRandomPosition(GameObject spawnPref, GameObject locationObj)
+    //{
+    //    // randomize position
+    //    int randomX = Random.Range((int)-locationObj.transform.localScale.x + 1, (int)locationObj.transform.localScale.x - 1);
+    //    int randomZ = Random.Range((int)-locationObj.transform.localScale.z + 1, (int)locationObj.transform.localScale.z - 1);
 
-        // spawn prefab
-        GameObject spawn = Instantiate(spawnPref, locationObj.transform.position + new Vector3(randomX, 0.5f, randomZ), Quaternion.identity);
+    //    // spawn prefab
+    //    GameObject spawn = Instantiate(spawnPref, locationObj.transform.position + new Vector3(randomX, 0.5f, randomZ), Quaternion.identity);
 
-        return spawn;
-    }
+    //    return spawn;
+    //}
 
     public IEnumerator RespawnPlayer()
     {
@@ -137,5 +142,10 @@ public class GameManager : MonoBehaviour
 
         Player.GetComponent<Movement2>().enabled = false;
         Player.GetComponent<Rigidbody>().isKinematic = true;
+    }
+
+    public GameObject GetObjectFormList(int i)
+    {
+        return stackPrefs[i];
     }
 }
