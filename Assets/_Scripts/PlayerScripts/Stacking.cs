@@ -118,7 +118,7 @@ public class Stacking : MonoBehaviour
             // remove it from list
             stacked.Remove(moneyobj);
             // and destroy
-            Destroy(moneyobj);
+            Destroy(moneyobj);        
         }
     }
 
