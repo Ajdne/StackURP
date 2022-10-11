@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 6124936438814383675}
   - component: {fileID: 3972934158868469466}
   - component: {fileID: 5539087755334498334}
-  - component: {fileID: 4717091326383489693}
   - component: {fileID: 4706717320868743876}
   - component: {fileID: 6746228724515510626}
+  - component: {fileID: 8577915438390546765}
+  - component: {fileID: 5093536626436237723}
   m_Layer: 10
   m_Name: Blue Brick
   m_TagString: Untagged
@@ -80,19 +81,6 @@ MonoBehaviour:
   speed: 20
   rotateSpeed: 400
   collider: {fileID: 5784688340862524640}
---- !u!114 &4717091326383489693
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4496396300652943561}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1503104dff1c131419b1711e2ebf1bdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stackParticles: {fileID: 4342735286539041484}
 --- !u!54 &4706717320868743876
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -129,6 +117,31 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8577915438390546765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4496396300652943561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c91c1a0b0967324b8bd49ddbfb8405e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5093536626436237723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4496396300652943561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a3af6282233f124ea48c92a444df6df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stackParticles: {fileID: 4342735286539041484}
 --- !u!1001 &4487711099184370173
 PrefabInstance:
   m_ObjectHideFlags: 0

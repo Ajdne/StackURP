@@ -17,6 +17,8 @@ public class PropertyZone : MonoBehaviour
 
     private int buildCount = 0;
 
+// - - - -- - -  THIS SCRIPT IS PLACED ON A BRIDGE PREFAB - - - -- - - - -
+
     private void Start()
     {
         stacksToUnlockGate = endGate.GetComponent<BridgeGate>().StacksNeeded;
@@ -28,14 +30,33 @@ public class PropertyZone : MonoBehaviour
         {
             stayTimer += Time.deltaTime;
 
-            if (stayTimer > 0.05f && other.GetComponent<Stacking>().GetStackCount() > 0 && buildCount < stacksToUnlockGate)
+            if (stayTimer > 0.05f)
             {
-                buildCount++;
-                // remove money from the stack
-                other.GetComponent<Stacking>().RemoveMoneyToProperty(propertyObj.transform.position + new Vector3(0, 0 , -8 + buildCount * 0.75f), false);
+                if (other.gameObject.layer == 10)
+                {
+                    if(other.GetComponent<Stacking>().GetStackCount() > 0 && buildCount < stacksToUnlockGate)
+                    {
+                        buildCount++;
+                        // remove money from the stack
+                        other.GetComponent<Stacking>().RemoveMoneyToProperty(propertyObj.transform.position + new Vector3(0, 0, -8 + buildCount * 0.75f), false);
 
-                stayTimer = 0;
+                        stayTimer = 0;
+                    }
+                }
+                // then its an enemy
+                else if (other.GetComponent<EnemyStacking>().GetStackCount() > 0 && buildCount < stacksToUnlockGate)
+                {
+                    buildCount++;
+                    // remove stacks from enemy
+                    other.GetComponent<EnemyStacking>().RemoveMoneyToProperty(propertyObj.transform.position + new Vector3(0, 0, -8 + buildCount * 0.75f), false);
+
+                    stayTimer = 0;
+                }
+
+                
+                
             }
+             
         }
     }
 

@@ -55,8 +55,6 @@ public class GameManager : MonoBehaviour
         playerAnimator = Player.GetComponent<Animator>();
 
         SpawnRandomPlatforms();
-
-        print(StackPrefs.Count);
     }
 
     private void SpawnRandomPlatforms()

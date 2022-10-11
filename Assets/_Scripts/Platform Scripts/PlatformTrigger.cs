@@ -40,7 +40,6 @@ public class PlatformTrigger : MonoBehaviour
 
                 // spawn several stacks when the platform is entered
                 stackSpawnScript.SpawnInitialStacks(other.gameObject);
-                print(stackSpawnScript);
             }
 
             // activate stack spawning - the initial stacks are spawned ONLY ONCE
@@ -68,10 +67,11 @@ public class PlatformTrigger : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         // if boost is already disabled
-        if (!other.gameObject.GetComponent<ShortCutRun>().GotBoost) yield break;
-
-        //first disable boost
-        other.gameObject.GetComponent<ShortCutRun>().DisableBoost();
+        if (other.gameObject.GetComponent<ShortCutRun>().GotBoost)
+        {
+            //first disable boost
+            other.gameObject.GetComponent<ShortCutRun>().DisableBoost();
+        }
 
         // then disable the script
         other.gameObject.GetComponent<ShortCutRun>().enabled = canShortcut;

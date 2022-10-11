@@ -4,20 +4,12 @@ using UnityEngine;
 
 public class Collectable : MonoBehaviour
 {
-    //[SerializeField] private int layer;
-    [SerializeField] private GameObject stackParticles;
-
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && other.gameObject.layer == this.gameObject.layer) // player layer
+        // if its an AI and matches his layer
+        if (other.CompareTag("Player") && other.gameObject.layer == this.gameObject.layer)
         {
-            //StartCoroutine(other.GetComponent<Stacking>().MoveToStack(this.gameObject));
-            other.GetComponent<Stacking>().AddMoneyToStack(this.gameObject);
+            other.GetComponent<EnemyStacking>().AddMoneyToStack(this.gameObject);            
         }
-    }
-
-    public void ActivateStackParticle()
-    {
-        stackParticles.SetActive(true);
     }
 }

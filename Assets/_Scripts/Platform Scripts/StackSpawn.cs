@@ -20,14 +20,14 @@ public class StackSpawn : MonoBehaviour
     private Ray ray;
     private GameManager gm;
 
-    void Start()
+    private void Awake()
     {
-        gm = GameManager.Instance;
-
+        // for some reason, this wont work in start (it works but we need it sooner)
         collider = GetComponent<MeshCollider>();
+
+        gm = GameManager.Instance;
     }
 
-    // Update is called once per frame
     void Update()
     {
         for (int i = 0; i < unlockedStacksToSpawn.Count; i++)
@@ -52,13 +52,11 @@ public class StackSpawn : MonoBehaviour
 
     public void SpawnInitialStacks(GameObject player)
     {
-        print(gm.GetObjectFormList(0));
-        print(gm.GetObjectFormList(1));
         // spawn a number of initial stacks when the player reaches the platform
         for (int i = 0; i < initialNumberOfStacks; i++)
         {
-            SpawnWithRayCast(gm.GetObjectFormList(player.gameObject.layer - 10));
-            print("2");
+            SpawnWithRayCast(GameManager.Instance.GetObjectFormList(player.gameObject.layer - 10));
+
             //print(gm.StackPrefs[player.gameObject.layer - 10].ToString());
             //SpawnWithRayCast(gm.StackPrefs[player.gameObject.layer - 10]);
         }
@@ -66,7 +64,6 @@ public class StackSpawn : MonoBehaviour
 
     private void SpawnWithRayCast(GameObject stackPref)
     {
-        print("3");
         int randomX = Random.Range((int)collider.bounds.min.x + 2, (int)collider.bounds.max.x - 1);
         int randomZ = Random.Range((int)collider.bounds.min.z + 2, (int)collider.bounds.max.z - 1);
 

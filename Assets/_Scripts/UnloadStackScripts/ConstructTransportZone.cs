@@ -18,14 +18,23 @@ public class ConstructTransportZone : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player")) // player layer
+        if(other.CompareTag("Player"))
         {
             stayTimer += Time.deltaTime;
 
-            if (stayTimer > 0.1f && other.GetComponent<Stacking>().GetStackCount() > 0 && elementCounter != elements.Count)
+            if (stayTimer > 0.1f && elementCounter != elements.Count)
             {
-                // remove money from the stack
-                other.GetComponent<Stacking>().RemoveMoneyToProperty(elements[elementCounter].transform.position, true);
+                if (other.gameObject.layer == 10 && other.GetComponent<Stacking>().GetStackCount() > 0)
+                {
+                    // remove money from the stack
+                    other.gameObject.GetComponent<Stacking>().RemoveMoneyToProperty(elements[elementCounter].transform.position, true);
+                }
+                // then check enemy stacks
+                else if (other.GetComponent<EnemyStacking>().GetStackCount() > 0)
+                {
+                    // remove from stack
+                    other.gameObject.GetComponent<EnemyStacking>().RemoveMoneyToProperty(elements[elementCounter].transform.position, true);
+                }
 
                 // activate the element
                 elements[elementCounter].SetActive(true);
@@ -38,7 +47,7 @@ public class ConstructTransportZone : MonoBehaviour
                 // reset the timer
                 stayTimer = 0;
 
-                if(elementCounter == elements.Count)
+                if (elementCounter == elements.Count)
                 {
                     // deactivate box collider of this zone
                     //this.gameObject.GetComponent<BoxCollider>().enabled = false;
@@ -52,6 +61,9 @@ public class ConstructTransportZone : MonoBehaviour
                 }
             }
         }
+        
+
+        // ELEGANTNO RESHENJE
     }
 
     void OnTriggerExit(Collider other)

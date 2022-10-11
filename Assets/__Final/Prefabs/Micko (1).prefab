@@ -2504,6 +2504,7 @@ MonoBehaviour:
   backpackObj: {fileID: 969762493356455174}
   stackFlySpeed: 5
   cineCameraTargetGroup: {fileID: 0}
+  maxSizeOfTargetGroup: 60
   audioSource: {fileID: 1089511437795841575}
   stackClip: {fileID: 8300000, guid: 43309756d8072ca409cce9b1a749f196, type: 3}
   payClip: {fileID: 8300000, guid: 4daeb43d94ca15d4eab9e3739ff778b8, type: 3}
@@ -2553,7 +2554,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   raycastObj: {fileID: 969762495330077529}
   endComboTime: 0.5
-  speedTrailParticle: {fileID: 0}
+  speedTrailParticle: {fileID: 1259348805122777767}
 --- !u!114 &6896020662830930331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2773,6 +2774,12 @@ PrefabInstance:
 --- !u!4 &1259348805122777762 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4967246743926042178, guid: 43aa197e1647d3242bbec902689d2374,
+    type: 3}
+  m_PrefabInstance: {fileID: 6166887527841696992}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1259348805122777767 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4967246743926042183, guid: 43aa197e1647d3242bbec902689d2374,
     type: 3}
   m_PrefabInstance: {fileID: 6166887527841696992}
   m_PrefabAsset: {fileID: 0}

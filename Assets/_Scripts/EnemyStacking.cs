@@ -1,10 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Cinemachine;
-using Lofelt.NiceVibrations;
 
-public class Stacking : MonoBehaviour
+public class EnemyStacking : MonoBehaviour
 {
     [SerializeField] private GameObject backpackObj;
     [SerializeField] private int stackFlySpeed;
@@ -14,26 +12,10 @@ public class Stacking : MonoBehaviour
     private List<GameObject> stacked = new List<GameObject>();
     public List<GameObject> Stacked { get { return stacked; } }
 
-    [Header("Camera Settings")]
-    [SerializeField] private CinemachineTargetGroup cineCameraTargetGroup;
-    public CinemachineTargetGroup TargetGroup { get { return cineCameraTargetGroup; } set { cineCameraTargetGroup = value; } }
-    [SerializeField] private int maxSizeOfTargetGroup;
-
-    [Header("Audio Settings")]
-    [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip stackClip;
-    [SerializeField] private AudioClip payClip;
-
     private void Start()
     {
         // take the stack prefab from game manager list that coresponds to player layer - 10
         stackPref = GameManager.Instance.StackPrefs[this.gameObject.layer - 10];
-
-        // set the 1st target to be the player
-        if (cineCameraTargetGroup.IsEmpty)
-        {
-            cineCameraTargetGroup.AddMember(this.gameObject.transform, 40, 5); // AddMember(Transform t, float weight, float radius)
-        }
     }
 
     public void AddMoneyToStack(GameObject moneyObj)
@@ -58,26 +40,13 @@ public class Stacking : MonoBehaviour
         // disable colliders
         moneyObj.GetComponent<BoxCollider>().enabled = false;
 
-        if(stacked.Count < maxSizeOfTargetGroup)
-        {
-            // set the 2nd target of the camera to the last added stacked object
-            cineCameraTargetGroup.AddMember(moneyObj.transform, 3, 1f);
-        }
-
         // play stack particle
         moneyObj.GetComponent<CollectableParticle>().ActivateStackParticle();
-
-        // ---------- STACK AUDIO ------------
-        audioSource.clip = stackClip;
-        audioSource.pitch = 0.5f + stacked.Count * 0.05f;
-        audioSource.Play();
-
-        HapticPatterns.PlayPreset(HapticPatterns.PresetType.Selection);
     }
 
     public void InstantiateToStack(int addNumberOfStacks)    // spawn blocks in the stack (for multipliers)
     {
-        for(int i = 0; i < addNumberOfStacks; i++)
+        for (int i = 0; i < addNumberOfStacks; i++)
         {
             GameObject stackObj = Instantiate(stackPref);
 
@@ -97,9 +66,6 @@ public class Stacking : MonoBehaviour
 
             AddMoneyToStack(stackObj);
         }
-
-        HapticPatterns.PlayPreset(HapticPatterns.PresetType.Selection);
-
     }
 
     public void RemoveFromStack(int subtractNumberOfStacks)    // spawn blocks in the stack (for multipliers)
@@ -112,16 +78,10 @@ public class Stacking : MonoBehaviour
             // local obj
             GameObject moneyobj = stacked[stacked.Count - 1];
 
-            if (stacked.Count <= maxSizeOfTargetGroup)
-            {
-                // remove the object from cinemachine target group
-                cineCameraTargetGroup.RemoveMember(moneyobj.transform);
-            }
-
             // remove it from list
             stacked.Remove(moneyobj);
             // and destroy
-            Destroy(moneyobj);        
+            Destroy(moneyobj);
         }
     }
 
@@ -145,37 +105,6 @@ public class Stacking : MonoBehaviour
         }
     }
 
-    //public void AddToStack(GameObject moneyObj)
-    //{
-    //    // add obj to list
-    //    stacked.Add(moneyObj.gameObject);
-
-    //    Rigidbody rb = moneyObj.gameObject.GetComponent<Rigidbody>();
-    //    // remove rigidbody
-    //    Destroy(rb);
-
-    //    // disable colliders
-    //    moneyObj.GetComponent<BoxCollider>().enabled = false;
-
-    //    // set parent
-    //    //moneyObj.gameObject.transform.SetParent(backpackObj.transform);
-
-    //    // activate move component
-    //    moneyObj.GetComponent<MoneyMovement>().SetMoveToVector(backpackObj.transform.position + new Vector3(0, stacked.Count * moneyObj.transform.localScale.y, 0));
-
-    //    // set parent
-    //    moneyObj.GetComponent<MoneyMovement>().SetParent(backpackObj.transform);
-
-    //    // enable the script
-    //    moneyObj.GetComponent<MoneyMovement>().enabled = true;
-
-
-    //// ------------- AUDIO -----------------
-    //    audioSource.clip = stackClip;
-    //    audioSource.pitch = 0.8f + stacked.Count * 0.05f;
-    //    audioSource.Play();
-    //}
-
     public void RemoveMoneyToProperty(Vector3 objPos, bool destroy)
     {
         // local obj
@@ -198,15 +127,6 @@ public class Stacking : MonoBehaviour
 
         // remove it from list
         stacked.Remove(moneyObj);
-
-        // remove the object from cinemachine target group
-        cineCameraTargetGroup.RemoveMember(moneyObj.transform);
-
-        // ----------- AUDIO ----------------------
-        PlayUnloadAudio();
-
-        HapticPatterns.PlayPreset(HapticPatterns.PresetType.Selection);
-
     }
 
     public void RemoveStackToShortcut(Vector3 objPos)
@@ -223,9 +143,6 @@ public class Stacking : MonoBehaviour
         // remove it from list
         stacked.Remove(moneyObj);
 
-        // remove the object from cinemachine target group
-        cineCameraTargetGroup.RemoveMember(moneyObj.transform);
-
         // set position
         moneyObj.transform.position = objPos;
         // scale up
@@ -236,37 +153,10 @@ public class Stacking : MonoBehaviour
 
         // add box collider because enabling it will enable the trigger one
         moneyObj.AddComponent<BoxCollider>();
-
-        // ----------- AUDIO ----------------------
-        PlayUnloadAudio();
-
-        HapticPatterns.PlayPreset(HapticPatterns.PresetType.Selection);
-
     }
 
-    private void PlayUnloadAudio()
-    {
-        audioSource.clip = payClip;
-        audioSource.pitch = 0.5f + stacked.Count * 0.025f;
-        audioSource.Play();
-    }
     public int GetStackCount()
     {
         return stacked.Count;
     }
-
-    //public void RemoveMoney()
-    //{
-    //    // local obj
-    //    GameObject moneyObj = stacked[stacked.Count - 1];
-
-    //    // remove it from list
-    //    stacked.Remove(moneyObj);
-    //    // and destroy
-    //    Destroy(moneyObj);
-
-    //    audioSource.clip = payClip;
-    //    audioSource.pitch = 0.5f + stacked.Count * 0.05f;
-    //    audioSource.Play();
-    //}
 }

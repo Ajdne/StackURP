@@ -1,3 +1,4 @@
+using Lofelt.NiceVibrations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -31,6 +32,11 @@ public class FallPlatform : MonoBehaviour
             //GameManager.Instance.Invoke("RespawnPlayer", 0.5f);
 
             StartCoroutine(ResetBool());
+
+            // vibrate
+            if(other.gameObject.layer == 10)
+                HapticPatterns.PlayPreset(HapticPatterns.PresetType.Warning);
+
         }
     }
 

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4717091326383489693}
   - component: {fileID: 4706717320868743876}
   - component: {fileID: 6746228724515510626}
+  - component: {fileID: -6760557811712438656}
   m_Layer: 13
   m_Name: Purple Brick
   m_TagString: Untagged
@@ -92,7 +93,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1503104dff1c131419b1711e2ebf1bdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stackParticles: {fileID: 4342735286539041484}
 --- !u!54 &4706717320868743876
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -129,6 +129,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-6760557811712438656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4496396300652943561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a3af6282233f124ea48c92a444df6df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stackParticles: {fileID: 0}
 --- !u!1001 &4487711099184370173
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -216,12 +229,6 @@ PrefabInstance:
 --- !u!4 &4342735286538675948 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 145227671491016465, guid: cc773d92bbf18e54ba5b6690f59a810d,
-    type: 3}
-  m_PrefabInstance: {fileID: 4487711099184370173}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &4342735286539041484 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 145227671490587441, guid: cc773d92bbf18e54ba5b6690f59a810d,
     type: 3}
   m_PrefabInstance: {fileID: 4487711099184370173}
   m_PrefabAsset: {fileID: 0}
