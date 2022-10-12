@@ -50,4 +50,11 @@ public class Boat : MonoBehaviour
         // activate movement script
         boatMovement.enabled = true;
     }
+
+    public void PutPlayerOutOfBoat(GameObject player)
+    {
+        player.GetComponent<Movement2>().player.enabled = false;
+        player.transform.position = transform.position + new Vector3(0, 0, 5);
+        player.GetComponent<Movement2>().player.enabled = true;
+    }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class ShortCutRun : MonoBehaviour
 {
     [SerializeField] private GameObject raycastObj;
-    private Stacking stacking;
+    private IStacking stacking;
     private Movement2 movement;
 
     [SerializeField] private float endComboTime;
@@ -19,7 +19,7 @@ public class ShortCutRun : MonoBehaviour
 
     void Start()
     {
-        stacking = GetComponent<Stacking>();
+        stacking = GetComponent<IStacking>();
         movement = GetComponent<Movement2>();
 
         originalMoveSpeed = movement.MoveSpeed;

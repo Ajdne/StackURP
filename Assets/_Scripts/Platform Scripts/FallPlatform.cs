@@ -14,35 +14,34 @@ public class FallPlatform : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !isTriggered)
         {
-            // play water splash audio
-            if(!isTriggered)
-            {
-                // spawn splash particle
-                Instantiate(waterSplashParticle, other.transform.position, Quaternion.identity);
+            isTriggered = true;
 
-                audioSource.PlayOneShot(waterSplashClip);
-                isTriggered = true;
-            }
+            // spawn splash particle
+            Instantiate(waterSplashParticle, other.transform.position, Quaternion.identity);
 
             // change player position
-            StartCoroutine(GameManager.Instance.RespawnPlayer());
-            
+            StartCoroutine(GameManager.Instance.RespawnPlayer(other.gameObject));
+
+            //GameManager.Instance.RespawnPlayer(other.gameObject);
+
             //GameManager.Instance.Invoke("RespawnPlayer", 0.5f);
 
             StartCoroutine(ResetBool());
 
-            // vibrate
-            if(other.gameObject.layer == 10)
+            // vibrate and play water splash sound
+            if (other.gameObject.layer == 10)
+            {
                 HapticPatterns.PlayPreset(HapticPatterns.PresetType.Warning);
-
+                audioSource.PlayOneShot(waterSplashClip);
+            }
         }
     }
 
     private IEnumerator ResetBool()
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.5f);
         isTriggered = false;
     }
 }

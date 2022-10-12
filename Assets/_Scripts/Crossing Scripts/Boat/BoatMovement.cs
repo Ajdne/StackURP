@@ -38,7 +38,6 @@ public class BoatMovement : MonoBehaviour
             destroyParticle.SetActive(true);
 
 
-
             // player jump animation and move to the platform
             //gm.Player.GetComponent<JumpInto>().SetMoveToVector(other.transform.position);
             //gm.Player.GetComponent<JumpInto>().enabled = true;
@@ -51,7 +50,12 @@ public class BoatMovement : MonoBehaviour
             gm.Player.transform.parent = null;
 
             // move the player to the platform
-            gm.SetPlayerPosition(transform.position + new Vector3(0, 0, 5));
+            
+            
+            // PutPlayerOutOfBoat();
+
+
+            //gm.SetPlayerPosition(transform.position + new Vector3(0, 0, 5));
 
             // deactivate the ship
             Invoke("DestroyBoat", 0.5f);

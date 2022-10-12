@@ -25,8 +25,6 @@ public class GameManager : MonoBehaviour
     public GameObject Player;
     private Vector3 playerRespawnPosition;
     public Vector3 PlayerRespawnPos { get { return playerRespawnPosition; } set { playerRespawnPosition = value; } }
-    private Stacking stackingScript;
-    private Movement2 playerMovement;
 
     [Header("Stacks")]
     [SerializeField] private List<GameObject> stackPrefs; // = new List<GameObject>();
@@ -50,8 +48,6 @@ public class GameManager : MonoBehaviour
         level++;
         Physics.gravity *= 2;
 
-        stackingScript = Player.GetComponent<Stacking>();
-        playerMovement = Player.GetComponent<Movement2>();
         playerAnimator = Player.GetComponent<Animator>();
 
         SpawnRandomPlatforms();
@@ -97,17 +93,19 @@ public class GameManager : MonoBehaviour
     //    return spawn;
     //}
 
-    public IEnumerator RespawnPlayer()
+    public IEnumerator RespawnPlayer(GameObject player)
     {
-        yield return new WaitForSeconds(0.4f);
-
         // remove leftover stacks from player
-        stackingScript.RemoveFromStack(stackingScript.GetStackCount());
+        player.GetComponent<IStacking>().RemoveAllStacks();
+
+        yield return new WaitForSeconds(0.4f);     
+        
+        //stackingScript.RemoveFromStack(stackingScript.GetStackCount());
 
         // need to disable movement script in order to move him
-        playerMovement.enabled = false;
-        Player.transform.rotation = Quaternion.Euler(0, 180, 0);
-        Player.transform.position = playerRespawnPosition;
+        player.GetComponent<Movement2>().enabled = false;
+        player.transform.rotation = Quaternion.Euler(0, 180, 0);
+        player.transform.position = playerRespawnPosition;
 
         if (IsEndGame)
         {
@@ -119,19 +117,19 @@ public class GameManager : MonoBehaviour
             //Player.GetComponent<CapsuleCollider>().enabled = false;
             Player.GetComponent<Rigidbody>().isKinematic = true;
         }
-        else
+        else if(player.layer == 10)
         {
             // activate player movement controller
-            playerMovement.enabled = true;
+            player.GetComponent<Movement2>().enabled = true;
         }
     }
 
-    public void SetPlayerPosition(Vector3 newPos)
-    {
-        Player.GetComponent<Movement2>().player.enabled = false;
-        Player.transform.position = newPos;
-        Player.GetComponent<Movement2>().player.enabled = true;
-    }
+    //public void SetPlayerPosition(Vector3 newPos)
+    //{
+    //    Player.GetComponent<Movement2>().player.enabled = false;
+    //    Player.transform.position = newPos;
+    //    Player.GetComponent<Movement2>().player.enabled = true;
+    //}
 
     public void RevertPlayerControls()
     {

@@ -12,58 +12,61 @@ public class ConstructTransportZone : MonoBehaviour
     [SerializeField] private GameObject spawnLocation;
 
     private float stayTimer;
+    private GameObject playerOnTrigger = null;
 
     // use this variable to count active elements
     private int elementCounter;
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player") && playerOnTrigger == null)
+        {
+            // save the player object
+            playerOnTrigger = other.gameObject;
+        }
+    }
+
     void OnTriggerStay(Collider other)
     {
-        if(other.CompareTag("Player"))
+        if(other.CompareTag("Player") && playerOnTrigger == other.gameObject)
         {
             stayTimer += Time.deltaTime;
 
-            if (stayTimer > 0.1f && elementCounter != elements.Count)
+            if (stayTimer > 0.1f && elementCounter != elements.Count && other.GetComponent<IStacking>().GetStackCount() > 0)
             {
-                if (other.gameObject.layer == 10 && other.GetComponent<Stacking>().GetStackCount() > 0)
-                {
-                    // remove money from the stack
-                    other.gameObject.GetComponent<Stacking>().RemoveMoneyToProperty(elements[elementCounter].transform.position, true);
-                }
-                // then check enemy stacks
-                else if (other.GetComponent<EnemyStacking>().GetStackCount() > 0)
-                {
-                    // remove from stack
-                    other.gameObject.GetComponent<EnemyStacking>().RemoveMoneyToProperty(elements[elementCounter].transform.position, true);
-                }
+                // remove money from the stack
+                other.gameObject.GetComponent<IStacking>().RemoveMoneyToProperty(elements[elementCounter].transform.position, true);
 
-                // activate the element
-                elements[elementCounter].SetActive(true);
-
-                // spawn fragment particles
-                Instantiate(fragmentParticle, elements[elementCounter].transform.position, Quaternion.identity);
-
-                elementCounter++;
-
-                // reset the timer
-                stayTimer = 0;
-
-                if (elementCounter == elements.Count)
-                {
-                    // deactivate box collider of this zone
-                    //this.gameObject.GetComponent<BoxCollider>().enabled = false;
-
-                    // deactivate fragments
-                    fragmentsParent.SetActive(false);
-
-                    // spawn complete transport model, play animation
-                    Instantiate(completeTransport, spawnLocation.transform.position, Quaternion.identity);
-                    //completeTransport.SetActive(true);
-                }
+                ActivateBoatFragments(other.gameObject);
             }
         }
-        
+    }
 
-        // ELEGANTNO RESHENJE
+    private void ActivateBoatFragments(GameObject player)
+    {
+        // activate the element
+        elements[elementCounter].SetActive(true);
+
+        // spawn fragment particles
+        Instantiate(fragmentParticle, elements[elementCounter].transform.position, Quaternion.identity);
+
+        elementCounter++;
+
+        // reset the timer
+        stayTimer = 0;
+
+        if (elementCounter == elements.Count)
+        {
+            // deactivate box collider of this zone
+            //this.gameObject.GetComponent<BoxCollider>().enabled = false;
+
+            // deactivate fragments
+            fragmentsParent.SetActive(false);
+
+            // spawn complete transport model, play animation
+            Instantiate(completeTransport, spawnLocation.transform.position, Quaternion.identity);
+            //completeTransport.SetActive(true);
+        }
     }
 
     void OnTriggerExit(Collider other)
@@ -82,6 +85,9 @@ public class ConstructTransportZone : MonoBehaviour
                 // re-enable spawning of fragments again
                 RespawnFragments();
             }
+
+            // reset the last player on trigger
+            playerOnTrigger = null;
         }
     }
 

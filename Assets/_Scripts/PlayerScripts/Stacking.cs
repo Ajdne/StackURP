@@ -4,7 +4,7 @@ using UnityEngine;
 using Cinemachine;
 using Lofelt.NiceVibrations;
 
-public class Stacking : MonoBehaviour
+public class Stacking : MonoBehaviour , IStacking
 {
     [SerializeField] private GameObject backpackObj;
     [SerializeField] private int stackFlySpeed;
@@ -68,11 +68,16 @@ public class Stacking : MonoBehaviour
         moneyObj.GetComponent<CollectableParticle>().ActivateStackParticle();
 
         // ---------- STACK AUDIO ------------
-        audioSource.clip = stackClip;
-        audioSource.pitch = 0.5f + stacked.Count * 0.05f;
-        audioSource.Play();
+        PlayStackAudio();
 
         HapticPatterns.PlayPreset(HapticPatterns.PresetType.Selection);
+    }
+
+    private void PlayStackAudio()
+    {
+        audioSource.clip = stackClip;
+        audioSource.pitch = 0.5f + stacked.Count * 0.02f;
+        audioSource.Play();
     }
 
     public void InstantiateToStack(int addNumberOfStacks)    // spawn blocks in the stack (for multipliers)
@@ -143,6 +148,32 @@ public class Stacking : MonoBehaviour
             // and destroy
             Destroy(moneyobj);
         }
+    }
+
+    public void RemoveAllStacks()
+    {
+        for (int i = 0; i < stacked.Count; i++)
+        {
+            // if the stack is empty
+            if (stacked.Count == 0) return;
+
+            // local obj
+            GameObject moneyobj = stacked[stacked.Count - 1];
+
+            if (stacked.Count <= maxSizeOfTargetGroup)
+            {
+                // remove the object from cinemachine target group
+                cineCameraTargetGroup.RemoveMember(moneyobj.transform);
+            }
+            // remove it from list
+            stacked.Remove(moneyobj);
+
+            // and destroy
+            Destroy(moneyobj);
+        }
+
+        // clear the list, but delete all objects before that
+        //stacked.Clear();
     }
 
     //public void AddToStack(GameObject moneyObj)
@@ -247,13 +278,18 @@ public class Stacking : MonoBehaviour
     private void PlayUnloadAudio()
     {
         audioSource.clip = payClip;
-        audioSource.pitch = 0.5f + stacked.Count * 0.025f;
+        audioSource.pitch = 0.5f + stacked.Count * 0.01f;
         audioSource.Play();
     }
     public int GetStackCount()
     {
         return stacked.Count;
     }
+
+    //public void Apply(MultiplierDefinition applyMultiplier)
+    //{
+    //    throw new System.NotImplementedException();
+    //}
 
     //public void RemoveMoney()
     //{

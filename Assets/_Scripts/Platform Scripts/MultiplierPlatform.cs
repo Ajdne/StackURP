@@ -28,9 +28,10 @@ public class MultiplierPlatform : MonoBehaviour
         }
     }
 
+    // THIS IS FOR LEVEL END PLATFORMS
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player" && !isTriggered)
+        if (other.gameObject.layer == 10 && !isTriggered)
         {
             // POP!
             particle.SetActive(false);
@@ -51,7 +52,8 @@ public class MultiplierPlatform : MonoBehaviour
             // if the player has no stacks left or the platform reached is the last platform, end the game level
             if (other.gameObject.GetComponent<Stacking>().GetStackCount() == 0 || isLastPlatform)
             {
-                StartCoroutine(GameManager.Instance.RespawnPlayer());
+                //StartCoroutine(GameManager.Instance.RespawnPlayer(other.gameObject));
+                GameManager.Instance.RespawnPlayer(other.gameObject);
             }
 
             isTriggered = true;

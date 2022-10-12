@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyStacking : MonoBehaviour
+public class EnemyStacking : MonoBehaviour, IStacking
 {
     [SerializeField] private GameObject backpackObj;
     [SerializeField] private int stackFlySpeed;
@@ -88,7 +88,6 @@ public class EnemyStacking : MonoBehaviour
     public void DivideStack(int divideTheStackBy)
     {
         float removeThisAmountOfStacks = GetStackCount() - Mathf.Round((float)GetStackCount() / (float)divideTheStackBy);
-        print(removeThisAmountOfStacks);
 
         for (int i = 0; i < removeThisAmountOfStacks; i++)
         {
@@ -153,6 +152,27 @@ public class EnemyStacking : MonoBehaviour
 
         // add box collider because enabling it will enable the trigger one
         moneyObj.AddComponent<BoxCollider>();
+    }
+
+    public void RemoveAllStacks()
+    {
+        for (int i = 0; i < stacked.Count; i++)
+        {
+            // if the stack is empty
+            if (stacked.Count == 0) return;
+
+            // local obj
+            GameObject stackObj = stacked[i];
+
+            // remove it from list
+            stacked.Remove(stackObj);
+
+            // and destroy
+            Destroy(stackObj);
+        }
+
+        // clear the list, but delete all objects before that
+        //stacked.Clear();
     }
 
     public int GetStackCount()

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -13,76 +14,93 @@ public class Multipliers : MonoBehaviour
     [SerializeField] private TextMeshProUGUI multiplierValue;
     [SerializeField] private GameObject particle;
 
+    private delegate void delegateMultiplierEffect(GameObject obj);
+    delegateMultiplierEffect passedMethod;
+
     private void Start()
     {
         GetRandomMultiplierEffect();
     }
-
     private void GetRandomMultiplierEffect()
     {
-        // randomize multiplier effect (+, -, *, /)
+        // randomize multiplier effect (+, *, -, /)
         if(isPositiveMultiplier)
         {
-            randomEffect = 2;
+            randomEffect = UnityEngine.Random.Range(0, 2);
         }
         else
         {
-            randomEffect = Random.Range(0, 4);
+            randomEffect = UnityEngine.Random.Range(0, 4);
         }
 
         switch (randomEffect)
         {
             case 0:
                 // add
-                randomValue = Random.Range(4, 11);
+                // randomise value of the effect
+                randomValue = UnityEngine.Random.Range(4, 11);
                 multiplierValue.text = "+" + randomValue.ToString();
+
+                // pass the method here
+                passedMethod = PlusMultiplier;
                 break;
+
             case 1:
-                // subtract
-                randomValue = Random.Range(2, 7);
-                multiplierValue.text = "-" + randomValue.ToString();
+                // multiply
+                randomValue = UnityEngine.Random.Range(2, 3);
+                multiplierValue.text = "x" + randomValue.ToString();
+
+                // pass the method here
+                passedMethod = MultiplyMultiplier;
                 break;
             case 2:
-                // multiply
-                randomValue = Random.Range(2, 4);
-                multiplierValue.text = "x" + randomValue.ToString();
+                // subtract
+                randomValue = UnityEngine.Random.Range(2, 7);
+                multiplierValue.text = "-" + randomValue.ToString();
+
+                // pass the method here
+                passedMethod = SubtractMultiplier;
                 break;
             case 3:
                 // divide
-                randomValue = Random.Range(2, 4);
+                randomValue = UnityEngine.Random.Range(2, 4);
                 multiplierValue.text = "/" + randomValue.ToString();
+
+                // pass the method here
+                passedMethod = DivideMultiplier;
                 break;
         }
     }
 
-    private void DoRandomEffect(int multiplierValue, GameObject player)
+    #region MulitPlayerEfects
+    private void PlusMultiplier(GameObject other)
     {
-        switch (randomEffect)
-        {
-            case 0:
-                // add
-                player.GetComponent<Stacking>().InstantiateToStack(multiplierValue);
-                break;
-            case 1:
-                // subtract
-                player.GetComponent<Stacking>().RemoveFromStack(multiplierValue);
-                break;
-            case 2:
-                // multiply
-                player.GetComponent<Stacking>().MultiplyStack(multiplierValue);
-                break;
-            case 3:
-                // divide
-                player.GetComponent<Stacking>().DivideStack(multiplierValue);
-                break;
-        }
+        other.GetComponent<IStacking>().InstantiateToStack(randomValue);
     }
+    private void MultiplyMultiplier(GameObject other)
+    {
+        other.GetComponent<IStacking>().MultiplyStack(randomValue);
+    }
+    private void SubtractMultiplier(GameObject other)
+    {
+        other.GetComponent<IStacking>().RemoveFromStack(randomValue);
+    }
+    private void DivideMultiplier(GameObject other)
+    {
+        other.GetComponent<IStacking>().DivideStack(randomValue);
+    }
+    #endregion
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player")) // player layer
         {
-            DoRandomEffect(randomValue, other.gameObject);
+            //other.GetComponent<IMultiplierApplier>();
+
+            // use the passed method here
+            passedMethod(other.gameObject);
+
+            //DoRandomEffect(randomValue, other.gameObject);
 
             // play particle effect
             particle.SetActive(true);
@@ -92,6 +110,10 @@ public class Multipliers : MonoBehaviour
 
             // disable canvas
             multiplierValue.enabled = false;
+
+            //amim
+            //Invoke("Destroy(this.gameObject)", 1);
+            Destroy(this.gameObject);
         }
     }
 }
