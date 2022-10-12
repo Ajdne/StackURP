@@ -158,22 +158,22 @@ public class Stacking : MonoBehaviour , IStacking
             if (stacked.Count == 0) return;
 
             // local obj
-            GameObject moneyobj = stacked[stacked.Count - 1];
+            //GameObject moneyobj = stacked[stacked.Count - 1];
 
             if (stacked.Count <= maxSizeOfTargetGroup)
             {
                 // remove the object from cinemachine target group
-                cineCameraTargetGroup.RemoveMember(moneyobj.transform);
+                cineCameraTargetGroup.RemoveMember(stacked[i].transform);
             }
             // remove it from list
-            stacked.Remove(moneyobj);
+            //stacked.Remove(moneyobj);
 
             // and destroy
-            Destroy(moneyobj);
+            Destroy(stacked[i]); 
         }
 
         // clear the list, but delete all objects before that
-        //stacked.Clear();
+        stacked.Clear();
     }
 
     //public void AddToStack(GameObject moneyObj)

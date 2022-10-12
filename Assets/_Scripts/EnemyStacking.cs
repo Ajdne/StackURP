@@ -165,14 +165,14 @@ public class EnemyStacking : MonoBehaviour, IStacking
             GameObject stackObj = stacked[i];
 
             // remove it from list
-            stacked.Remove(stackObj);
+            //stacked.Remove(stackObj);
 
             // and destroy
             Destroy(stackObj);
         }
 
         // clear the list, but delete all objects before that
-        //stacked.Clear();
+        stacked.Clear();
     }
 
     public int GetStackCount()

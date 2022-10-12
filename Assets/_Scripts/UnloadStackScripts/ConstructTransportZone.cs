@@ -12,7 +12,9 @@ public class ConstructTransportZone : MonoBehaviour
     [SerializeField] private GameObject spawnLocation;
 
     private float stayTimer;
+
     private GameObject playerOnTrigger = null;
+    public GameObject PlayerOnTrigger { get { return playerOnTrigger; } }
 
     // use this variable to count active elements
     private int elementCounter;
@@ -64,14 +66,15 @@ public class ConstructTransportZone : MonoBehaviour
             fragmentsParent.SetActive(false);
 
             // spawn complete transport model, play animation
-            Instantiate(completeTransport, spawnLocation.transform.position, Quaternion.identity);
+            GameObject boat = Instantiate(completeTransport, spawnLocation.transform.position, Quaternion.identity);
+            boat.GetComponent<Boat>().SetPlayerToTransport(player);
             //completeTransport.SetActive(true);
         }
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player")) // player layer
+        if (other.CompareTag("Player"))
         {
             // reset the timer
             stayTimer = 0;

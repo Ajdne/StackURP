@@ -50,7 +50,7 @@ public class PlatformTrigger : MonoBehaviour
 
             //GameManager.Instance.PlayerRespawnPos = transform.position + new Vector3(0, 0, 3);
 
-            if (!canShortcut && !isTriggered)
+            if (!canShortcut) // && !isTriggered)
             {
                 StartCoroutine(DisableShortCutRun(other));
 

@@ -52,7 +52,7 @@ public class BoatMovement : MonoBehaviour
             // move the player to the platform
             
             
-            // PutPlayerOutOfBoat();
+            gameObject.GetComponent<Boat>().PutPlayerOutOfBoat();
 
 
             //gm.SetPlayerPosition(transform.position + new Vector3(0, 0, 5));
