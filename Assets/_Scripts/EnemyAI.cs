@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
-    [SerializeField] private int lookRadius;
-    private List<Transform> collectList = new List<Transform>();
-    public List<Transform> CollectList { get { return collectList; } set { collectList = value; } }
+    [SerializeField] private int lookRadius;    // just a gizmo radius
 
     [Space]
     [SerializeField] private int stacksToCollect;
     
-
     private enum possibleStates
     {
         COLLECTING,

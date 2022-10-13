@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,8 @@ public class EnemyStacking : MonoBehaviour, IStacking
 
     private List<GameObject> stacked = new List<GameObject>();
     public List<GameObject> Stacked { get { return stacked; } }
+
+    public Action<GameObject> collectStack;
 
     private void Start()
     {
@@ -32,6 +35,9 @@ public class EnemyStacking : MonoBehaviour, IStacking
 
         // set local rotation
         moneyObj.gameObject.transform.localRotation = Quaternion.Euler(0, 0, 0);
+
+        // ACTION
+        collectStack?.Invoke(moneyObj);
 
         // remove rigidbody
         Destroy(moneyObj.gameObject.GetComponent<Rigidbody>());

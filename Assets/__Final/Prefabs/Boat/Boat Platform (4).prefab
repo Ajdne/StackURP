@@ -151,8 +151,7 @@ MonoBehaviour:
   - {fileID: 3373583788492667724}
   - {fileID: 80519000324431780}
   - {fileID: 9157075282934844393}
-  fragmentsParent: {fileID: 318114308377544644, guid: bcaa451d057150d4095cf8f06ca89e82,
-    type: 3}
+  fragmentsParent: {fileID: 5736920189377934480}
   completeTransport: {fileID: 8502466085730976094, guid: 2eb08bc5bfca2ad4caac36f6f1906004,
     type: 3}
   fragmentParticle: {fileID: 6104912915994724318, guid: 6586e3b5c922b414c9d276f816aa512f,
@@ -690,6 +689,12 @@ GameObject:
 --- !u!1 &5592516942090776414 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 462486769105886218, guid: bcaa451d057150d4095cf8f06ca89e82,
+    type: 3}
+  m_PrefabInstance: {fileID: 5473995344389043028}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5736920189377934480 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 318114308377544644, guid: bcaa451d057150d4095cf8f06ca89e82,
     type: 3}
   m_PrefabInstance: {fileID: 5473995344389043028}
   m_PrefabAsset: {fileID: 0}

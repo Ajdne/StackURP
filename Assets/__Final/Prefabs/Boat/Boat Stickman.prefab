@@ -1382,6 +1382,7 @@ MonoBehaviour:
   rowerMan: {fileID: 8502466085117143703}
   boatMovement: {fileID: 8502466085730976090}
   rowAnimator: {fileID: 8502466085575242502}
+  destroyParticle: {fileID: 5258140960273287622}
 --- !u!114 &8502466085730976090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1398,7 +1399,6 @@ MonoBehaviour:
   rotateSpeed: 50
   boatController: {fileID: 0}
   animator: {fileID: 8502466085575242502}
-  destroyParticle: {fileID: 5258140960273287622}
 --- !u!65 &8502466085730976091
 BoxCollider:
   m_ObjectHideFlags: 0

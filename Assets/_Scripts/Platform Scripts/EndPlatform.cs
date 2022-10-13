@@ -27,7 +27,7 @@ public class EndPlatform : MonoBehaviour
             StartCoroutine(EndPlatformSpawn());
 
             // activate particle
-            particle.SetActive(true);
+            //particle.SetActive(true);
 
             isTriggered = true;
 

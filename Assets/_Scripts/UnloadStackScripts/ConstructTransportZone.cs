@@ -79,31 +79,35 @@ public class ConstructTransportZone : MonoBehaviour
             // reset the timer
             stayTimer = 0;
 
-            // when the player leaves and the boat is already constructed
-            if (elementCounter == elements.Count)
-            {
-                // reset the counter
-                elementCounter = 0;
-
-                // re-enable spawning of fragments again
-                RespawnFragments();
-            }
-
-            // reset the last player on trigger
-            playerOnTrigger = null;
+            StartCoroutine(RespawnFragments());
         }
     }
 
-    private void RespawnFragments()
+    private IEnumerator RespawnFragments()
     {
-        // activaye parent
-        fragmentsParent.SetActive(true);
+        yield return new WaitForSeconds(1);
 
-        // deactivate every fragment
-        foreach(GameObject fragment in elements)
+        // when the player leaves and the boat is already constructed
+        if (elementCounter == elements.Count)
         {
-            fragment.SetActive(false);
-        }
-    }
+            // reset the counter
+            elementCounter = 0;
 
+            // re-enable spawning of fragments again
+            RespawnFragments();
+
+
+            // activaye parent
+            fragmentsParent.SetActive(true);
+
+            // deactivate every fragment
+            foreach (GameObject fragment in elements)
+            {
+                fragment.SetActive(false);
+            }
+        }
+
+        // reset the last player on trigger
+        playerOnTrigger = null;
+    }
 }

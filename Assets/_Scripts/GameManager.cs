@@ -120,7 +120,7 @@ public class GameManager : MonoBehaviour
         else if(player.layer == 10)
         {
             // activate player movement controller
-            player.GetComponent<Movement2>().enabled = true;
+            player.GetComponent<IMovement>().ActivateMovement();
         }
     }
 
@@ -131,13 +131,14 @@ public class GameManager : MonoBehaviour
     //    Player.GetComponent<Movement2>().player.enabled = true;
     //}
 
-    public void RevertPlayerControls()
+    public void RevertPlayerControls(GameObject player)
     {
         //Player.GetComponent<ShortCutRun>().enabled = false;
-        Player.GetComponent<CapsuleCollider>().enabled = false;
+        //player.GetComponent<CapsuleCollider>().enabled = false;
 
-        Player.GetComponent<Movement2>().enabled = false;
-        Player.GetComponent<Rigidbody>().isKinematic = true;
+        player.GetComponent<IMovement>().DeactivateMovement();
+        //player.GetComponent<IMovement>().DeactivateMovement();
+        player.GetComponent<Rigidbody>().isKinematic = true;
     }
 
     public GameObject GetObjectFormList(int i)

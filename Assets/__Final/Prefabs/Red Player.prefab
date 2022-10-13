@@ -2343,14 +2343,12 @@ GameObject:
   - component: {fileID: 1199321543264496659}
   - component: {fileID: 1203702285769232197}
   - component: {fileID: 7624760058458819721}
-  - component: {fileID: 6184160215195988550}
   - component: {fileID: 747908369124036925}
-  - component: {fileID: 396213772208665099}
+  - component: {fileID: 3817156743488894000}
   - component: {fileID: 6184160215195988555}
   - component: {fileID: 6184160215195988553}
   - component: {fileID: 6184160215195988552}
   - component: {fileID: 6184160215195988548}
-  - component: {fileID: 396213772208668148}
   - component: {fileID: 6184160215195988549}
   - component: {fileID: 6473861991003754418}
   m_Layer: 11
@@ -2412,23 +2410,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lookRadius: 6
   stacksToCollect: 0
---- !u!114 &6184160215195988550
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1202639118336653937}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67b80f2ec2a98814b902334c0975cb5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  joystick: {fileID: 0}
-  player: {fileID: 0}
-  animator: {fileID: 6184160215195988548}
-  moveSpeed: 7
-  rotateSpeed: 8
 --- !u!195 &747908369124036925
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2439,19 +2420,19 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
+  m_Speed: 7
+  m_Acceleration: 12
   avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_AngularSpeed: 300
+  m_StoppingDistance: 0.2
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
+  m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 2
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &396213772208665099
+--- !u!114 &3817156743488894000
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2460,16 +2441,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1202639118336653937}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80e53ff99eced21409a603e6c77796bb, type: 3}
+  m_Script: {fileID: 11500000, guid: ca54d681208f77a4ea7a467fa7b1d8bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backpackObj: {fileID: 510124378069180117}
-  stackFlySpeed: 5
-  cineCameraTargetGroup: {fileID: 0}
-  maxSizeOfTargetGroup: 60
-  audioSource: {fileID: 396213772208668148}
-  stackClip: {fileID: 8300000, guid: 43309756d8072ca409cce9b1a749f196, type: 3}
-  payClip: {fileID: 8300000, guid: 4daeb43d94ca15d4eab9e3739ff778b8, type: 3}
+  agent: {fileID: 747908369124036925}
+  animator: {fileID: 6184160215195988548}
 --- !u!136 &6184160215195988555
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2537,102 +2513,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!82 &396213772208668148
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1202639118336653937}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 43309756d8072ca409cce9b1a749f196, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 0.8
-  m_Pitch: 1.1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!114 &6184160215195988549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2673,7 +2553,7 @@ GameObject:
   - component: {fileID: 778917487884842742}
   - component: {fileID: 5291953194823451978}
   - component: {fileID: 3520314870477372898}
-  m_Layer: 11
+  m_Layer: 2
   m_Name: Collect Trigger Zone
   m_TagString: Untagged
   m_Icon: {fileID: 0}

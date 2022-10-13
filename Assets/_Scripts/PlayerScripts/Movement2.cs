@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Movement2 : MonoBehaviour
+public class Movement2 : MonoBehaviour, IMovement
 {
     [SerializeField] private Joystick joystick;
     public Joystick Joystick { get { return joystick; } }
@@ -12,6 +12,7 @@ public class Movement2 : MonoBehaviour
 
     [SerializeField] private float moveSpeed;
     public float MoveSpeed { get { return moveSpeed; } set { moveSpeed = value; } }
+
     [SerializeField] private float rotateSpeed;
     public float RotateSpeed { get { return rotateSpeed; } }
 
@@ -42,5 +43,26 @@ public class Movement2 : MonoBehaviour
         }
         
         player.SimpleMove(moveDirection.normalized * moveSpeed);
+    }
+
+    private void OnEnable()
+    {
+        player.enabled = true;
+    }
+
+    private void OnDisable()
+    {
+        player.enabled = false;
+    }
+
+    public void ActivateMovement()
+    {
+        this.enabled = true;
+    }
+
+    public void DeactivateMovement()
+    {
+        this.enabled = false;
+        //player.enabled = false;
     }
 }

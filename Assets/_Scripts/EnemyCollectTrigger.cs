@@ -4,18 +4,23 @@ using UnityEngine;
 
 public class EnemyCollectTrigger : MonoBehaviour
 {
-    private EnemyAI enemyAI;
+    private AIMovement movement;
+    private EnemyAI playerAI;
 
     private void Start()
     {
-        enemyAI = GetComponentInParent<EnemyAI>();
+        movement = GetComponentInParent<AIMovement>();
+        playerAI = GetComponentInParent<EnemyAI>();
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == this.gameObject.layer)
+        if (other.gameObject.layer == playerAI.gameObject.layer)
         {
-            // add collectable to list
-            enemyAI.CollectList.Add(other.transform);
+            if(!movement.CollectList.Contains(other.gameObject.transform))
+            {
+                // add collectable to list
+                movement.CollectList.Add(other.transform);
+            }
         }
     }
 
