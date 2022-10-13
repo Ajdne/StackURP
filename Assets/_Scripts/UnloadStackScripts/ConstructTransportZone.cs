@@ -85,7 +85,7 @@ public class ConstructTransportZone : MonoBehaviour
 
     private IEnumerator RespawnFragments()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
 
         // when the player leaves and the boat is already constructed
         if (elementCounter == elements.Count)

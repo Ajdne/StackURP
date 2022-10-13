@@ -30,6 +30,7 @@ public class AIMovement : MonoBehaviour
         {
             // always search for the 1st element in the list
             agent.SetDestination(collectList[0].position);
+            animator.SetBool("Idle", false);
             animator.SetBool("Run", true);
         }
         else
@@ -37,6 +38,8 @@ public class AIMovement : MonoBehaviour
             // move randomly
 
             //agent.Move();
+            animator.SetBool("Run", false);
+            animator.SetBool("Idle", true);
         }
         
     }

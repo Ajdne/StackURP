@@ -7,13 +7,15 @@ public class EnemyStacking : MonoBehaviour, IStacking
 {
     [SerializeField] private GameObject backpackObj;
     [SerializeField] private int stackFlySpeed;
+    [SerializeField] private int stacksToCollect;
 
     private GameObject stackPref;
 
-    private List<GameObject> stacked = new List<GameObject>();
-    public List<GameObject> Stacked { get { return stacked; } }
-
     public Action<GameObject> collectStack;
+
+    private List<GameObject> stacked = new List<GameObject>();
+
+
 
     private void Start()
     {
