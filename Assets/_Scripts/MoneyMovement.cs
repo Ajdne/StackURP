@@ -49,6 +49,7 @@ public class MoneyMovement : MonoBehaviour
                 collider.enabled = true;
 
                 this.gameObject.isStatic = true;
+                
                 //NavMeshBuilder.BuildNavMesh();
                 // enable nav mesh obstacle
                 //navObstacle.enabled = true;
