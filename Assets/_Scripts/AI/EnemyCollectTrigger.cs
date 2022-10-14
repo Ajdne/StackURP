@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class EnemyCollectTrigger : MonoBehaviour
 {
-    private AIMovement movement;
+    private CollectingState movement;
     private EnemyAI playerAI;
 
     private void Start()
     {
-        movement = GetComponentInParent<AIMovement>();
+        movement = GetComponentInParent<CollectingState>();
         playerAI = GetComponentInParent<EnemyAI>();
     }
     private void OnTriggerEnter(Collider other)

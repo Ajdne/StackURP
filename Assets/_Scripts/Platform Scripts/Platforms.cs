@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class Platforms : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> crossingLocations;
+    [SerializeField] private List<Transform> waypointLocations;
+    public List<Transform> WaypointLocations { get { return waypointLocations; } }
+
+    [SerializeField] private List<Transform> spawnCrossingLocations;
+
     [SerializeField] private StackSpawn stackSpawnScript;
     [SerializeField] private GameObject respawnPosObj;
     [SerializeField] private GameObject triggerCollider;
@@ -23,9 +27,9 @@ public class Platforms : MonoBehaviour
 
         int randomCrossing = Random.Range(0, GameManager.Instance.Crossings.Count);
 
-        for (int i = 0; i < crossingLocations.Count; i++)
+        for (int i = 0; i < spawnCrossingLocations.Count; i++)
         {
-            Instantiate(GameManager.Instance.Crossings[randomCrossing], crossingLocations[i].transform.position + new Vector3(0, 0, 0), Quaternion.identity);
+            Instantiate(GameManager.Instance.Crossings[randomCrossing], spawnCrossingLocations[i].position + new Vector3(0, 0, 0), Quaternion.identity);
         }
     }
 

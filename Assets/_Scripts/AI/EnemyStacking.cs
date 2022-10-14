@@ -7,7 +7,6 @@ public class EnemyStacking : MonoBehaviour, IStacking
 {
     [SerializeField] private GameObject backpackObj;
     [SerializeField] private int stackFlySpeed;
-    [SerializeField] private int stacksToCollect;
 
     private GameObject stackPref;
 
@@ -15,18 +14,20 @@ public class EnemyStacking : MonoBehaviour, IStacking
 
     private List<GameObject> stacked = new List<GameObject>();
 
-
-
     private void Start()
     {
         // take the stack prefab from game manager list that coresponds to player layer - 10
         stackPref = GameManager.Instance.StackPrefs[this.gameObject.layer - 10];
     }
 
+
     public void AddMoneyToStack(GameObject moneyObj)
     {
         // add obj to list
         stacked.Add(moneyObj.gameObject);
+
+        // reset the collectables layer to prevent them from triggering AI 
+        moneyObj.gameObject.layer = 0;
 
         // set parent
         moneyObj.gameObject.transform.SetParent(backpackObj.transform);
@@ -34,6 +35,8 @@ public class EnemyStacking : MonoBehaviour, IStacking
         // set local position
         moneyObj.gameObject.transform.localPosition = backpackObj.transform.localPosition + new Vector3(0, stacked.Count * 0.4f, 0); //moneyObj.transform.localScale.y
         //potrebne su mi normalizovane vrednosti
+
+        
 
         // set local rotation
         moneyObj.gameObject.transform.localRotation = Quaternion.Euler(0, 0, 0);

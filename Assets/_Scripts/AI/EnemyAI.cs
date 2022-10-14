@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -8,6 +9,13 @@ public class EnemyAI : MonoBehaviour
 
     [Space]
     [SerializeField] private int stacksToCollect;
+
+    [SerializeField] private NavMeshAgent agent;
+    public NavMeshAgent Agent { get { return agent; } }
+
+    [SerializeField] private Animator animator;
+    public Animator Animator { get { return animator; } set { animator = value; } }
+
     
     private enum possibleStates
     {

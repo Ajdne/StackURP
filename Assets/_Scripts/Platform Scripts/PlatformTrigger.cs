@@ -12,7 +12,7 @@ public class PlatformTrigger : MonoBehaviour
     private bool isTriggered;
     private bool isOnPlatform;
 
-    private int layerValue;
+    private List<Transform> crossings;
 
     private GameManager gm;
     private void Start()
@@ -22,6 +22,8 @@ public class PlatformTrigger : MonoBehaviour
         respawnLocation = GetComponentInParent<Platforms>().GetRespawnLocation();
         canShortcut = GetComponentInParent<Platforms>().CanUseShortcut;
         stackSpawnScript = GetComponentInParent<StackSpawn>();
+
+        crossings = GetComponentInParent<Platforms>().WaypointLocations;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -59,6 +61,12 @@ public class PlatformTrigger : MonoBehaviour
 
             // enable/disable shortcut run script
             other.gameObject.GetComponent<ShortCutRun>().enabled = canShortcut;
+
+            if (other.gameObject.layer != 10)
+            {
+                // pass the list of crossings to the AI 
+                other.GetComponent<UnloadingState>().SelectWaypoint(crossings);
+            }
         }
     }
 

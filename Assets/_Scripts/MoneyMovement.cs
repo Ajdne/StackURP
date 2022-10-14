@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor.AI;
 
 public class MoneyMovement : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class MoneyMovement : MonoBehaviour
     [SerializeField] private int rotateSpeed;
 
     [SerializeField] private BoxCollider collider; // the non-trigger collider
+   // [SerializeField] private NavMeshObstacle navObstacle;
+
 
     private Vector3 moveToVector;
     private bool destroyStack;
@@ -44,6 +47,11 @@ public class MoneyMovement : MonoBehaviour
                 this.gameObject.transform.localScale *= 2;
                 // add colliders for bridge
                 collider.enabled = true;
+
+                this.gameObject.isStatic = true;
+                //NavMeshBuilder.BuildNavMesh();
+                // enable nav mesh obstacle
+                //navObstacle.enabled = true;
             }
 
             // disable this script

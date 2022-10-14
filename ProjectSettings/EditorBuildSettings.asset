@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/_Scenes/Stacking Normalized.unity
     guid: b0822f4c97b70a9428ff75f2631a01ac
   - enabled: 0
-    path: Assets/Feel/NiceVibrations/Demo/NiceVibrationsDemo.unity
+    path: Assets/_Imported Assets/Feel/NiceVibrations/Demo/NiceVibrationsDemo.unity
     guid: a40d966b5d8df3140955c23cdc4994c8
   m_configObjects: {}
