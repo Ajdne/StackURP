@@ -6,11 +6,14 @@ public class ShortCutRun : MonoBehaviour
 {
     [SerializeField] private GameObject raycastObj;
     private IStacking stacking;
-    private Movement2 movement;
+    private IMovement movement;
 
     [SerializeField] private float endComboTime;
     [SerializeField] private GameObject speedTrailParticle;
-    private float originalMoveSpeed;    // save initial move speed value\
+
+    // FOR AI
+    [SerializeField] private AIStateManager AIstateManager;
+
     private bool gotBoost;
     public bool GotBoost { get { return gotBoost; } }
 
@@ -20,12 +23,9 @@ public class ShortCutRun : MonoBehaviour
     void Start()
     {
         stacking = GetComponent<IStacking>();
-        movement = GetComponent<Movement2>();
-
-        originalMoveSpeed = movement.MoveSpeed;
+        movement = GetComponent<IMovement>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         waitTimer += Time.deltaTime;
@@ -43,8 +43,8 @@ public class ShortCutRun : MonoBehaviour
 
             if (stackComboCounter == 10 && !gotBoost)
             {
-                // increase movement speed
-                movement.MoveSpeed *= 1.5f;
+                // increase movement speed from base to 50% higher
+                movement.SetMovementSpeed(IMovement.baseMoveSpeed * 1.5f);
 
                 speedTrailParticle.SetActive(true);
 
@@ -53,7 +53,14 @@ public class ShortCutRun : MonoBehaviour
 
             waitTimer = 0;
         }
+        // the AI knows it has no more stacks
+        else if(this.gameObject.layer != 10)
+        {
+            // if the AI is out of stacks for shortcut run, switch to collect state to get more stacks
+            AIstateManager.SwitchToCollectState();
+        }
 
+        // if combo duration has passed and its not the end of a level, turn off boost
         if (waitTimer > endComboTime && !GameManager.Instance.IsEndGame)
         {
             DisableBoost();
@@ -63,7 +70,7 @@ public class ShortCutRun : MonoBehaviour
     public void DisableBoost()
     {
         // reset move speed to original value
-        movement.MoveSpeed = originalMoveSpeed;
+        movement.SetMovementSpeed(IMovement.baseMoveSpeed);
 
         speedTrailParticle.SetActive(false);
 

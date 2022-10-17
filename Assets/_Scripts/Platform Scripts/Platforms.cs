@@ -15,7 +15,9 @@ public class Platforms : MonoBehaviour
 
     [SerializeField] private bool canUseShortcut;
     public bool CanUseShortcut { get { return canUseShortcut; } }
-   
+
+    [SerializeField] private int stacksToCollect;
+    public int StacksToCollect { get { return stacksToCollect; } }
 
     private void Start()
     {

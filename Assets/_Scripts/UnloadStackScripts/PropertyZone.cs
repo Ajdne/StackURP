@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -8,14 +9,19 @@ public class PropertyZone : MonoBehaviour
     [Header("Connected Prefabs")]
     [SerializeField] private GameObject propertyObj;
     [SerializeField] private GameObject endGate;
-    
+
+    // waypoint for AI
+    [SerializeField] private Transform endPoint;
+
     private int stacksToUnlockGate;
     private float stayTimer;
 
-    private List<GameObject> buildElements = new List<GameObject>();
-    public List<GameObject> BuildElements { get { return buildElements; } set { buildElements = value; } }
+    //private List<GameObject> buildElements = new List<GameObject>();
+    //public List<GameObject> BuildElements { get { return buildElements; } set { buildElements = value; } }
 
     private int buildCount = 0;
+
+    public Action<Transform> BridgeComplete;
 
 // - - - -- - -  THIS SCRIPT IS PLACED ON A BRIDGE PREFAB - - - -- - - - -
 
@@ -28,35 +34,28 @@ public class PropertyZone : MonoBehaviour
     {
         if (other.CompareTag("Player")) // player layer
         {
+            if (other.gameObject.layer != 10)
+                other.gameObject.GetComponent<UnloadingState>().SetCrossingPoint(this.gameObject);
+               
+            
             stayTimer += Time.deltaTime;
 
             if (stayTimer > 0.05f)
             {
-                if (other.gameObject.layer == 10)
-                {
-                    if(other.GetComponent<Stacking>().GetStackCount() > 0 && buildCount < stacksToUnlockGate)
-                    {
-                        buildCount++;
-                        // remove money from the stack
-                        other.GetComponent<Stacking>().RemoveMoneyToProperty(propertyObj.transform.position + new Vector3(0, 0, -8 + buildCount * 0.75f), false);
-
-                        stayTimer = 0;
-                    }
-                }
-                // then its an enemy
-                else if (other.GetComponent<EnemyStacking>().GetStackCount() > 0 && buildCount < stacksToUnlockGate)
+                if(other.GetComponent<IStacking>().GetStackCount() > 0 && buildCount < stacksToUnlockGate)
                 {
                     buildCount++;
-                    // remove stacks from enemy
-                    other.GetComponent<EnemyStacking>().RemoveMoneyToProperty(propertyObj.transform.position + new Vector3(0, 0, -8 + buildCount * 0.75f), false);
+                    // remove money from the stack
+                    other.GetComponent<IStacking>().RemoveMoneyToProperty(propertyObj.transform.position + new Vector3(0, 0, -8 + buildCount * 0.75f), false);
 
                     stayTimer = 0;
                 }
-
-                
-                
             }
-             
+         
+            if(buildCount == stacksToUnlockGate)
+            {
+                BridgeComplete?.Invoke(endPoint);
+            }
         }
     }
 

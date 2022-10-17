@@ -13,6 +13,7 @@ public class PlatformTrigger : MonoBehaviour
     private bool isOnPlatform;
 
     private List<Transform> crossings;
+    private int stacksToCollect;
 
     private GameManager gm;
     private void Start()
@@ -24,6 +25,9 @@ public class PlatformTrigger : MonoBehaviour
         stackSpawnScript = GetComponentInParent<StackSpawn>();
 
         crossings = GetComponentInParent<Platforms>().WaypointLocations;
+
+        // pass the value of stacks needed on every platform
+        stacksToCollect = GetComponentInParent<Platforms>().StacksToCollect;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -66,6 +70,9 @@ public class PlatformTrigger : MonoBehaviour
             {
                 // pass the list of crossings to the AI 
                 other.GetComponent<UnloadingState>().SelectWaypoint(crossings);
+
+                // pass the value of stacks needed for Ai to collect
+                other.GetComponent<CollectingState>().StacksToCollect = stacksToCollect;
             }
         }
     }

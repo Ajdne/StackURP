@@ -5,6 +5,7 @@ using UnityEngine;
 public class AIStateManager : MonoBehaviour
 {
     [SerializeField] private AIStates currentState;
+    [SerializeField] private CollectingState collectingState;
 
     void Update()
     {
@@ -19,8 +20,13 @@ public class AIStateManager : MonoBehaviour
         if (nextState != null) SwitchToNextState(nextState);
     }
 
-    private void SwitchToNextState(AIStates nextState)
+    public void SwitchToNextState(AIStates nextState)
     {
         currentState = nextState;
+    }
+
+    public void SwitchToCollectState()
+    {
+        currentState = collectingState;
     }
 }

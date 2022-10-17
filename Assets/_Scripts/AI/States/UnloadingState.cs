@@ -11,6 +11,7 @@ public class UnloadingState : AIStates
     private Animator animator;
 
     private Transform waypoint;
+    private GameObject crossingPoint;
     private List<Transform> potentialWaypoints;
     //public List<Transform> PotentialWaypoints { get { return potentialWaypoints; } set { potentialWaypoints = value; } }
     
@@ -30,12 +31,6 @@ public class UnloadingState : AIStates
         waypoint = potentialWaypoints[randomWaypoint].transform;
     }
 
-    private void Update()
-    {
-        // make the AI walk to set destination
-        //agent.SetDestination(waypoint.position);
-    }
-
     public override AIStates RunCurrentState()
     {
        // print("Current waypint " + waypoint);
@@ -43,10 +38,20 @@ public class UnloadingState : AIStates
         agent.SetDestination(waypoint.position);
 
         if (Vector3.Distance(transform.position, waypoint.position) < 2)
-            //transform.position.x == waypoint.position.x && transform.position.z == waypoint.position.z)
         {
             return collectingState;
         }
         return this;
+    }
+
+    private void SetWaypoint(Transform transform)
+    {
+        waypoint = transform;
+    }
+
+    public void SetCrossingPoint(GameObject crossingPoint)
+    {
+        this.crossingPoint = crossingPoint;
+        crossingPoint.GetComponent<PropertyZone>().BridgeComplete += SetWaypoint;
     }
 }

@@ -98,12 +98,13 @@ public class GameManager : MonoBehaviour
         // remove leftover stacks from player
         player.GetComponent<IStacking>().RemoveAllStacks();
 
-        yield return new WaitForSeconds(0.4f);     
-        
+        yield return new WaitForSeconds(0.4f);
+
         //stackingScript.RemoveFromStack(stackingScript.GetStackCount());
 
         // need to disable movement script in order to move him
-        player.GetComponent<Movement2>().enabled = false;
+        player.GetComponent<IMovement>().DeactivateMovement();
+
         player.transform.rotation = Quaternion.Euler(0, 180, 0);
         player.transform.position = playerRespawnPosition;
 
@@ -117,11 +118,8 @@ public class GameManager : MonoBehaviour
             //Player.GetComponent<CapsuleCollider>().enabled = false;
             Player.GetComponent<Rigidbody>().isKinematic = true;
         }
-        else if(player.layer == 10)
-        {
-            // activate player movement controller
-            player.GetComponent<IMovement>().ActivateMovement();
-        }
+        else player.GetComponent<IMovement>().ActivateMovement();
+
     }
 
     //public void SetPlayerPosition(Vector3 newPos)

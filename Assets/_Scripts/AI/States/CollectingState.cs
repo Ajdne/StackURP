@@ -19,6 +19,7 @@ public class CollectingState : AIStates
     [SerializeField] private UnloadingState unloadingState;
 
     [SerializeField] private int stacksToCollect; // stacks needed to change the state
+    public int StacksToCollect { get { return stacksToCollect; } set { stacksToCollect = value; } }
 
     private void Start()
     {
@@ -27,33 +28,6 @@ public class CollectingState : AIStates
         stacking = GetComponent<EnemyStacking>();
 
         stacking.collectStack += RemoveFromList;
-    }
-
-    private void Update()
-    {
-        //Collect();
-    }
-
-  
-    private void Collect()
-    {
-        
-        if (collectList.Count > 0)
-        {
-            // always search for the 1st element in the list
-            agent.SetDestination(collectList[0].position);
-            animator.SetBool("Idle", false);
-            animator.SetBool("Run", true);
-        }
-        else
-        {
-            // move randomly - no need for this - make it so that Agent always has something to collect
-
-            animator.SetBool("Run", false);
-            animator.SetBool("Idle", true);
-        }
-    
-       
     }
 
     private void RemoveFromList(GameObject stack)
@@ -79,6 +53,10 @@ public class CollectingState : AIStates
         }
 
         //check condition for state change
+        //if(BridgeComplete)
+        //{
+
+        //}
         if (stacking.GetStackCount() >= stacksToCollect)
         {
             //print("Ispunio uslov za 10 ");

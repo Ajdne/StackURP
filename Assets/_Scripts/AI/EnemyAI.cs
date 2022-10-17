@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyAI : MonoBehaviour
+public class EnemyAI : MonoBehaviour, IMovement
 {
     [SerializeField] private int lookRadius;    // just a gizmo radius
 
@@ -43,5 +43,20 @@ public class EnemyAI : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, lookRadius);
+    }
+
+    public void SetMovementSpeed(float value)
+    {
+        agent.speed = value;
+    }
+
+    public void ActivateMovement()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void DeactivateMovement()
+    {
+        throw new System.NotImplementedException();
     }
 }

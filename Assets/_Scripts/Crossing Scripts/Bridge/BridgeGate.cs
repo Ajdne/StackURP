@@ -22,7 +22,7 @@ public class BridgeGate : MonoBehaviour
         }
     }
 
-    IEnumerator OpenGate()
+    private IEnumerator OpenGate()
     {
         yield return new WaitForSeconds(0.5f);
         // activate gate open animation;
