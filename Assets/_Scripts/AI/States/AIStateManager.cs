@@ -10,7 +10,7 @@ public class AIStateManager : MonoBehaviour
     void Update()
     {
         RunStateMachine();
-        print("Curreent state " + currentState);
+        //print("Curreent state " + currentState);
     }
 
     private void RunStateMachine()

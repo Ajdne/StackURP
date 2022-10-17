@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6207716632613411695}
   - component: {fileID: 6207716632613411694}
   m_Layer: 2
-  m_Name: '- - DEATH PIT - - '
+  m_Name: DEATH PIT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
