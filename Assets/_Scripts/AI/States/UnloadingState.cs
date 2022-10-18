@@ -8,13 +8,14 @@ public class UnloadingState : AIStates
     [SerializeField] private CollectingState collectingState;
 
     private NavMeshAgent agent;
-    private Animator animator;
 
     private Transform waypoint;
     private GameObject crossingPoint;
     private List<Transform> potentialWaypoints;
     //public List<Transform> PotentialWaypoints { get { return potentialWaypoints; } set { potentialWaypoints = value; } }
-    
+
+    float waitTimer;
+
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -39,12 +40,25 @@ public class UnloadingState : AIStates
 
         if (Vector3.Distance(transform.position, waypoint.position) < 2)
         {
-            return collectingState;
+            waitTimer += Time.deltaTime;
+
+            animator.SetBool("Run", false);
+            animator.SetBool("Idle", true);
+
+            if (waitTimer > 2)
+            {
+                // reset the timer
+                waitTimer = 0;
+
+                // change state
+                aIStateManager.SwitchToCollectState();
+                return aIStateManager.CurrentState;
+            }
         }
         return this;
     }
 
-    private void SetWaypoint(Transform transform)
+    public void SetWaypoint(Transform transform)
     {
         waypoint = transform;
     }
@@ -52,6 +66,5 @@ public class UnloadingState : AIStates
     public void SetCrossingPoint(GameObject crossingPoint)
     {
         this.crossingPoint = crossingPoint;
-        crossingPoint.GetComponent<PropertyZone>().BridgeComplete += SetWaypoint;
     }
 }

@@ -11,33 +11,6 @@ public class EnemyAI : MonoBehaviour, IMovement
     [SerializeField] private int stacksToCollect;
 
     [SerializeField] private NavMeshAgent agent;
-    public NavMeshAgent Agent { get { return agent; } }
-
-    [SerializeField] private Animator animator;
-    public Animator Animator { get { return animator; } set { animator = value; } }
-
-    
-    private enum possibleStates
-    {
-        COLLECTING,
-        UNLOADING,
-        SHORTCUT
-    }
-    private possibleStates state;
-
-    void Start()
-    {
-        state = possibleStates.COLLECTING;
-    }
-
-    void Update()
-    {
-        // ako skuplja, ide po listi redom, dok ne dodje do odredjenog broja
-        if(state == possibleStates.COLLECTING)
-        {
-            
-        }
-    }
 
     private void OnDrawGizmosSelected()
     {
@@ -52,11 +25,11 @@ public class EnemyAI : MonoBehaviour, IMovement
 
     public void ActivateMovement()
     {
-        throw new System.NotImplementedException();
+        agent.enabled = true;
     }
 
     public void DeactivateMovement()
     {
-        throw new System.NotImplementedException();
+        agent.enabled = false;
     }
 }

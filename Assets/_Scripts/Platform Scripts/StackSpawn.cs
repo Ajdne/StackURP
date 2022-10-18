@@ -38,11 +38,11 @@ public class StackSpawn : MonoBehaviour
             {
                 SpawnWithRayCast(unlockedStacksToSpawn[i]);
              
-                // add it to the list
-                //stacksOnPlat.Add(gm.SpawnOnRandomPosition(gm.StackPref, this.gameObject));
-
-                //gm.SpawnOnRandomPosition(gm.StackPref, this.gameObject);
-                //RandomPosition(this.gameObject.GetComponent<Collider>());
+                // if its time to spawn for blue player, spawn it again, to make it easier
+                if(i == 0)
+                {
+                    SpawnWithRayCast(unlockedStacksToSpawn[i]);
+                }
                 
                 // reset the timer
                 spawnTime = 0;
@@ -55,7 +55,7 @@ public class StackSpawn : MonoBehaviour
         // spawn a number of initial stacks when the player reaches the platform
         for (int i = 0; i < initialNumberOfStacks; i++)
         {
-            SpawnWithRayCast(GameManager.Instance.GetObjectFormList(player.gameObject.layer - 10));
+            SpawnWithRayCast(GameManager.Instance.GetObjectFromList(player.gameObject.layer - 10));
 
             //print(gm.StackPrefs[player.gameObject.layer - 10].ToString());
             //SpawnWithRayCast(gm.StackPrefs[player.gameObject.layer - 10]);

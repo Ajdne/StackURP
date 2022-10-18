@@ -139,7 +139,7 @@ public class GameManager : MonoBehaviour
         player.GetComponent<Rigidbody>().isKinematic = true;
     }
 
-    public GameObject GetObjectFormList(int i)
+    public GameObject GetObjectFromList(int i)
     {
         return stackPrefs[i];
     }

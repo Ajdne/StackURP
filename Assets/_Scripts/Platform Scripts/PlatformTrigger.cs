@@ -15,7 +15,11 @@ public class PlatformTrigger : MonoBehaviour
     private List<Transform> crossings;
     private int stacksToCollect;
 
+    // a list to save players who triggered it
+    private List<GameObject> playersTriggered = new List<GameObject>();
+
     private GameManager gm;
+
     private void Start()
     {
         gm = GameManager.Instance;
@@ -34,10 +38,21 @@ public class PlatformTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player")) // player layer
         {
-            // pass the layer of the player that reached the trigger
-            // player stack prefabs are in a list in Game manager, and they are arranged as the layer number of players - 10
-            if (!stackSpawnScript.UnlockedStacksToSpawn.Contains(gm.StackPrefs[other.gameObject.layer - 10]))
+            // if the player passes the trigger for the first time
+            if(playersTriggered.Contains(other.gameObject))
             {
+                return;
+            }
+            else
+            {
+                #region Updating a list of stacks to spawn
+                // ---------------- PART FOR SPAWNING STACKS ----------------
+                // add this player to the list
+                playersTriggered.Add(other.gameObject);
+
+                // pass the layer of the player that reached the trigger
+                // player stack prefabs are in a list in Game manager, and they are arranged as the layer number of players - 10
+
                 // pass in the prefab that we want to spawn
                 stackSpawnScript.UnlockedStacksToSpawn.Add(gm.StackPrefs[other.gameObject.layer - 10]);
 
@@ -46,33 +61,43 @@ public class PlatformTrigger : MonoBehaviour
 
                 // spawn several stacks when the platform is entered
                 stackSpawnScript.SpawnInitialStacks(other.gameObject);
-            }
+                // ---------------- -------------------------- ----------------
+                #endregion
 
-            // activate stack spawning - the initial stacks are spawned ONLY ONCE
-            stackSpawnScript.enabled = true;
+                if (other.gameObject.layer == 10)  // blue player layer
+                {
+                    // set blue player respawn position
+                    GameManager.Instance.PlayerRespawnPos = respawnLocation.position;
+                }
+                // if its an agent
+                else
+                {
+                    // clear the list of stacks that the agent wants to collect
+                    other.GetComponent<CollectingState>().CollectList.Clear();
 
-            // set respawn position
-            GameManager.Instance.PlayerRespawnPos = respawnLocation.position;
+                    // pass the list of crossings to the AI 
+                    other.GetComponent<UnloadingState>().SelectWaypoint(crossings);
 
-            //GameManager.Instance.PlayerRespawnPos = transform.position + new Vector3(0, 0, 3);
+                    // pass the value of stacks needed for Ai to collect
+                    other.GetComponent<CollectingState>().StacksToCollect = stacksToCollect;
+                }
 
-            if (!canShortcut) // && !isTriggered)
-            {
-                StartCoroutine(DisableShortCutRun(other));
+                if (!canShortcut) // && !isTriggered)
+                {
+                    StartCoroutine(DisableShortCutRun(other));
 
-                isTriggered = true;
-            }
+                    isTriggered = true;
+                }
 
-            // enable/disable shortcut run script
-            other.gameObject.GetComponent<ShortCutRun>().enabled = canShortcut;
+                // enable/disable shortcut run script
+                other.gameObject.GetComponent<ShortCutRun>().enabled = canShortcut;
 
-            if (other.gameObject.layer != 10)
-            {
-                // pass the list of crossings to the AI 
-                other.GetComponent<UnloadingState>().SelectWaypoint(crossings);
-
-                // pass the value of stacks needed for Ai to collect
-                other.GetComponent<CollectingState>().StacksToCollect = stacksToCollect;
+                // if all players triggered this object
+                if(playersTriggered.Count == 4)
+                {
+                    // disable this script
+                    this.enabled = false;
+                }
             }
         }
     }
@@ -89,6 +114,6 @@ public class PlatformTrigger : MonoBehaviour
         }
 
         // then disable the script
-        other.gameObject.GetComponent<ShortCutRun>().enabled = canShortcut;
+        //other.gameObject.GetComponent<ShortCutRun>().enabled = canShortcut;
     }
 }

@@ -11,7 +11,6 @@ public class CollectingState : AIStates
     public List<Transform> CollectList { get { return collectList; } set { collectList = value; } }
 
     private NavMeshAgent agent;
-    private Animator animator;
 
     private EnemyStacking stacking;
 
@@ -60,7 +59,7 @@ public class CollectingState : AIStates
         if (stacking.GetStackCount() >= stacksToCollect)
         {
             //print("Ispunio uslov za 10 ");
-            return unloadingState;    
+            return aIStateManager.SwitchToUnloadState();    
         }
         return this;
     }

@@ -27,6 +27,8 @@ public class PropertyZone : MonoBehaviour
 
     private void Start()
     {
+       // Time.timeScale = 2;
+
         stacksToUnlockGate = endGate.GetComponent<BridgeGate>().StacksNeeded;
     }
 
@@ -34,9 +36,10 @@ public class PropertyZone : MonoBehaviour
     {
         if (other.CompareTag("Player")) // player layer
         {
-            if (other.gameObject.layer != 10)
-                other.gameObject.GetComponent<UnloadingState>().SetCrossingPoint(this.gameObject);
-               
+            //if (other.gameObject.layer != 10)
+            //{
+            //    other.gameObject.GetComponent<UnloadingState>().SetWaypoint(endPoint);
+            //}
             
             stayTimer += Time.deltaTime;
 
@@ -52,9 +55,9 @@ public class PropertyZone : MonoBehaviour
                 }
             }
          
-            if(buildCount == stacksToUnlockGate)
+            if(buildCount == stacksToUnlockGate && other.gameObject.layer != 10 )
             {
-                BridgeComplete?.Invoke(endPoint);
+                other.gameObject.GetComponent<UnloadingState>().SetWaypoint(endPoint);
             }
         }
     }

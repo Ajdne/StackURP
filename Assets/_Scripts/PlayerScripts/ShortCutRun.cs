@@ -12,7 +12,7 @@ public class ShortCutRun : MonoBehaviour
     [SerializeField] private GameObject speedTrailParticle;
 
     // FOR AI
-    [SerializeField] private AIStateManager AIstateManager;
+    [SerializeField] private AIStateManager stateManager;
 
     private bool gotBoost;
     public bool GotBoost { get { return gotBoost; } }
@@ -57,7 +57,7 @@ public class ShortCutRun : MonoBehaviour
         else if(this.gameObject.layer != 10)
         {
             // if the AI is out of stacks for shortcut run, switch to collect state to get more stacks
-            AIstateManager.SwitchToCollectState();
+            stateManager.SwitchToCollectState();
         }
 
         // if combo duration has passed and its not the end of a level, turn off boost

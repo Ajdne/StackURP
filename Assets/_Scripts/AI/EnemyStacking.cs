@@ -162,7 +162,8 @@ public class EnemyStacking : MonoBehaviour, IStacking
         moneyObj.transform.rotation = Quaternion.Euler(transform.localEulerAngles);
 
         // add box collider because enabling it will enable the trigger one
-        moneyObj.AddComponent<BoxCollider>();
+        BoxCollider collider = moneyObj.AddComponent<BoxCollider>();
+        collider.size = new Vector3(1.2f, 0.7f, 1);
     }
 
     public void RemoveAllStacks()

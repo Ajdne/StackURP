@@ -81,7 +81,6 @@ MonoBehaviour:
   speed: 20
   rotateSpeed: 400
   collider: {fileID: 5784688340862524640}
-  navObstacle: {fileID: 0}
 --- !u!114 &4717091326383489693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,7 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a3af6282233f124ea48c92a444df6df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stackParticles: {fileID: 0}
+  stackParticles: {fileID: 4342735286539041484}
 --- !u!1001 &4487711099184370173
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -225,11 +224,57 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 145227671510371315, guid: cc773d92bbf18e54ba5b6690f59a810d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4487b6501f1381549872ae22738916a3, type: 2}
+    - target: {fileID: 145227671510413905, guid: cc773d92bbf18e54ba5b6690f59a810d,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 145227671510413905, guid: cc773d92bbf18e54ba5b6690f59a810d,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.121568635
+      objectReference: {fileID: 0}
+    - target: {fileID: 145227671510413905, guid: cc773d92bbf18e54ba5b6690f59a810d,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.50980395
+      objectReference: {fileID: 0}
+    - target: {fileID: 145227671510413905, guid: cc773d92bbf18e54ba5b6690f59a810d,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.039215688
+      objectReference: {fileID: 0}
+    - target: {fileID: 145227671510413907, guid: cc773d92bbf18e54ba5b6690f59a810d,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 145227671510413907, guid: cc773d92bbf18e54ba5b6690f59a810d,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 145227671510413907, guid: cc773d92bbf18e54ba5b6690f59a810d,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.06607032
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc773d92bbf18e54ba5b6690f59a810d, type: 3}
 --- !u!4 &4342735286538675948 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 145227671491016465, guid: cc773d92bbf18e54ba5b6690f59a810d,
+    type: 3}
+  m_PrefabInstance: {fileID: 4487711099184370173}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4342735286539041484 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 145227671490587441, guid: cc773d92bbf18e54ba5b6690f59a810d,
     type: 3}
   m_PrefabInstance: {fileID: 4487711099184370173}
   m_PrefabAsset: {fileID: 0}
@@ -319,7 +364,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: d363d1bd3ecea9742a3b70cb6f062ffb, type: 2}
+      objectReference: {fileID: 2100000, guid: 8cd9c3bccaf18a443b70c3fe0dff9984, type: 2}
     - target: {fileID: 919132149155446097, guid: 7446b110e974a2b468065aad16f75b4b,
         type: 3}
       propertyPath: m_Name
