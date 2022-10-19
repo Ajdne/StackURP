@@ -11,6 +11,8 @@ public class ConstructTransportZone : MonoBehaviour
 
     [SerializeField] private GameObject spawnLocation;
 
+    private AIStateManager aiStateManager;
+
     private float stayTimer;
 
     private GameObject playerOnTrigger = null;
@@ -64,6 +66,9 @@ public class ConstructTransportZone : MonoBehaviour
 
             // deactivate fragments
             fragmentsParent.SetActive(false);
+
+            if ((aiStateManager = player.GetComponent<AIStateManager>()) != null)
+                aiStateManager.SwitchToBoatState();
 
             // spawn complete transport model, play animation
             GameObject boat = Instantiate(completeTransport, spawnLocation.transform.position, Quaternion.identity);

@@ -2465,7 +2465,7 @@ MonoBehaviour:
   raycastObj: {fileID: 510124377727295626}
   endComboTime: 0.5
   speedTrailParticle: {fileID: 1953156659474942324}
-  stateManager: {fileID: 0}
+  stateManager: {fileID: 1182352281}
 --- !u!114 &6184160215195988552
 MonoBehaviour:
   m_ObjectHideFlags: 0

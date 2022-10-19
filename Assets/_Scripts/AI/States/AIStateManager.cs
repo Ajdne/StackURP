@@ -35,15 +35,16 @@ public class AIStateManager : MonoBehaviour
         currentState = collectingState;
     } 
     
-    public AIStates SwitchToUnloadState()
+    public void SwitchToUnloadState()
     {
         currentState = unloadingState;
-        return currentState;
+        //return currentState;
     }
     
-    public AIStates SwitchToBoatState()
+    public void SwitchToBoatState()
     {
+        boatState.InBoat = true;
         currentState = boatState;
-        return currentState;
+        //return currentState;
     }
 }

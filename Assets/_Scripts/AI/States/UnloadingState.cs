@@ -7,7 +7,7 @@ public class UnloadingState : AIStates
 {
     [SerializeField] private CollectingState collectingState;
 
-    private NavMeshAgent agent;
+    //private NavMeshAgent agent;
 
     private Transform waypoint;
     private GameObject crossingPoint;
@@ -34,12 +34,13 @@ public class UnloadingState : AIStates
 
     public override AIStates RunCurrentState()
     {
-       // print("Current waypint " + waypoint);
+        // print("Current waypint " + waypoint);
         // make the AI walk to set destination
-        agent.SetDestination(waypoint.position);
 
+
+        agent.SetDestination(waypoint.position);
         if (Vector3.Distance(transform.position, waypoint.position) < 2)
-        {
+        {     
             waitTimer += Time.deltaTime;
 
             animator.SetBool("Run", false);
@@ -55,16 +56,17 @@ public class UnloadingState : AIStates
                 return aIStateManager.CurrentState;
             }
         }
+        else
+        {
+            //run towards unloading point
+            animator.SetBool("Idle", false);
+            animator.SetBool("Run", true);
+        }
         return this;
     }
 
     public void SetWaypoint(Transform transform)
     {
         waypoint = transform;
-    }
-
-    public void SetCrossingPoint(GameObject crossingPoint)
-    {
-        this.crossingPoint = crossingPoint;
     }
 }

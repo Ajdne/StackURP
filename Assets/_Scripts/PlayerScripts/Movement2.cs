@@ -27,7 +27,7 @@ public class Movement2 : MonoBehaviour, IMovement
         Vector3 moveDirection = new Vector3(joystick.Horizontal, 0f, joystick.Vertical);
 
         if(joystick.Horizontal != 0 || joystick.Vertical != 0)
-        {
+        {          
             Quaternion targetRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
 
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotateSpeed * Time.deltaTime);

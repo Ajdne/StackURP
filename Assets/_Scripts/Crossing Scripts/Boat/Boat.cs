@@ -11,6 +11,8 @@ public class Boat : MonoBehaviour
     [SerializeField] private Animator rowAnimator;
     [SerializeField] private GameObject destroyParticle;
 
+   // private AIStateManager aiStateManager;
+
     private Movement2 movementScript;
     private GameManager gm;
 
@@ -30,6 +32,12 @@ public class Boat : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         // deactivate player movement, collider etc
         gm.RevertPlayerControls(playerToTransport); // kinematic n stuff
+
+
+
+     
+        //if ((aiStateManager=playerToTransport.GetComponent<AIStateManager>()) != null)
+        //    aiStateManager.SwitchToBoatState();
 
         // activate player JumpInto script
         playerToTransport.GetComponent<JumpInto>().SetMoveToVector(transform.position + new Vector3(0, 0, 1));
@@ -78,6 +86,12 @@ public class Boat : MonoBehaviour
 
         //playerToTransport.GetComponent<Movement2>().player.enabled = true;
         //  playerToTransport.GetComponent<Movement2>().enabled = true;
+
+        //Deactivate BoatState on Enemy
+        BoatState boatState;
+        if ((boatState = playerToTransport.GetComponent<BoatState>()) != null)
+            boatState.InBoat = false;
+
     }
     // --------------------------------------------------------
 

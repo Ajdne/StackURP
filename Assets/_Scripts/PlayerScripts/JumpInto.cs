@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class JumpInto : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private int speed;
     [SerializeField] private int rotateSpeed;
+   
 
     private bool jumped;
 
@@ -44,7 +46,8 @@ public class JumpInto : MonoBehaviour
                 animator.SetBool("Idle", true);
 
                 // set bool
-                jumped = false; 
+                jumped = false;
+               
 
                 // disable this script
                 this.enabled = false;
