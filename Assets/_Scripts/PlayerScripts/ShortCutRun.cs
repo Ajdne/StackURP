@@ -54,7 +54,7 @@ public class ShortCutRun : MonoBehaviour
             waitTimer = 0;
         }
         // the AI knows it has no more stacks
-        else if(this.gameObject.layer != 10 && stacking.GetStackCount() <= 5)
+        else if(this.gameObject.layer != 10 && stacking.GetStackCount() <= 8)
         {
             // if the AI is out of stacks for shortcut run, switch to collect state to get more stacks
             stateManager.SwitchToCollectState();

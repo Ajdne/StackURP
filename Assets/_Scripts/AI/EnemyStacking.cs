@@ -163,7 +163,7 @@ public class EnemyStacking : MonoBehaviour, IStacking
 
         // add box collider because enabling it will enable the trigger one
         BoxCollider collider = moneyObj.AddComponent<BoxCollider>();
-        collider.size = new Vector3(1.2f, 0.7f, 1);
+        collider.size = new Vector3(2f, 0.7f, 1);
     }
 
     public void RemoveAllStacks()

@@ -10,6 +10,8 @@ public class Boat : MonoBehaviour
     [SerializeField] private BoatMovement boatMovement;
     [SerializeField] private Animator rowAnimator;
     [SerializeField] private GameObject destroyParticle;
+    [SerializeField] private Transform playerPosition;
+   
 
    // private AIStateManager aiStateManager;
 
@@ -17,6 +19,8 @@ public class Boat : MonoBehaviour
     private GameManager gm;
 
     private GameObject playerToTransport;
+
+    public GameObject PlayerToTransport { get => playerToTransport; set => playerToTransport = value; }
 
     private void Start()
     {
@@ -31,7 +35,7 @@ public class Boat : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         // deactivate player movement, collider etc
-        gm.RevertPlayerControls(playerToTransport); // kinematic n stuff
+        gm.RevertPlayerControls(PlayerToTransport); // kinematic n stuff
 
 
 
@@ -40,14 +44,15 @@ public class Boat : MonoBehaviour
         //    aiStateManager.SwitchToBoatState();
 
         // activate player JumpInto script
-        playerToTransport.GetComponent<JumpInto>().SetMoveToVector(transform.position + new Vector3(0, 0, 1));
+        PlayerToTransport.GetComponent<JumpInto>().SetMoveToVector(playerPosition.position);
         
+
         // position the player
-        playerToTransport.GetComponent<JumpInto>().enabled = true;
+        PlayerToTransport.GetComponent<JumpInto>().enabled = true;
 
         yield return new WaitForSeconds(1);
+        PlayerToTransport.transform.parent = this.gameObject.transform;
 
-        playerToTransport.transform.parent = this.gameObject.transform;
 
         yield return new WaitForSeconds(1);
         // activate rowing stickman
@@ -64,7 +69,7 @@ public class Boat : MonoBehaviour
 
     public void SetPlayerToTransport(GameObject player)
     {
-        playerToTransport = player;
+        PlayerToTransport = player;
     }
 
     //------- OVDE CE BITI PROMENA ------------------------
@@ -73,23 +78,23 @@ public class Boat : MonoBehaviour
         //playerToTransport.GetComponent<Movement2>().player.enabled = false;
 
         // remove the player parent
-        playerToTransport.transform.parent = null;
+        PlayerToTransport.transform.parent = null;
 
-        playerToTransport.transform.position = transform.position + new Vector3(0, 0, 5);
+        PlayerToTransport.transform.position = transform.position + new Vector3(0, 0, 5);
 
         // activate collider again
-        playerToTransport.GetComponent<CapsuleCollider>().enabled = true;
+        PlayerToTransport.GetComponent<CapsuleCollider>().enabled = true;
 
         // enable player movement
-        playerToTransport.GetComponent<Rigidbody>().isKinematic = false;
-        playerToTransport.GetComponent<IMovement>().ActivateMovement();
+        PlayerToTransport.GetComponent<Rigidbody>().isKinematic = false;
+        PlayerToTransport.GetComponent<IMovement>().ActivateMovement();
 
         //playerToTransport.GetComponent<Movement2>().player.enabled = true;
         //  playerToTransport.GetComponent<Movement2>().enabled = true;
 
         //Deactivate BoatState on Enemy
         BoatState boatState;
-        if ((boatState = playerToTransport.GetComponent<BoatState>()) != null)
+        if ((boatState = PlayerToTransport.GetComponent<BoatState>()) != null)
             boatState.InBoat = false;
 
     }

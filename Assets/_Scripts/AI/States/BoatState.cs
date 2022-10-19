@@ -20,14 +20,12 @@ public class BoatState : AIStates
 
         if (InBoat)
         {
-            //animator.SetBool("Run", false);
-            //animator.SetBool("Idle", true);
-
             // dont change state
             return this;
         }
 
-        agent.enabled = true;   
+        agent.enabled = true;  
+        
         aIStateManager.SwitchToCollectState();
         return aIStateManager.CurrentState;
     }

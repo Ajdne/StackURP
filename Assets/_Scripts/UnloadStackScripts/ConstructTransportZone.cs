@@ -20,6 +20,12 @@ public class ConstructTransportZone : MonoBehaviour
 
     // use this variable to count active elements
     private int elementCounter;
+    private BoxCollider triggerCollider;
+
+    private void Start()
+    {
+       triggerCollider = this.gameObject.GetComponent<BoxCollider>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -62,7 +68,7 @@ public class ConstructTransportZone : MonoBehaviour
         if (elementCounter == elements.Count)
         {
             // deactivate box collider of this zone
-            //this.gameObject.GetComponent<BoxCollider>().enabled = false;
+            triggerCollider.enabled = false;
 
             // deactivate fragments
             fragmentsParent.SetActive(false);
@@ -73,7 +79,9 @@ public class ConstructTransportZone : MonoBehaviour
             // spawn complete transport model, play animation
             GameObject boat = Instantiate(completeTransport, spawnLocation.transform.position, Quaternion.identity);
             boat.GetComponent<Boat>().SetPlayerToTransport(player);
+
             //completeTransport.SetActive(true);
+
         }
     }
 
@@ -84,7 +92,12 @@ public class ConstructTransportZone : MonoBehaviour
             // reset the timer
             stayTimer = 0;
 
-            StartCoroutine(RespawnFragments());
+            if(elementCounter == elements.Count)
+                StartCoroutine(RespawnFragments());
+
+
+            // reset the last player on trigger
+            playerOnTrigger = null;
         }
     }
 
@@ -93,26 +106,22 @@ public class ConstructTransportZone : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         // when the player leaves and the boat is already constructed
-        if (elementCounter == elements.Count)
+       
+        // reset the counter
+        elementCounter = 0;
+
+        // re-enable spawning of fragments again
+        // activate parent
+        fragmentsParent.SetActive(true);
+
+
+        // deactivate every fragment
+        foreach (GameObject fragment in elements)
         {
-            // reset the counter
-            elementCounter = 0;
-
-            // re-enable spawning of fragments again
-            RespawnFragments();
-
-
-            // activaye parent
-            fragmentsParent.SetActive(true);
-
-            // deactivate every fragment
-            foreach (GameObject fragment in elements)
-            {
-                fragment.SetActive(false);
-            }
+            fragment.SetActive(false);
         }
-
-        // reset the last player on trigger
-        playerOnTrigger = null;
+        
+        // enable trigger for this zone
+        triggerCollider.enabled = true;
     }
 }

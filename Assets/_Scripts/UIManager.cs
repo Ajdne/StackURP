@@ -11,30 +11,31 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject pauseButton;
-
-    public TextMeshProUGUI moneyText;
+    [SerializeField] private GameObject levelComplete; 
+    [SerializeField] private GameObject startGame; 
 
     [SerializeField] private GameObject joystick;
-
-    [SerializeField] private Animator moneyAnimator;
 
     private void Awake()
     {
         Instance = this;
+      
     }
 
     void Start()
     {
         gm = GameManager.Instance;
+        Time.timeScale = 0;
+    }
 
-        //joystick.SetActive(true);
+    public void Play()
+    {
+        Debug.Log("e");
+        
+        Time.timeScale = 1.0f;
+        startGame.SetActive(false);
+        joystick.SetActive(true);
 
-        //pauseMenu.SetActive(false);
-        //winMenu.SetActive(false);
-        //loseMenu.SetActive(false);
-
-        // set money text
-        //moneyText.text = "$ " + (gm.Money / 1000).ToString() + "." + (gm.Money % 1000).ToString() + " / " + (gm.MaxStacks / 10).ToString() + "k";
     }
 
     public void PauseGame()
@@ -48,11 +49,6 @@ public class UIManager : MonoBehaviour
         joystick.SetActive(false);
     }
 
-    public void UpdateMoney()
-    {
-        //moneyAnimator.Play("MoneyTextAnim");
-        //moneyText.text = "$ " + (gm.Money / 1000).ToString() + "." + (gm.Money % 1000).ToString() + " / " + (gm.MaxStacks / 10).ToString() + "k";
-    }
 
     #region Pause Menu
     public void Resume()
@@ -60,7 +56,13 @@ public class UIManager : MonoBehaviour
         // deactivate pause menu
         pauseMenu.SetActive(false);
         pauseButton.SetActive(true);
+        joystick.SetActive(true);
         Time.timeScale = 1;
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     #region Quit App

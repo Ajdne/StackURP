@@ -16,7 +16,7 @@ public class EndPlatform : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player" && !isTriggered)
+        if(other.gameObject.layer == 10 && !isTriggered)
         {
             // save player location
             GameManager.Instance.PlayerRespawnPos = transform.position + new Vector3(0, 1, 0);

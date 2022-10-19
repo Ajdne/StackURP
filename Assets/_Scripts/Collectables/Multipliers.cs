@@ -93,12 +93,12 @@ public class Multipliers : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player")) // player layer
+        if(other.CompareTag("Player"))
         {
             //other.GetComponent<IMultiplierApplier>();
 
             // use the passed method here
-            passedMethod(other.gameObject);
+           passedMethod(other.gameObject);
 
             //DoRandomEffect(randomValue, other.gameObject);
 
@@ -106,10 +106,10 @@ public class Multipliers : MonoBehaviour
             particle.SetActive(true);
 
             // disable collider
-            GetComponent<BoxCollider>().enabled = false;
+            //GetComponent<BoxCollider>().enabled = false;
 
             // disable canvas
-            multiplierValue.enabled = false;
+            //multiplierValue.enabled = false;
 
             //amim
             //Invoke("Destroy(this.gameObject)", 1);
