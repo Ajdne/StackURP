@@ -12,9 +12,18 @@ public class MultiplierPlatform : MonoBehaviour
     [SerializeField] private Animator popAnimator;
     [SerializeField] private AudioSource audioSource;
 
+    private float playerSpeed;
+    private Stacking playerStacking;
+
     private bool isTriggered;
     private bool isLastPlatform;
     public bool IsLastPlatform { set { isLastPlatform = value; } }
+
+    private void Start()
+    {
+        playerSpeed = GameManager.Instance.Player.GetComponent<Movement2>().MoveSpeed;
+        playerStacking = GameManager.Instance.Player.GetComponent<Stacking>();
+    }
 
     void Update()
     {
@@ -44,15 +53,15 @@ public class MultiplierPlatform : MonoBehaviour
             audioSource.Play();
 
             // increase player speed
-            GameManager.Instance.Player.GetComponent<Movement2>().MoveSpeed += 1f;
+            playerSpeed += 1f;
 
             // save player location
             GameManager.Instance.PlayerRespawnPos = transform.position + new Vector3(0, 1, 0);
 
             // if the player has no stacks left or the platform reached is the last platform, end the game level
-            if (other.gameObject.GetComponent<Stacking>().GetStackCount() == 0 || isLastPlatform)
+            if ( playerStacking.GetStackCount() == 0 || isLastPlatform)
             {
-                //StartCoroutine(GameManager.Instance.RespawnPlayer(other.gameObject));
+                // set the player pn the middle of the platform
                 GameManager.Instance.RespawnPlayer(other.gameObject);
             }
 

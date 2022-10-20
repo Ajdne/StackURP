@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6606426656808662745}
   - component: {fileID: 5907649152219472486}
   - component: {fileID: 3861935040906090828}
+  - component: {fileID: 3521603716210318378}
   m_Layer: 0
   m_Name: Multipliers (5)
   m_TagString: Untagged
@@ -67,6 +68,27 @@ MonoBehaviour:
   isPositiveMultiplier: 0
   multiplierValue: {fileID: 6330642384487089126}
   particle: {fileID: 2740512103639219884}
+  animator: {fileID: 3521603716210318378}
+--- !u!95 &3521603716210318378
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1315153991508936851}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3584dc204882efc41a997735774772fd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3021308455553755549
 GameObject:
   m_ObjectHideFlags: 0
@@ -79,7 +101,7 @@ GameObject:
   - component: {fileID: 2485711663603971781}
   - component: {fileID: 6330642384487089126}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: Value Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -222,7 +244,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1249210494965828140
 RectTransform:
   m_ObjectHideFlags: 0
@@ -325,7 +347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.034552008, b: 0, a: 0.3137255}
+  m_Color: {r: 0.990566, g: 0.990566, b: 0.990566, a: 0.3137255}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -466,7 +488,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 0.735849, g: 0.735849, b: 0.735849, a: 0.54901963}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -503,7 +525,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7383703210414937162
 RectTransform:
   m_ObjectHideFlags: 0
@@ -695,6 +717,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4127654423713256307, guid: b7bae4cc304698b4aab1560287a19ce9,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b0ce1a06ccfd04f49980d24a3fedc2a6, type: 2}
     - target: {fileID: 4611947154177652031, guid: b7bae4cc304698b4aab1560287a19ce9,
         type: 3}
       propertyPath: m_Name
@@ -780,6 +807,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4127654423713256307, guid: b7bae4cc304698b4aab1560287a19ce9,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b0ce1a06ccfd04f49980d24a3fedc2a6, type: 2}
     - target: {fileID: 4611947154177652031, guid: b7bae4cc304698b4aab1560287a19ce9,
         type: 3}
       propertyPath: m_Name
@@ -818,17 +850,17 @@ PrefabInstance:
     - target: {fileID: 4748730675913877251, guid: 9c074aa299cf88f4a9ce34d50a5bbff3,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 3
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 4748730675913877251, guid: 9c074aa299cf88f4a9ce34d50a5bbff3,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 3
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 4748730675913877251, guid: 9c074aa299cf88f4a9ce34d50a5bbff3,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 3
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 4748730675913877251, guid: 9c074aa299cf88f4a9ce34d50a5bbff3,
         type: 3}

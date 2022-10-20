@@ -133,7 +133,6 @@ public class Stacking : MonoBehaviour , IStacking
     public void DivideStack(int divideTheStackBy)
     {
         float removeThisAmountOfStacks = GetStackCount() - Mathf.Round((float)GetStackCount() / (float)divideTheStackBy);
-        print(removeThisAmountOfStacks);
 
         for (int i = 0; i < removeThisAmountOfStacks; i++)
         {

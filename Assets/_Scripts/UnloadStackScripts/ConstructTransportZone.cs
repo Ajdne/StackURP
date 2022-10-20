@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class ConstructTransportZone : MonoBehaviour
 {
+    [Header("Boat Settings"), Space(10f)]
     [SerializeField] private List<GameObject> elements = new List<GameObject>();
     [SerializeField] private GameObject fragmentsParent;
     [SerializeField] private GameObject completeTransport;
     [SerializeField] private GameObject fragmentParticle;
-
     [SerializeField] private GameObject spawnLocation;
+
+    [Header("Collider"), Space(10f)]
+    [SerializeField] private BoxCollider triggerCollider;
 
     private AIStateManager aiStateManager;
 
@@ -20,12 +23,6 @@ public class ConstructTransportZone : MonoBehaviour
 
     // use this variable to count active elements
     private int elementCounter;
-    private BoxCollider triggerCollider;
-
-    private void Start()
-    {
-       triggerCollider = this.gameObject.GetComponent<BoxCollider>();
-    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -49,7 +46,13 @@ public class ConstructTransportZone : MonoBehaviour
 
                 ActivateBoatFragments(other.gameObject);
             }
+
+            if (playerOnTrigger == null)
+            {
+                playerOnTrigger = other.gameObject;
+            }
         }
+
     }
 
     private void ActivateBoatFragments(GameObject player)
@@ -68,7 +71,7 @@ public class ConstructTransportZone : MonoBehaviour
         if (elementCounter == elements.Count)
         {
             // deactivate box collider of this zone
-            triggerCollider.enabled = false;
+            //triggerCollider.enabled = false;
 
             // deactivate fragments
             fragmentsParent.SetActive(false);
@@ -122,6 +125,6 @@ public class ConstructTransportZone : MonoBehaviour
         }
         
         // enable trigger for this zone
-        triggerCollider.enabled = true;
+        //triggerCollider.enabled = true;
     }
 }

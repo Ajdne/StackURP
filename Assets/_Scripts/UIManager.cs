@@ -29,9 +29,7 @@ public class UIManager : MonoBehaviour
     }
 
     public void Play()
-    {
-        Debug.Log("e");
-        
+    {       
         Time.timeScale = 1.0f;
         startGame.SetActive(false);
         joystick.SetActive(true);

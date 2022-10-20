@@ -6,13 +6,20 @@ using UnityEngine;
 
 public class Multipliers : MonoBehaviour
 {
-    private bool activated;
+    [Header("Does it has a positive effect?")]
+    [SerializeField] private bool isPositiveMultiplier;
+    
+    [Header("Connected components"), Space(10f)]
+    [SerializeField] private TextMeshProUGUI multiplierValue;
+    [SerializeField] private GameObject particle;
+    [SerializeField] private Animator animator;
+
     private int randomValue;
     private int randomEffect;
 
-    [SerializeField] private bool isPositiveMultiplier;
-    [SerializeField] private TextMeshProUGUI multiplierValue;
-    [SerializeField] private GameObject particle;
+    // using this to trigger the effect only once
+    private bool isTriggered;
+
 
     private delegate void delegateMultiplierEffect(GameObject obj);
     delegateMultiplierEffect passedMethod;
@@ -72,7 +79,7 @@ public class Multipliers : MonoBehaviour
         }
     }
 
-    #region MulitPlayerEfects
+    #region Mulitiplier Efects
     private void PlusMultiplier(GameObject other)
     {
         other.GetComponent<IStacking>().InstantiateToStack(randomValue);
@@ -93,27 +100,27 @@ public class Multipliers : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player"))
+        if(other.CompareTag("Player") && !isTriggered)
         {
-            //other.GetComponent<IMultiplierApplier>();
+            // safety bool
+            isTriggered = true;
 
             // use the passed method here
-           passedMethod(other.gameObject);
-
-            //DoRandomEffect(randomValue, other.gameObject);
+            passedMethod(other.gameObject);
 
             // play particle effect
             particle.SetActive(true);
 
-            // disable collider
-            //GetComponent<BoxCollider>().enabled = false;
+            // play animation
+            animator.enabled = true;
 
-            // disable canvas
-            //multiplierValue.enabled = false;
-
-            //amim
-            //Invoke("Destroy(this.gameObject)", 1);
-            Destroy(this.gameObject);
+            // and destroy this element
+            // this method should be called in the animation
         }
+    }
+
+    private void DestroyThisObject()    // this is called as the animation event
+    {
+        Destroy(this.gameObject);
     }
 }

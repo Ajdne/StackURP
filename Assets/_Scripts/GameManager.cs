@@ -7,8 +7,6 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    private static int level;
-
     [Header("Platform Settings")]
     [SerializeField] private List<GameObject> platforms; // insert platform prefabs here
     [SerializeField] private GameObject finalPlatform;
@@ -26,7 +24,7 @@ public class GameManager : MonoBehaviour
     private Vector3 playerRespawnPosition;
     public Vector3 PlayerRespawnPos { get { return playerRespawnPosition; } set { playerRespawnPosition = value; } }
 
-    [Header("Stacks")]
+    [Header("Stacks"), Space(10f)]
     [SerializeField] private List<GameObject> stackPrefs; // = new List<GameObject>();
     public List<GameObject> StackPrefs { get { return stackPrefs; } set { stackPrefs = value;  } }
 
@@ -45,12 +43,11 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        level++;
         Physics.gravity *= 2;
 
-        playerAnimator = Player.GetComponent<Animator>();
+        //playerAnimator = Player.GetComponent<Animator>();
 
-        SpawnRandomPlatforms();
+        //SpawnRandomPlatforms();
     }
 
     private void SpawnRandomPlatforms()
