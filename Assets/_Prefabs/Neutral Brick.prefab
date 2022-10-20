@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6746228724515510626}
   - component: {fileID: 5093536626436237723}
   - component: {fileID: 7061902438548599154}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Neutral Brick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -163,7 +163,7 @@ PrefabInstance:
     - target: {fileID: 145227671490587441, guid: cc773d92bbf18e54ba5b6690f59a810d,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 145227671490587441, guid: cc773d92bbf18e54ba5b6690f59a810d,
         type: 3}
@@ -173,7 +173,7 @@ PrefabInstance:
     - target: {fileID: 145227671490587443, guid: cc773d92bbf18e54ba5b6690f59a810d,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 145227671491016465, guid: cc773d92bbf18e54ba5b6690f59a810d,
         type: 3}
@@ -339,7 +339,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 7446b110e974a2b468065aad16f75b4b,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7446b110e974a2b468065aad16f75b4b, type: 3}

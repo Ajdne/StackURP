@@ -20,6 +20,10 @@ public class NeutralCollectable : MonoBehaviour
 
             // check the layer of the player who collected the brick and use his color
             mesh.material = playerMaterials[other.gameObject.layer - 10];
+
+            // return the layer to default
+            // need this in order for shortcut run to work properly
+            this.gameObject.layer = 0; 
         }
     }
 }

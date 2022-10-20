@@ -63,7 +63,6 @@ public class Movement2 : MonoBehaviour, IMovement
     public void DeactivateMovement()
     {
         this.enabled = false;
-        //player.enabled = false;
     }
 
     public void SetMovementSpeed(float value)

@@ -11,8 +11,6 @@ public class CollectingState : AIStates
     private List<Transform> collectList = new List<Transform>();
     public List<Transform> CollectList { get { return collectList; } set { collectList = value; } }
 
-    //private NavMeshAgent agent;
-
     private EnemyStacking stacking;
 
     // --- STATES ---

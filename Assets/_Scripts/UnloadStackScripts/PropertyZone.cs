@@ -40,16 +40,17 @@ public class PropertyZone : MonoBehaviour
             //{
             //    other.gameObject.GetComponent<UnloadingState>().SetWaypoint(endPoint);
             //}
-            
+            IStacking stackingScript = other.GetComponent<IStacking>();
+
             stayTimer += Time.deltaTime;
 
             if (stayTimer > 0.05f)
             {
-                if(other.GetComponent<IStacking>().GetStackCount() > 0 && buildCount < stacksToUnlockGate)
+                if(stackingScript.GetStackCount() > 0 && buildCount < stacksToUnlockGate)
                 {
                     buildCount++;
                     // remove money from the stack
-                    other.GetComponent<IStacking>().RemoveMoneyToProperty(propertyObj.transform.position + new Vector3(0, 0, -8 + buildCount * 0.75f), false);
+                    stackingScript.RemoveMoneyToProperty(propertyObj.transform.position + new Vector3(0, 0, -8 + buildCount * 0.75f), false);
 
                     stayTimer = 0;
                 }
