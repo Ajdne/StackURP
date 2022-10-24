@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
 
     // ENDGAME
     private bool isEndGame;
-    private Animator playerAnimator;
+    [SerializeField] private Animator playerAnimator;
     public bool IsEndGame { get { return isEndGame; } set { isEndGame = value; } }
 
     // *******************************************************************
