@@ -15,7 +15,7 @@ public class MultiplierPlatform : MonoBehaviour
     private float playerSpeed;
     private Stacking playerStacking;
 
-    private Movement2 playerMovmentScript;
+    private Movement2 playerMovementScript;
 
     private bool isTriggered;
     private bool isLastPlatform;
@@ -23,8 +23,8 @@ public class MultiplierPlatform : MonoBehaviour
 
     private void Start()
     {
-        playerMovmentScript = GameManager.Instance.Player.GetComponent<Movement2>();
-        playerSpeed = playerMovmentScript.MoveSpeed;
+        playerMovementScript = GameManager.Instance.Player.GetComponent<Movement2>();
+        playerSpeed = playerMovementScript.MoveSpeed;
         playerStacking = GameManager.Instance.Player.GetComponent<Stacking>();
     }
 
@@ -62,12 +62,10 @@ public class MultiplierPlatform : MonoBehaviour
             other.gameObject.GetComponent<IMovement>().SetPlayerRespawnPosition(transform.position + new Vector3(0, 1, 0));  
 
             // if the player has no stacks left or the platform reached is the last platform, end the game level
-            if ( playerStacking.GetStackCount() <= 10 || isLastPlatform)
+            if ( playerStacking.GetStackCount() <= 7 || isLastPlatform)
             {
-                Debug.Log("Stacks left:" + playerStacking.GetStackCount());
-                Debug.Log(isLastPlatform);
                 // set the player pn the middle of the platform
-                other.gameObject.GetComponent<IMovement>().RespawnPlayer();
+                StartCoroutine(other.gameObject.GetComponent<IMovement>().RespawnPlayer());
             }
 
             isTriggered = true;

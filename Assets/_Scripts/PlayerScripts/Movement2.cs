@@ -80,7 +80,6 @@ public class Movement2 : MonoBehaviour, IMovement
 
     public IEnumerator RespawnPlayer()
     {
-        Debug.Log("PPozvan sam");
         // remove leftover stacks from player
         GetComponent<IStacking>().RemoveAllStacks();
 
