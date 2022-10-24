@@ -10,7 +10,10 @@ public class Platforms : MonoBehaviour
     [SerializeField] private List<Transform> spawnCrossingLocations;
 
     [SerializeField] private StackSpawn stackSpawnScript;
+
     [SerializeField] private GameObject respawnPosObj;
+    public GameObject RespawnPosObj { get { return respawnPosObj; } }
+
     [SerializeField] private GameObject triggerCollider;
 
     [SerializeField] private bool canUseShortcut;
@@ -33,10 +36,5 @@ public class Platforms : MonoBehaviour
         {
             Instantiate(GameManager.Instance.Crossings[randomCrossing], spawnCrossingLocations[i].position + new Vector3(0, 0, 0), Quaternion.identity);
         }
-    }
-
-    public Transform GetRespawnLocation()
-    {
-        return respawnPosObj.transform;
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlatformTrigger : MonoBehaviour
 {
-    private Transform respawnLocation;
+    private Vector3 respawnLocation;
 
     private StackSpawn stackSpawnScript;
     private bool canShortcut;
@@ -14,6 +14,7 @@ public class PlatformTrigger : MonoBehaviour
 
     private List<Transform> crossings;
     private int stacksToCollect;
+    private AdditionalStackSpawn additionalSpawn;
 
     // a list to save players who triggered it
     private List<GameObject> playersTriggered = new List<GameObject>();
@@ -24,7 +25,7 @@ public class PlatformTrigger : MonoBehaviour
     {
         gm = GameManager.Instance;
 
-        respawnLocation = GetComponentInParent<Platforms>().GetRespawnLocation();
+        respawnLocation = GetComponentInParent<Platforms>().RespawnPosObj.transform.position;
         canShortcut = GetComponentInParent<Platforms>().CanUseShortcut;
         stackSpawnScript = GetComponentInParent<StackSpawn>();
 
@@ -32,6 +33,9 @@ public class PlatformTrigger : MonoBehaviour
 
         // pass the value of stacks needed on every platform
         stacksToCollect = GetComponentInParent<Platforms>().StacksToCollect;
+
+        // get additional stack spawn script for blue player
+        additionalSpawn = GetComponentInParent<AdditionalStackSpawn>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -45,7 +49,7 @@ public class PlatformTrigger : MonoBehaviour
             }
             else
             {
-                #region Updating a list of stacks to spawn
+                #region Updating the list of stacks to spawn
                 // ---------------- PART FOR SPAWNING STACKS ----------------
                 // add this player to the list
                 playersTriggered.Add(other.gameObject);
@@ -64,10 +68,13 @@ public class PlatformTrigger : MonoBehaviour
                 // ---------------- -------------------------- ----------------
                 #endregion
 
+                // save respawn position
+                other.gameObject.GetComponent<IMovement>().SetPlayerRespawnPosition(respawnLocation);
+
                 if (other.gameObject.layer == 10)  // blue player layer
                 {
-                    // set blue player respawn position
-                    GameManager.Instance.PlayerRespawnPos = respawnLocation.position;
+                    // activate aditional stack spawn script for blue player
+                    additionalSpawn.enabled = true;
                 }
                 // if its an agent
                 else

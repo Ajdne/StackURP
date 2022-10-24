@@ -1,6 +1,5 @@
 using Lofelt.NiceVibrations;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FallPlatform : MonoBehaviour
@@ -22,11 +21,7 @@ public class FallPlatform : MonoBehaviour
             Instantiate(waterSplashParticle, other.transform.position, Quaternion.identity);
 
             // change player position
-            StartCoroutine(GameManager.Instance.RespawnPlayer(other.gameObject));
-
-            //GameManager.Instance.RespawnPlayer(other.gameObject);
-
-            //GameManager.Instance.Invoke("RespawnPlayer", 0.5f);
+            StartCoroutine(other.gameObject.GetComponent<IMovement>().RespawnPlayer());
 
             StartCoroutine(ResetBool());
 
@@ -41,7 +36,7 @@ public class FallPlatform : MonoBehaviour
 
     private IEnumerator ResetBool()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
         isTriggered = false;
     }
 }

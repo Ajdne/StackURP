@@ -12,4 +12,9 @@ public interface IMovement
 
     // set move speed for players
     void SetMovementSpeed(float value);
+
+    // save respawn position
+    void SetPlayerRespawnPosition(Vector3 resPos);
+
+    IEnumerator RespawnPlayer();
 }

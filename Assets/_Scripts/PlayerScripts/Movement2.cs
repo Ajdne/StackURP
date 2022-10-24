@@ -16,6 +16,9 @@ public class Movement2 : MonoBehaviour, IMovement
     [SerializeField] private float rotateSpeed;
     public float RotateSpeed { get { return rotateSpeed; } }
 
+    private Vector3 respawnPosition;
+    public Vector3 RespawnPosition { get { return respawnPosition; } set { respawnPosition = value; } }
+
     private void Start()
     {
         player = GetComponent<CharacterController>();
@@ -68,5 +71,40 @@ public class Movement2 : MonoBehaviour, IMovement
     public void SetMovementSpeed(float value)
     {
         moveSpeed = value;
+    }
+
+    public void SetPlayerRespawnPosition(Vector3 resPos)
+    {
+        respawnPosition = resPos;
+    }
+
+    public IEnumerator RespawnPlayer()
+    {
+        Debug.Log("PPozvan sam");
+        // remove leftover stacks from player
+        GetComponent<IStacking>().RemoveAllStacks();
+
+        yield return new WaitForSeconds(0.4f);
+
+        // need to disable movement script in order to move him
+        DeactivateMovement();
+
+       
+
+        transform.rotation = Quaternion.Euler(0, 180, 0);
+        transform.position = RespawnPosition;
+
+        if (GameManager.Instance.IsEndGame)
+        {
+            animator.SetBool("Idle", false);
+            animator.SetBool("Run", false);
+            animator.SetBool("Dance", true);
+
+            // dont activate player movement
+            //Player.GetComponent<CapsuleCollider>().enabled = false;
+            GetComponent<Rigidbody>().isKinematic = true;
+        }
+        else ActivateMovement();
+
     }
 }

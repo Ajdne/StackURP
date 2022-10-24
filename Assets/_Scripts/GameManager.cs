@@ -30,7 +30,6 @@ public class GameManager : MonoBehaviour
 
     // ENDGAME
     private bool isEndGame;
-    [SerializeField] private Animator playerAnimator;
     public bool IsEndGame { get { return isEndGame; } set { isEndGame = value; } }
 
     // *******************************************************************
@@ -77,47 +76,34 @@ public class GameManager : MonoBehaviour
         return randomItem;
     }
 
-    // MOZDA CE KORISTITI KASNIJE
-    //public GameObject SpawnOnRandomPosition(GameObject spawnPref, GameObject locationObj)
+    //public IEnumerator RespawnPlayer(GameObject player)
     //{
-    //    // randomize position
-    //    int randomX = Random.Range((int)-locationObj.transform.localScale.x + 1, (int)locationObj.transform.localScale.x - 1);
-    //    int randomZ = Random.Range((int)-locationObj.transform.localScale.z + 1, (int)locationObj.transform.localScale.z - 1);
+    //    // remove leftover stacks from player
+    //    player.GetComponent<IStacking>().RemoveAllStacks();
 
-    //    // spawn prefab
-    //    GameObject spawn = Instantiate(spawnPref, locationObj.transform.position + new Vector3(randomX, 0.5f, randomZ), Quaternion.identity);
+    //    yield return new WaitForSeconds(0.4f);
 
-    //    return spawn;
+    //    //stackingScript.RemoveFromStack(stackingScript.GetStackCount());
+
+    //    // need to disable movement script in order to move him
+    //    player.GetComponent<IMovement>().DeactivateMovement();
+
+    //    player.transform.rotation = Quaternion.Euler(0, 180, 0);
+    //    player.transform.position = player.RespawnPosition;
+
+    //    if (IsEndGame)
+    //    {
+    //        playerAnimator.SetBool("Idle", false);
+    //        playerAnimator.SetBool("Run", false);
+    //        playerAnimator.SetBool("Dance", true);
+
+    //        // dont activate player movement
+    //        //Player.GetComponent<CapsuleCollider>().enabled = false;
+    //        Player.GetComponent<Rigidbody>().isKinematic = true;
+    //    }
+    //    else player.GetComponent<IMovement>().ActivateMovement();
+
     //}
-
-    public IEnumerator RespawnPlayer(GameObject player)
-    {
-        // remove leftover stacks from player
-        player.GetComponent<IStacking>().RemoveAllStacks();
-
-        yield return new WaitForSeconds(0.4f);
-
-        //stackingScript.RemoveFromStack(stackingScript.GetStackCount());
-
-        // need to disable movement script in order to move him
-        player.GetComponent<IMovement>().DeactivateMovement();
-
-        player.transform.rotation = Quaternion.Euler(0, 180, 0);
-        player.transform.position = playerRespawnPosition;
-
-        if (IsEndGame)
-        {
-            playerAnimator.SetBool("Idle", false);
-            playerAnimator.SetBool("Run", false);
-            playerAnimator.SetBool("Dance", true);
-
-            // dont activate player movement
-            //Player.GetComponent<CapsuleCollider>().enabled = false;
-            Player.GetComponent<Rigidbody>().isKinematic = true;
-        }
-        else player.GetComponent<IMovement>().ActivateMovement();
-
-    }
 
     //public void SetPlayerPosition(Vector3 newPos)
     //{

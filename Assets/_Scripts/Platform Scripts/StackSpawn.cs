@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AdditionalStackSpawn))]
 public class StackSpawn : MonoBehaviour
 {
     [SerializeField] private int initialNumberOfStacks;
@@ -38,11 +39,11 @@ public class StackSpawn : MonoBehaviour
             {
                 SpawnWithRayCast(unlockedStacksToSpawn[i]);
              
-                // if its time to spawn for blue player, spawn it again, to make it easier
-                if(i == 0)
-                {
-                    SpawnWithRayCast(unlockedStacksToSpawn[i]);
-                }
+                //// if its time to spawn for blue player, spawn it again, to make it easier
+                //if(i == 0)
+                //{
+                //    SpawnWithRayCast(unlockedStacksToSpawn[i]);
+                //}
                 
                 // reset the timer
                 spawnTime = 0;
@@ -62,7 +63,7 @@ public class StackSpawn : MonoBehaviour
         }
     }
 
-    private void SpawnWithRayCast(GameObject stackPref)
+    public void SpawnWithRayCast(GameObject stackPref)
     {
         int randomX = Random.Range((int)collider.bounds.min.x + 2, (int)collider.bounds.max.x - 1);
         int randomZ = Random.Range((int)collider.bounds.min.z + 2, (int)collider.bounds.max.z - 1);

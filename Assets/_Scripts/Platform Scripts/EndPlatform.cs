@@ -19,7 +19,8 @@ public class EndPlatform : MonoBehaviour
         if(other.gameObject.layer == 10 && !isTriggered)
         {
             // save player location
-            GameManager.Instance.PlayerRespawnPos = transform.position + new Vector3(0, 1, 0);
+            other.gameObject.GetComponent<IMovement>().SetPlayerRespawnPosition(transform.position + new Vector3(0, 1, 0));
+            //GameManager.Instance.PlayerRespawnPos = transform.position + new Vector3(0, 1, 0);
 
             // camera transition by changing vcam priority
             GameManager.Instance.CineCamera.Priority += 2;
