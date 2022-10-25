@@ -4,12 +4,20 @@ using UnityEngine;
 
 public class NeutralCollectable : MonoBehaviour
 {
+    [Space(5f), Header("Material Settings"), Space(2f)]
+    [SerializeField] private Material neutralMaterial;
+
     // apply adequate material once collected
     [SerializeField] private List<Material> playerMaterials;
     // must be placed in the right order - same as player layers
     // number 0 in list is blue, 1 is red etc
 
     [SerializeField] private MeshRenderer mesh; // material component of this collectable
+
+    private void OnEnable()
+    {
+        mesh.material = neutralMaterial;
+    }
 
     void OnTriggerEnter(Collider other)
     {
@@ -25,5 +33,10 @@ public class NeutralCollectable : MonoBehaviour
             // need this in order for shortcut run to work properly
             this.gameObject.layer = 0; 
         }
+    }
+
+    public void SetMaterialToNeutral()
+    {
+        mesh.material = neutralMaterial;
     }
 }

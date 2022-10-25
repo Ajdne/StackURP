@@ -50,11 +50,6 @@ public class CollectingState : AIStates
             animator.SetBool("Idle", true);
         }
 
-        //check condition for state change
-        //if(BridgeComplete)
-        //{
-
-        //}
         if (stacking.GetStackCount() >= stacksToCollect)
         {
             aIStateManager.SwitchToUnloadState();

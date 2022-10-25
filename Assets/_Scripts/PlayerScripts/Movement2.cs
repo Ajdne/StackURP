@@ -73,6 +73,16 @@ public class Movement2 : MonoBehaviour, IMovement
         moveSpeed = value;
     }
 
+    public void CollisionFall()
+    {
+        DeactivateMovement();
+    }
+
+    public void IncreaseMovementSpeed(float value)
+    {
+        moveSpeed += value;
+    }
+
     public void SetPlayerRespawnPosition(Vector3 resPos)
     {
         respawnPosition = resPos;

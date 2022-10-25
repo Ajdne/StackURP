@@ -54,11 +54,11 @@ public class Boat : MonoBehaviour
         PlayerToTransport.transform.parent = this.gameObject.transform;
 
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
         // activate rowing stickman
         rowerMan.SetActive(true);
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
         // start rowing animation
         rowAnimator.enabled = true;
 

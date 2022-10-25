@@ -191,4 +191,38 @@ public class EnemyStacking : MonoBehaviour, IStacking
     {
         return stacked.Count;
     }
+
+    public void LoseStacks()
+    {
+        for (int i = 0; i < stacked.Count; i++)
+        {
+            // if the stack is empty
+            if (stacked.Count == 0) return;
+
+            // local obj
+            GameObject stackObj = stacked[i];
+
+            // add colliders, rigidbody, change collor etc
+            stackObj.transform.parent = null;
+            //stackObj.GetComponentInChildren<BoxCollider>().enabled = true;
+            stackObj.AddComponent<Rigidbody>();
+
+            stackObj.AddComponent<BoxCollider>();
+            //stackObj.layer = 0;
+
+            // activate neutral material script
+            
+            stackObj.AddComponent<NeutralCollectable>().enabled = true;
+            //stackObj.GetComponent<NeutralCollectable>().SetMaterialToNeutral();
+
+            // remove it from list
+            //stacked.Remove(stackObj);
+
+            // and destroy
+            //Destroy(stackObj);
+        }
+
+        // clear the list, but delete all objects before that
+        stacked.Clear();
+    }
 }

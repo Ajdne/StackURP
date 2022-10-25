@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6746228724515510626}
   - component: {fileID: 5093536626436237723}
   - component: {fileID: 7061902438548599154}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Neutral Brick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,6 +147,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 2aadcaaf4616d88429b622442407a505, type: 2}
   - {fileID: 2100000, guid: 8cd9c3bccaf18a443b70c3fe0dff9984, type: 2}
   - {fileID: 2100000, guid: 8a7cee6c45c7aee418a77d9944dc13b6, type: 2}
+  neutralMaterial: {fileID: 2100000, guid: b0ce1a06ccfd04f49980d24a3fedc2a6, type: 2}
   mesh: {fileID: 3001646115603293204}
 --- !u!1001 &4487711099184370173
 PrefabInstance:

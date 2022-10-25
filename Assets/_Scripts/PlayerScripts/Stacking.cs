@@ -149,6 +149,32 @@ public class Stacking : MonoBehaviour , IStacking
         }
     }
 
+    public void LoseStacks()
+    {
+
+        for (int i = 0; i < stacked.Count; i++)
+        {
+            // if the stack is empty
+            if (stacked.Count == 0) return;
+
+            // local obj
+            GameObject stackObj = stacked[i];
+
+            // add colliders, rigidbody, change collor etc
+            stackObj.AddComponent<Rigidbody>();
+            stackObj.GetComponentInChildren<BoxCollider>().enabled = true;
+
+            // remove it from list
+            //stacked.Remove(stackObj);
+
+            // and destroy
+            //Destroy(stackObj);
+        }
+
+        // clear the list, but delete all objects before that
+        stacked.Clear();
+    }
+
     public void RemoveAllStacks()
     {
         for (int i = 0; i < stacked.Count; i++)

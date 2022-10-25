@@ -24,12 +24,6 @@ public class Platforms : MonoBehaviour
 
     private void Start()
     {
-        //if (stackSpawnScript == null)
-        //{
-        //    stackSpawnScript = GetComponent<StackSpawn>();
-        //    stackSpawnScript.enabled = false;
-        //}
-
         int randomCrossing = Random.Range(0, GameManager.Instance.Crossings.Count);
 
         for (int i = 0; i < spawnCrossingLocations.Count; i++)

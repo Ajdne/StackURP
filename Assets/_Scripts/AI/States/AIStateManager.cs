@@ -9,8 +9,7 @@ public class AIStateManager : MonoBehaviour
     [SerializeField] private CollectingState collectingState;
     [SerializeField] private UnloadingState unloadingState;
     [SerializeField] private BoatState boatState;
-
-
+    [SerializeField] private FallState fallState;
 
     void Update()
     {
@@ -38,13 +37,16 @@ public class AIStateManager : MonoBehaviour
     public void SwitchToUnloadState()
     {
         currentState = unloadingState;
-        //return currentState;
     }
     
     public void SwitchToBoatState()
     {
         boatState.InBoat = true;
         currentState = boatState;
-        //return currentState;
+    }
+
+    public void SwitchToFallState()
+    {
+        currentState = fallState;
     }
 }

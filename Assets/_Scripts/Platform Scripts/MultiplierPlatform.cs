@@ -12,10 +12,8 @@ public class MultiplierPlatform : MonoBehaviour
     [SerializeField] private Animator popAnimator;
     [SerializeField] private AudioSource audioSource;
 
-    private float playerSpeed;
-    private Stacking playerStacking;
-
-    private Movement2 playerMovementScript;
+    private IStacking playerStacking;
+    private IMovement playerMovementScript;
 
     private bool isTriggered;
     private bool isLastPlatform;
@@ -23,9 +21,8 @@ public class MultiplierPlatform : MonoBehaviour
 
     private void Start()
     {
-        playerMovementScript = GameManager.Instance.Player.GetComponent<Movement2>();
-        playerSpeed = playerMovementScript.MoveSpeed;
-        playerStacking = GameManager.Instance.Player.GetComponent<Stacking>();
+        playerMovementScript = GameManager.Instance.Player.GetComponent<IMovement>();
+        playerStacking = GameManager.Instance.Player.GetComponent<IStacking>();
     }
 
     void Update()
@@ -55,17 +52,24 @@ public class MultiplierPlatform : MonoBehaviour
             audioSource.pitch = 0.5f + multiplierValue * 0.1f;
             audioSource.Play();
 
-            // increase player speed
-            playerSpeed += 1f;
+            // increase player speed by (value)
+            playerMovementScript.IncreaseMovementSpeed(1f);
 
             // save player location
-            other.gameObject.GetComponent<IMovement>().SetPlayerRespawnPosition(transform.position + new Vector3(0, 1, 0));  
+            playerMovementScript.SetPlayerRespawnPosition(transform.position + new Vector3(0, 1, 0));  
 
             // if the player has no stacks left or the platform reached is the last platform, end the game level
             if ( playerStacking.GetStackCount() <= 7 || isLastPlatform)
             {
                 // set the player pn the middle of the platform
-                StartCoroutine(other.gameObject.GetComponent<IMovement>().RespawnPlayer());
+                StartCoroutine(playerMovementScript.RespawnPlayer());
+
+                // turn off all bots
+                for (int i = 0; i < GameManager.Instance.Bots.Count; i++)
+                {
+                    GameManager.Instance.Bots[i].SetActive(false);
+                }
+                
             }
 
             isTriggered = true;

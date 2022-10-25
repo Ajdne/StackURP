@@ -5,11 +5,13 @@ using UnityEngine;
 public class PlayerCollision : MonoBehaviour
 {
     private IStacking stackingScript;
+    private IMovement movementScript;
     private Animator animator;
 
     private void Start()
     {
         stackingScript = GetComponent<IStacking>();
+        movementScript = GetComponent<IMovement>();
         animator = GetComponent<Animator>();
     }
 
@@ -18,10 +20,13 @@ public class PlayerCollision : MonoBehaviour
         if (other.gameObject.CompareTag("Player") && 
             stackingScript.GetStackCount() < other.gameObject.GetComponent<IStacking>().GetStackCount())
         {
+            // lose stacks
+            //stackingScript.LoseStacks();
             stackingScript.RemoveAllStacks();
 
             // stop the player from moving during animation
-            GetComponent<IMovement>().DeactivateMovement();
+            movementScript.CollisionFall();
+
             // activate movement again in the animation
 
             // play animation
@@ -40,6 +45,6 @@ public class PlayerCollision : MonoBehaviour
         // deactivate animation
         animator.SetBool("Collision", false);
 
-        GetComponent<IMovement>().ActivateMovement();
+        movementScript.ActivateMovement();
     }
 }

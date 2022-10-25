@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(AIStateManager))]
 public class EnemyAI : MonoBehaviour, IMovement
 {
     [SerializeField] private int lookRadius;    // just a gizmo radius
@@ -14,6 +15,7 @@ public class EnemyAI : MonoBehaviour, IMovement
 
     private Vector3 respawnPosition;
     //public Vector3 RespawnPosition { get { return respawnPosition; } set { respawnPosition = value; } }
+
 
     private void OnDrawGizmosSelected()
     {
@@ -29,11 +31,21 @@ public class EnemyAI : MonoBehaviour, IMovement
     public void ActivateMovement()
     {
         agent.enabled = true;
+        GetComponent<FallState>().AnimationOver = true;
     }
 
     public void DeactivateMovement()
     {
         agent.enabled = false;
+    }
+
+    public void CollisionFall()
+    {
+        // chage state
+        //GetComponent<AIStateManager>().SwitchToFallState();
+        
+        // and deactivate movement
+        DeactivateMovement();
     }
     
     public void SetPlayerRespawnPosition(Vector3 resPos)
@@ -67,5 +79,10 @@ public class EnemyAI : MonoBehaviour, IMovement
         
         ActivateMovement();
 
+    }
+
+    public void IncreaseMovementSpeed(float value)
+    {
+        throw new System.NotImplementedException();
     }
 }

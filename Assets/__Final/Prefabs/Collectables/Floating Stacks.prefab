@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3235777037032395926}
   - component: {fileID: 9105759294708753325}
   - component: {fileID: 7630815756037670933}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Floating Stacks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -356,6 +356,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: baloncici
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 33adf7f3fecbc9d45a15e9241f2eec1f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33adf7f3fecbc9d45a15e9241f2eec1f, type: 3}

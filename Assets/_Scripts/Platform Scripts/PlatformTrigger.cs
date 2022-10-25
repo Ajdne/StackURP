@@ -10,11 +10,12 @@ public class PlatformTrigger : MonoBehaviour
     private bool canShortcut;
 
     private bool isTriggered;
-    private bool isOnPlatform;
 
     private List<Transform> crossings;
+
     private int stacksToCollect;
     private AdditionalStackSpawn additionalSpawn;
+    public AdditionalStackSpawn AdditionalSpawn { set { additionalSpawn = value; } }
 
     // a list to save players who triggered it
     private List<GameObject> playersTriggered = new List<GameObject>();

@@ -2354,6 +2354,7 @@ GameObject:
   - component: {fileID: 1182352280}
   - component: {fileID: 1182352281}
   - component: {fileID: 3645281364319833695}
+  - component: {fileID: 6716406019252394943}
   m_Layer: 13
   m_Name: 'Purple Player  '
   m_TagString: Player
@@ -2580,6 +2581,7 @@ MonoBehaviour:
   collectingState: {fileID: 1182352280}
   unloadingState: {fileID: 1182352279}
   boatState: {fileID: 3645281364319833695}
+  fallState: {fileID: 6716406019252394943}
 --- !u!114 &3645281364319833695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2590,6 +2592,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4db25bcffa9a0064ea2b0096f1daaa28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 6184160215195988548}
+  aIStateManager: {fileID: 1182352281}
+--- !u!114 &6716406019252394943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1202639118336653937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45b200d41fe754047a799a4a5f6698fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 6184160215195988548}

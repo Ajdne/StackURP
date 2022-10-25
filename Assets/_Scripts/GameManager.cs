@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    [Header("Platform Settings")]
+    [Space(5f), Header("Platform Settings"), Space(2f)]
     [SerializeField] private List<GameObject> platforms; // insert platform prefabs here
     [SerializeField] private GameObject finalPlatform;
     [SerializeField] private List<GameObject> crossings; // insert crossing prefabs here
@@ -15,18 +15,25 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int maxNumberOfPlatforms = 4;
     public List<GameObject> Crossings { get { return crossings; } }
 
-    [Header("Camera Settings"), Space]
+    [Space(5f), Header("Camera Settings"), Space(2f)]
     [SerializeField] private CinemachineVirtualCamera cineCamera;
     public CinemachineVirtualCamera CineCamera { get { return cineCamera; } }
 
-    [Header("Player Settings")]
+    
+    [Space(5f), Header("Player Settings"), Space(2f)]
     public GameObject Player;
     private Vector3 playerRespawnPosition;
     public Vector3 PlayerRespawnPos { get { return playerRespawnPosition; } set { playerRespawnPosition = value; } }
 
-    [Header("Stacks"), Space(10f)]
+    [Space(5f), Header("AI Settings"), Space(2f)]
+    [SerializeField] private List<GameObject> bots = new List<GameObject>();
+    public List<GameObject> Bots { get { return bots; } }
+    
+    [Space(5f), Header("Stacks"), Space(10f)]
     [SerializeField] private List<GameObject> stackPrefs; // = new List<GameObject>();
     public List<GameObject> StackPrefs { get { return stackPrefs; } set { stackPrefs = value;  } }
+
+
 
     // ENDGAME
     private bool isEndGame;
@@ -75,42 +82,6 @@ public class GameManager : MonoBehaviour
 
         return randomItem;
     }
-
-    //public IEnumerator RespawnPlayer(GameObject player)
-    //{
-    //    // remove leftover stacks from player
-    //    player.GetComponent<IStacking>().RemoveAllStacks();
-
-    //    yield return new WaitForSeconds(0.4f);
-
-    //    //stackingScript.RemoveFromStack(stackingScript.GetStackCount());
-
-    //    // need to disable movement script in order to move him
-    //    player.GetComponent<IMovement>().DeactivateMovement();
-
-    //    player.transform.rotation = Quaternion.Euler(0, 180, 0);
-    //    player.transform.position = player.RespawnPosition;
-
-    //    if (IsEndGame)
-    //    {
-    //        playerAnimator.SetBool("Idle", false);
-    //        playerAnimator.SetBool("Run", false);
-    //        playerAnimator.SetBool("Dance", true);
-
-    //        // dont activate player movement
-    //        //Player.GetComponent<CapsuleCollider>().enabled = false;
-    //        Player.GetComponent<Rigidbody>().isKinematic = true;
-    //    }
-    //    else player.GetComponent<IMovement>().ActivateMovement();
-
-    //}
-
-    //public void SetPlayerPosition(Vector3 newPos)
-    //{
-    //    Player.GetComponent<Movement2>().player.enabled = false;
-    //    Player.transform.position = newPos;
-    //    Player.GetComponent<Movement2>().player.enabled = true;
-    //}
 
     public void RevertPlayerControls(GameObject player)
     {
