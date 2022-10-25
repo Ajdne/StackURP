@@ -9,8 +9,9 @@ public class EndPlatform : MonoBehaviour
     [SerializeField] private GameObject multiplierPlatformPrefab;
     [SerializeField] private int numberOfEndPlatforms;
     [SerializeField] private GameObject particle;
+    
     [Space]
-    //[SerializeField] private Animator camAnimator;
+    [SerializeField] private Animator camAnimator;
 
     private bool isTriggered;
 
@@ -36,6 +37,8 @@ public class EndPlatform : MonoBehaviour
 
             // activate BOOL for dance animation
             GameManager.Instance.IsEndGame = true;
+
+            GetComponent<GiveCrown>().enabled = false;
         }
     }
    
