@@ -37,8 +37,8 @@ public class UnloadingState : AIStates
         // print("Current waypint " + waypoint);
         // make the AI walk to set destination
 
+        if(agent.enabled) agent.SetDestination(waypoint.position);
 
-        agent.SetDestination(waypoint.position);
         if (Vector3.Distance(transform.position, waypoint.position) < 2)
         {     
             waitTimer += Time.deltaTime;
@@ -46,7 +46,7 @@ public class UnloadingState : AIStates
             animator.SetBool("Run", false);
             animator.SetBool("Idle", true);
 
-            if (waitTimer > 2)
+            if (waitTimer > 1.5f)
             {
                 // reset the timer
                 waitTimer = 0;

@@ -36,8 +36,6 @@ public class EnemyStacking : MonoBehaviour, IStacking
         moneyObj.gameObject.transform.localPosition = backpackObj.transform.localPosition + new Vector3(0, stacked.Count * 0.4f, 0); //moneyObj.transform.localScale.y
         //potrebne su mi normalizovane vrednosti
 
-        
-
         // set local rotation
         moneyObj.gameObject.transform.localRotation = Quaternion.Euler(0, 0, 0);
 
@@ -194,7 +192,7 @@ public class EnemyStacking : MonoBehaviour, IStacking
 
     public void LoseStacks()
     {
-        for (int i = 0; i < stacked.Count; i++)
+        for (int i = stacked.Count-1; i > 0; i--)
         {
             // if the stack is empty
             if (stacked.Count == 0) return;
@@ -207,22 +205,30 @@ public class EnemyStacking : MonoBehaviour, IStacking
             //stackObj.GetComponentInChildren<BoxCollider>().enabled = true;
             stackObj.AddComponent<Rigidbody>();
 
-            stackObj.AddComponent<BoxCollider>();
-            //stackObj.layer = 0;
+            stackObj.GetComponent<BoxCollider>().enabled = true; // this is trigger collider
 
-            // activate neutral material script
-            
-            stackObj.AddComponent<NeutralCollectable>().enabled = true;
+            //stackObj.GetComponent<BoxCollider>().size += new Vector3(0.5f, 0.5f, 0.5f);
+            //stackObj.AddComponent<BoxCollider>();
+
+            // remove player collectable
+            Destroy(stackObj.GetComponent<Collectable>());
+
+            // change to neutral collectable
+            StartCoroutine(stackObj.GetComponent<NeutralCollectable>().SetMaterialToNeutral());
+
+            // activate neutral material script      
+            // stackObj.GetComponent<NeutralCollectable>().enabled = true;
+
             //stackObj.GetComponent<NeutralCollectable>().SetMaterialToNeutral();
 
             // remove it from list
-            //stacked.Remove(stackObj);
+            stacked.Remove(stackObj);
 
             // and destroy
             //Destroy(stackObj);
         }
 
         // clear the list, but delete all objects before that
-        stacked.Clear();
+        //stacked.Clear();
     }
 }

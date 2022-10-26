@@ -12,6 +12,7 @@ public class PlayerCollision : MonoBehaviour
     {
         stackingScript = GetComponent<IStacking>();
         movementScript = GetComponent<IMovement>();
+
         animator = GetComponent<Animator>();
     }
 
@@ -21,8 +22,8 @@ public class PlayerCollision : MonoBehaviour
             stackingScript.GetStackCount() < other.gameObject.GetComponent<IStacking>().GetStackCount())
         {
             // lose stacks
-            //stackingScript.LoseStacks();
-            stackingScript.RemoveAllStacks();
+            stackingScript.LoseStacks();
+            //stackingScript.RemoveAllStacks();
 
             // stop the player from moving during animation
             movementScript.CollisionFall();
@@ -40,11 +41,12 @@ public class PlayerCollision : MonoBehaviour
 
     IEnumerator DeactivateAnimation()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(2f);
 
         // deactivate animation
         animator.SetBool("Collision", false);
 
+        //GetComponent<FallState>().AnimationOver = true;
         movementScript.ActivateMovement();
     }
 }

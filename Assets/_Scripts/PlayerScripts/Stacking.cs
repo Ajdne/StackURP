@@ -151,8 +151,7 @@ public class Stacking : MonoBehaviour , IStacking
 
     public void LoseStacks()
     {
-
-        for (int i = 0; i < stacked.Count; i++)
+        for (int i = stacked.Count - 1; i > 0; i--)
         {
             // if the stack is empty
             if (stacked.Count == 0) return;
@@ -161,18 +160,35 @@ public class Stacking : MonoBehaviour , IStacking
             GameObject stackObj = stacked[i];
 
             // add colliders, rigidbody, change collor etc
+            stackObj.transform.parent = null;
+            //stackObj.GetComponentInChildren<BoxCollider>().enabled = true;
             stackObj.AddComponent<Rigidbody>();
-            stackObj.GetComponentInChildren<BoxCollider>().enabled = true;
+
+            stackObj.GetComponent<BoxCollider>().enabled = true; // this is trigger collider
+
+            //stackObj.GetComponent<BoxCollider>().size += new Vector3(0.5f, 0.5f, 0.5f);
+            //stackObj.AddComponent<BoxCollider>();
+
+            // remove player collectable
+            Destroy(stackObj.GetComponent<Collectable>());
+
+            // change to neutral collectable
+            StartCoroutine(stackObj.GetComponent<NeutralCollectable>().SetMaterialToNeutral());
+
+            // activate neutral material script      
+            // stackObj.GetComponent<NeutralCollectable>().enabled = true;
+
+            //stackObj.GetComponent<NeutralCollectable>().SetMaterialToNeutral();
 
             // remove it from list
-            //stacked.Remove(stackObj);
+            stacked.Remove(stackObj);
 
             // and destroy
             //Destroy(stackObj);
         }
 
         // clear the list, but delete all objects before that
-        stacked.Clear();
+        //stacked.Clear();
     }
 
     public void RemoveAllStacks()

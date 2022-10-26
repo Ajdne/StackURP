@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class NeutralCollectable : MonoBehaviour
@@ -12,31 +13,45 @@ public class NeutralCollectable : MonoBehaviour
     // must be placed in the right order - same as player layers
     // number 0 in list is blue, 1 is red etc
 
+    [SerializeField] private BoxCollider brickObj;
     [SerializeField] private MeshRenderer mesh; // material component of this collectable
-
-    private void OnEnable()
-    {
-        mesh.material = neutralMaterial;
-    }
+    [SerializeField] private bool isEnabled;
 
     void OnTriggerEnter(Collider other)
     {
+        //Debug.Log("Neutral aktivan");
         // here we only check if its a player
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player")  && isEnabled)
         {
-            other.GetComponent<IStacking>().AddMoneyToStack(this.gameObject);
-
             // check the layer of the player who collected the brick and use his color
             mesh.material = playerMaterials[other.gameObject.layer - 10];
 
+            other.GetComponent<IStacking>().AddMoneyToStack(this.gameObject);
+
+
             // return the layer to default
             // need this in order for shortcut run to work properly
-            this.gameObject.layer = 0; 
+            //this.gameObject.layer = 0;
+
+    
+        }
+
+        if (other.gameObject.layer == 6) // platform layer
+        {
+            //this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
         }
     }
 
-    public void SetMaterialToNeutral()
+    public IEnumerator SetMaterialToNeutral()
     {
         mesh.material = neutralMaterial;
+
+        // enable box collider
+        brickObj.enabled = true;
+
+        yield return new WaitForSeconds(1);
+        isEnabled = true;
+
+
     }
 }

@@ -11,6 +11,8 @@ public class FallState : AIStates
     {
         if(animationOver)
         {
+            GetComponent<IMovement>().ActivateMovement();
+
             aIStateManager.SwitchToCollectState();
             return aIStateManager.CurrentState;
         }

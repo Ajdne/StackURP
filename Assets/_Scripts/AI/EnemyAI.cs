@@ -31,7 +31,7 @@ public class EnemyAI : MonoBehaviour, IMovement
     public void ActivateMovement()
     {
         agent.enabled = true;
-        GetComponent<FallState>().AnimationOver = true;
+        GetComponent<AIStateManager>().SwitchToCollectState();
     }
 
     public void DeactivateMovement()
@@ -41,11 +41,11 @@ public class EnemyAI : MonoBehaviour, IMovement
 
     public void CollisionFall()
     {
-        // chage state
-        //GetComponent<AIStateManager>().SwitchToFallState();
-        
         // and deactivate movement
         DeactivateMovement();
+
+        //// chage state
+        //GetComponent<AIStateManager>().SwitchToFallState();   
     }
     
     public void SetPlayerRespawnPosition(Vector3 resPos)

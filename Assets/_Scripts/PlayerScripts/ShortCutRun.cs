@@ -35,6 +35,12 @@ public class ShortCutRun : MonoBehaviour
             
             //return;
         }
+        // the AI knows it has no more stacks
+        else if(this.gameObject.layer != 10 && stacking.GetStackCount() == 0)
+        {
+            // if the AI is out of stacks for shortcut run, switch to collect state to get more stacks
+            stateManager.SwitchToCollectState();
+        }
         else if (stacking.GetStackCount() > 0 && waitTimer > 0.02f)
         {
             stacking.RemoveStackToShortcut(new Vector3(raycastObj.transform.position.x, -0.25f, raycastObj.transform.position.z));
@@ -52,12 +58,6 @@ public class ShortCutRun : MonoBehaviour
             }
 
             waitTimer = 0;
-        }
-        // the AI knows it has no more stacks
-        else if(this.gameObject.layer != 10 && stacking.GetStackCount() <= 8)
-        {
-            // if the AI is out of stacks for shortcut run, switch to collect state to get more stacks
-            stateManager.SwitchToCollectState();
         }
 
         // if combo duration has passed and its not the end of a level, turn off boost

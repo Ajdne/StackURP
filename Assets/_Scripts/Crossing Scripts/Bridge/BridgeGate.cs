@@ -12,26 +12,29 @@ public class BridgeGate : MonoBehaviour
 
     //[SerializeField] private GameObject particles;
 
-    [SerializeField] private ParticleSystem particleSys;
+    [SerializeField] private ParticleSystem particleSys1;
+    [SerializeField] private ParticleSystem particleSys2;
 
     [Header("Material Settings"), Space(2f)]
     [SerializeField] private MaterialHolderSO matHolder;
     [SerializeField] private List<MeshRenderer> meshRenderers;
     private Material playerMat;
 
-    //private bool isTriggered;
+    private bool isTriggered;
 
     private void OnTriggerStay(Collider other)
     {
         if(other.CompareTag("Player")) // player layer
         {
-            if (bridgeScript.IsGateUnlocked(stacksNeeded))
+            if (bridgeScript.IsGateUnlocked(stacksNeeded) && !isTriggered)
             {
                 // take the player material from the mat holder 
                 playerMat = matHolder.PlayerMaterials[other.gameObject.layer - 10];
 
                 StartCoroutine(OpenGate());
 
+                // reset the trigger - need it to prevent color change on every player enter
+                isTriggered = true;
             }
         }
     }
@@ -42,7 +45,8 @@ public class BridgeGate : MonoBehaviour
         {
             meshRenderers[i].material = playerMat;
         }
-        particleSys.startColor = playerMat.color;
+        particleSys1.startColor = playerMat.color;
+        particleSys2.startColor = playerMat.color;
 
         yield return new WaitForSeconds(0.5f);
 

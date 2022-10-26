@@ -35,7 +35,7 @@ public class CollectingState : AIStates
 
     public override AIStates RunCurrentState()
     {
-        if (collectList.Count > 0)
+        if (collectList.Count > 0 && agent.enabled)
         {
             // always search for the 1st element in the list
             agent.SetDestination(collectList[0].position);
