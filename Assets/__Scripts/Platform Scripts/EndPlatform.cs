@@ -47,9 +47,12 @@ public class EndPlatform : MonoBehaviour
     {
         for (int i = 0; i < endPlatforms.Count; i++)
         {
-            int xRange = (int)(1 + endPlatforms.Count * 1.3f);
-            int randomX = Random.Range(-xRange, xRange + 1);
+            int xRange = (int)(endPlatforms.Count * 1.2f);
+            int randomX = Random.Range(-xRange, xRange);
             yield return new WaitForSeconds(0.5f);
+
+            // set platform prefab position
+            endPlatforms[i].transform.position = new Vector3(transform.position.x + randomX, -20, transform.position.z + (1 + i) * (15 + i));
 
             // activate platform prefabs
             endPlatforms[i].SetActive(true);
