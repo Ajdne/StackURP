@@ -41,6 +41,8 @@ public class PlatformTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+
+        Debug.Log(other.gameObject);
         if (other.CompareTag("Player")) // player layer
         {
             // if the player passes the trigger for the first time
