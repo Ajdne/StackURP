@@ -203,7 +203,11 @@ public class EnemyStacking : MonoBehaviour, IStacking
             // add colliders, rigidbody, change collor etc
             stackObj.transform.parent = null;
             //stackObj.GetComponentInChildren<BoxCollider>().enabled = true;
-            stackObj.AddComponent<Rigidbody>();
+
+            if(stackObj.GetComponent<Rigidbody>() == null)
+                stackObj.AddComponent<Rigidbody>();
+            else 
+                stackObj.GetComponent<Rigidbody>().useGravity = true;
 
             stackObj.GetComponent<BoxCollider>().enabled = true; // this is trigger collider
 

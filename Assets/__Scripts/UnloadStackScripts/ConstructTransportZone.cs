@@ -70,6 +70,7 @@ public class ConstructTransportZone : MonoBehaviour
 
         if (elementCounter == elements.Count)
         {
+            player.GetComponent<PlayerCollision>();
             // deactivate box collider of this zone
             //triggerCollider.enabled = false;
 
@@ -106,7 +107,7 @@ public class ConstructTransportZone : MonoBehaviour
 
     private IEnumerator RespawnFragments()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
 
         // when the player leaves and the boat is already constructed
        

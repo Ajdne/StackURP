@@ -13,6 +13,8 @@ public class EnemyAI : MonoBehaviour, IMovement
 
     [SerializeField] private NavMeshAgent agent;
 
+    [SerializeField] private PlayerCollision collisionScript;
+
     private Vector3 respawnPosition;
     //public Vector3 RespawnPosition { get { return respawnPosition; } set { respawnPosition = value; } }
 
@@ -31,21 +33,14 @@ public class EnemyAI : MonoBehaviour, IMovement
     public void ActivateMovement()
     {
         agent.enabled = true;
+        collisionScript.CanCollide = true;
         GetComponent<AIStateManager>().SwitchToCollectState();
     }
 
     public void DeactivateMovement()
     {
         agent.enabled = false;
-    }
-
-    public void CollisionFall()
-    {
-        // and deactivate movement
-        DeactivateMovement();
-
-        //// chage state
-        //GetComponent<AIStateManager>().SwitchToFallState();   
+        collisionScript.CanCollide = false;
     }
     
     public void SetPlayerRespawnPosition(Vector3 resPos)

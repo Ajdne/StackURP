@@ -41,6 +41,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7538351644085137139}
     m_Modifications:
+    - target: {fileID: 2071061856663886238, guid: 3ab4972839cb9de46af5df8f76979462,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3663447093958708324, guid: 3ab4972839cb9de46af5df8f76979462,
         type: 3}
       propertyPath: m_RootOrder
@@ -116,6 +121,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: platforma3
       objectReference: {fileID: 0}
+    - target: {fileID: 7095964709654469605, guid: 3ab4972839cb9de46af5df8f76979462,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8548667950637548568, guid: 3ab4972839cb9de46af5df8f76979462,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ab4972839cb9de46af5df8f76979462, type: 3}
 --- !u!4 &3799771619384166747 stripped
@@ -151,10 +166,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7538351644085137139}
     m_Modifications:
+    - target: {fileID: -8181666563687097759, guid: 28d56250295e54e4bb64e59c59b615b0,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -2420261481381557, guid: 28d56250295e54e4bb64e59c59b615b0,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3572370444673802210, guid: 28d56250295e54e4bb64e59c59b615b0,
         type: 3}
       propertyPath: m_Name
       value: platforma5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3988371121617755792, guid: 28d56250295e54e4bb64e59c59b615b0,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4240221867317822808, guid: 28d56250295e54e4bb64e59c59b615b0,
         type: 3}
@@ -226,10 +256,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7538351644085137139}
     m_Modifications:
+    - target: {fileID: -8181666563687097759, guid: 28d56250295e54e4bb64e59c59b615b0,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -2420261481381557, guid: 28d56250295e54e4bb64e59c59b615b0,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3572370444673802210, guid: 28d56250295e54e4bb64e59c59b615b0,
         type: 3}
       propertyPath: m_Name
       value: platforma5 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3988371121617755792, guid: 28d56250295e54e4bb64e59c59b615b0,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4240221867317822808, guid: 28d56250295e54e4bb64e59c59b615b0,
         type: 3}

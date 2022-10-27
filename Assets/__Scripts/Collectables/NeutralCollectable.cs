@@ -36,10 +36,10 @@ public class NeutralCollectable : MonoBehaviour
     
         }
 
-        if (other.gameObject.layer == 6) // platform layer
-        {
-            //this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
-        }
+        //if (other.gameObject.layer == 6) // platform layer
+        //{
+        //    this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+        //}
     }
 
     public IEnumerator SetMaterialToNeutral()

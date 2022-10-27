@@ -9,6 +9,7 @@ public class Movement2 : MonoBehaviour, IMovement
 
     public CharacterController player;
     [SerializeField] private Animator animator;
+    [SerializeField] private PlayerCollision collisionScript;
 
     [SerializeField] private float moveSpeed;
     public float MoveSpeed { get { return moveSpeed; } set { moveSpeed = value; } }
@@ -61,10 +62,12 @@ public class Movement2 : MonoBehaviour, IMovement
     public void ActivateMovement()
     {
         this.enabled = true;
+        collisionScript.CanCollide = true;
     }
 
     public void DeactivateMovement()
     {
+        collisionScript.CanCollide = false;
         this.enabled = false;
     }
 

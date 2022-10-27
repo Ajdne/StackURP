@@ -9,7 +9,6 @@ public interface IMovement
     // this is used in GM to respawn players
     void ActivateMovement();
     void DeactivateMovement();
-    void CollisionFall();
 
     // set move speed for players
     void SetMovementSpeed(float value);

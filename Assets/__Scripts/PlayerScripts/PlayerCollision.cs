@@ -7,6 +7,8 @@ public class PlayerCollision : MonoBehaviour
     private IStacking stackingScript;
     private IMovement movementScript;
     private Animator animator;
+    private bool canCollide = true;
+    public bool CanCollide { get { return canCollide; } set { canCollide = value; } }
 
     private void Start()
     {
@@ -18,7 +20,8 @@ public class PlayerCollision : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("Player") && 
+        if (other.gameObject.CompareTag("Player") &&
+            canCollide &&
             stackingScript.GetStackCount() < other.gameObject.GetComponent<IStacking>().GetStackCount())
         {
             // play animation
@@ -34,7 +37,7 @@ public class PlayerCollision : MonoBehaviour
             //stackingScript.RemoveAllStacks();
 
             // stop the player from moving during animation
-            movementScript.CollisionFall();
+            movementScript.DeactivateMovement();
 
             // activate movement again in the animation
 
