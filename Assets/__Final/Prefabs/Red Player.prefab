@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2111702590
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2111702591}
+  m_Layer: 10
+  m_Name: Crown Position (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2111702591
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2111702590}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.663381e-13, y: 0.0000000055879354, z: 0.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 510124378564242186}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &510124376915400086
 GameObject:
   m_ObjectHideFlags: 0
@@ -1937,7 +1968,8 @@ Transform:
   m_LocalPosition: {x: -0, y: 0.7560381, z: -0.049659394}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2111702591}
   m_Father: {fileID: 510124376938034313}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2355,6 +2387,7 @@ GameObject:
   - component: {fileID: 1182352281}
   - component: {fileID: -4053998934280375204}
   - component: {fileID: 4910705342816918252}
+  - component: {fileID: 1182352313}
   m_Layer: 11
   m_Name: Red Player
   m_TagString: Player
@@ -2415,6 +2448,7 @@ MonoBehaviour:
   lookRadius: 6
   stacksToCollect: 10
   agent: {fileID: 747908369124036925}
+  collisionScript: {fileID: 1182352313}
 --- !u!195 &747908369124036925
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2436,7 +2470,7 @@ NavMeshAgent:
   m_Height: 2
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 3
 --- !u!136 &6184160215195988555
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2466,7 +2500,7 @@ MonoBehaviour:
   raycastObj: {fileID: 510124377727295626}
   endComboTime: 0.5
   speedTrailParticle: {fileID: 1953156659474942324}
-  stateManager: {fileID: 0}
+  stateManager: {fileID: 1182352281}
 --- !u!114 &6184160215195988552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2610,39 +2644,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 6184160215195988548}
   aIStateManager: {fileID: 1182352281}
---- !u!1 &1953156659474942324
-GameObject:
+--- !u!114 &1182352313
+MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 4967246743926042183, guid: 43aa197e1647d3242bbec902689d2374,
-    type: 3}
-  m_PrefabInstance: {fileID: 6914209854330251059}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1953156659474942321}
-  m_Layer: 0
-  m_Name: 'SmokeTrail 3d (Missing Prefab with guid: 43aa197e1647d3242bbec902689d2374)'
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1953156659474942321
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 4967246743926042178, guid: 43aa197e1647d3242bbec902689d2374,
-    type: 3}
-  m_PrefabInstance: {fileID: 6914209854330251059}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1953156659474942324}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1199321543264496659}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_GameObject: {fileID: 1202639118336653937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe96d93539499349994c08caa9ae1ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2059414053798051128
 GameObject:
   m_ObjectHideFlags: 0
@@ -2889,6 +2902,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43aa197e1647d3242bbec902689d2374, type: 3}
+--- !u!4 &1953156659474942321 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4967246743926042178, guid: 43aa197e1647d3242bbec902689d2374,
+    type: 3}
+  m_PrefabInstance: {fileID: 6914209854330251059}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1953156659474942324 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4967246743926042183, guid: 43aa197e1647d3242bbec902689d2374,
+    type: 3}
+  m_PrefabInstance: {fileID: 6914209854330251059}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8449300375936228023
 PrefabInstance:
   m_ObjectHideFlags: 0

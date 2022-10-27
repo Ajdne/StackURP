@@ -47,7 +47,7 @@ public class EndPlatform : MonoBehaviour
     {
         for (int i = 0; i < endPlatforms.Count; i++)
         {
-            int xRange = (int)(endPlatforms.Count * 1.2f);
+            int xRange = endPlatforms.Count;
             int randomX = Random.Range(-xRange, xRange);
             yield return new WaitForSeconds(0.5f);
 
