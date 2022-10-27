@@ -45,7 +45,7 @@ public class PlayerCollision : MonoBehaviour
 
     IEnumerator DeactivateAnimation()
     {
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(2f);
 
         // deactivate animation
         //animator.SetBool("Collision", false);
