@@ -7,7 +7,7 @@ public class Platforms : MonoBehaviour
     [SerializeField] private List<Transform> waypointLocations;
     public List<Transform> WaypointLocations { get { return waypointLocations; } }
 
-    [SerializeField] private List<Transform> spawnCrossingLocations;
+    // [SerializeField] private List<Transform> spawnCrossingLocations;
 
     [SerializeField] private StackSpawn stackSpawnScript;
 
@@ -24,11 +24,11 @@ public class Platforms : MonoBehaviour
 
     private void Start()
     {
-        int randomCrossing = Random.Range(0, GameManager.Instance.Crossings.Count);
+        //int randomCrossing = Random.Range(0, GameManager.Instance.Crossings.Count);
 
-        for (int i = 0; i < spawnCrossingLocations.Count; i++)
-        {
-            Instantiate(GameManager.Instance.Crossings[randomCrossing], spawnCrossingLocations[i].position + new Vector3(0, 0, 0), Quaternion.identity);
-        }
+        //for (int i = 0; i < spawnCrossingLocations.Count; i++)
+        //{
+        //    Instantiate(GameManager.Instance.Crossings[randomCrossing], spawnCrossingLocations[i].position + new Vector3(0, 0, 0), Quaternion.identity);
+        //}
     }
 }
