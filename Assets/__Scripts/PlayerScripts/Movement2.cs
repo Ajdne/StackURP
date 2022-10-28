@@ -28,24 +28,15 @@ public class Movement2 : MonoBehaviour, IMovement
     private void Start()
     {
         player = GetComponent<CharacterController>();
-
-        CalculateCameraOffset();
+        
     }
 
     private void Update()
     {
-        //calculate the input after taking camera offset into account
-        Vector3 forwardRelativeMovement = joystick.Vertical * forwardOffset;
-        Vector3 rightRelativeMovement = joystick.Horizontal * rightOffset;
+        Vector3 moveDirection = new Vector3(joystick.Horizontal, 0f, joystick.Vertical);
 
-        //combine the raw input vectors with camera offset
-        Vector3 moveDirectionRaw = forwardRelativeMovement + rightRelativeMovement;
-
-        //finalize the movement direction by blocking the upward direction
-        Vector3 moveDirection = new Vector3(moveDirectionRaw.x, 0f, moveDirectionRaw.z);
-
-        if (joystick.Horizontal != 0 || joystick.Vertical != 0)
-        {
+        if(joystick.Horizontal != 0 || joystick.Vertical != 0)
+        {          
             Quaternion targetRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
 
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotateSpeed * Time.deltaTime);
@@ -136,7 +127,7 @@ public class Movement2 : MonoBehaviour, IMovement
             //Player.GetComponent<CapsuleCollider>().enabled = false;
             GetComponent<Rigidbody>().isKinematic = true;
         }
-        else ActivateMovement();
+       else  ActivateMovement();
 
     }
 }

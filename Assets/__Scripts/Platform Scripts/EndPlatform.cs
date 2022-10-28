@@ -11,7 +11,7 @@ public class EndPlatform : MonoBehaviour
     [SerializeField] private int numberOfEndPlatforms;
     [SerializeField] private GameObject particle;
 
-    [Header("Crown")]
+    [Header("Crown Settings"), Space(5f)]
     [SerializeField] private GiveCrown crownScript;
     
     [Space]
@@ -35,6 +35,9 @@ public class EndPlatform : MonoBehaviour
 
                 isFirst = other.gameObject;
 
+                // give crown to the first player
+                crownScript.GiveCrownToPlayer(crownScript.PlayerHeads[other.gameObject.layer - 10]);
+
                 if(other.gameObject.layer == 10 && !isTriggered) // blue player layer
                 {
                     // save player location
@@ -43,6 +46,8 @@ public class EndPlatform : MonoBehaviour
 
                     // camera transition by changing vcam priority
                     GameManager.Instance.CineCamera.Priority += 2;
+
+                    other.GetComponent<Movement2>().CalculateCameraOffset();
 
                     StartCoroutine(EndPlatformActivate());
 
