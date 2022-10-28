@@ -20,18 +20,32 @@ public class Movement2 : MonoBehaviour, IMovement
     private Vector3 respawnPosition;
     public Vector3 RespawnPosition { get { return respawnPosition; } set { respawnPosition = value; } }
 
+    public Transform camera;
+
+    private Vector3 forwardOffset;
+    private Vector3 rightOffset;
+
     private void Start()
     {
         player = GetComponent<CharacterController>();
-        
+
+        CalculateCameraOffset();
     }
 
     private void Update()
     {
-        Vector3 moveDirection = new Vector3(joystick.Horizontal, 0f, joystick.Vertical);
+        //calculate the input after taking camera offset into account
+        Vector3 forwardRelativeMovement = joystick.Vertical * forwardOffset;
+        Vector3 rightRelativeMovement = joystick.Horizontal * rightOffset;
 
-        if(joystick.Horizontal != 0 || joystick.Vertical != 0)
-        {          
+        //combine the raw input vectors with camera offset
+        Vector3 moveDirectionRaw = forwardRelativeMovement + rightRelativeMovement;
+
+        //finalize the movement direction by blocking the upward direction
+        Vector3 moveDirection = new Vector3(moveDirectionRaw.x, 0f, moveDirectionRaw.z);
+
+        if (joystick.Horizontal != 0 || joystick.Vertical != 0)
+        {
             Quaternion targetRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
 
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotateSpeed * Time.deltaTime);
@@ -57,6 +71,12 @@ public class Movement2 : MonoBehaviour, IMovement
     private void OnDisable()
     {
         player.enabled = false;
+    }
+
+    public void CalculateCameraOffset()
+    {
+        forwardOffset = camera.forward;
+        rightOffset = camera.right;
     }
 
     public void ActivateMovement()
