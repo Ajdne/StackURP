@@ -6,16 +6,11 @@ using UnityEngine;
 public class EndPlatform : MonoBehaviour
 {
     [SerializeField] private List<GameObject> endPlatforms;
-    [SerializeField] private List<GameObject> endPlatformMultipliers;
-    [SerializeField] private GameObject multiplierPlatformPrefab;
-    [SerializeField] private int numberOfEndPlatforms;
+
     [SerializeField] private GameObject particle;
 
     [Header("Crown Settings"), Space(5f)]
     [SerializeField] private GiveCrown crownScript;
-    
-    [Space]
-    [SerializeField] private Animator camAnimator;
 
     //private bool isFirst = true;
     private bool isTriggered = false;
@@ -29,6 +24,9 @@ public class EndPlatform : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            other.GetComponent<IMovement>().ReachFinish(true);
+            other.GetComponent<IMovement>().SetPlayerRespawnPosition(transform.position + new Vector3(0, 1, 0));
+
             if (isFirst == null && !isFirstTriggerd )
             {
                 isFirstTriggerd = true;
@@ -41,8 +39,11 @@ public class EndPlatform : MonoBehaviour
                 if(other.gameObject.layer == 10 && !isTriggered) // blue player layer
                 {
                     // save player location
-                    other.GetComponent<IMovement>().SetPlayerRespawnPosition(transform.position + new Vector3(0, 1, 0));
+                    //other.GetComponent<IMovement>().SetPlayerRespawnPosition(transform.position + new Vector3(0, 1, 0));
                     //GameManager.Instance.PlayerRespawnPos = transform.position + new Vector3(0, 1, 0);
+
+                    // give player shortcut run
+                    other.GetComponent<ShortCutRun>().enabled = true;
 
                     // camera transition by changing vcam priority
                     GameManager.Instance.CineCamera.Priority += 2;
@@ -66,7 +67,7 @@ public class EndPlatform : MonoBehaviour
                 // then its a bot
                 else
                 {
-                    other.GetComponent<IMovement>().SetPlayerRespawnPosition(transform.position + new Vector3(0, 1, 0));
+                    //other.GetComponent<IMovement>().SetPlayerRespawnPosition(transform.position + new Vector3(0, 1, 0));
                     other.GetComponent<EnemyAI>().SetPositionForVictoryEnd();
                     // turn off bot movement
 
@@ -83,6 +84,11 @@ public class EndPlatform : MonoBehaviour
             // then he is not first
             else if(isFirst != other.gameObject)
             {
+                // camera transition by changing vcam priority
+                if(other.gameObject.layer == 10)
+                    GameManager.Instance.CineCamera.Priority += 2;
+
+
                 // turn off movement
                 other.GetComponent<IMovement>().DeactivateMovement();
 
@@ -90,7 +96,7 @@ public class EndPlatform : MonoBehaviour
                 other.GetComponent<IStacking>().RemoveAllStacks();
 
                 // sad animation
-                other.GetComponent<Animator>().Play("Crying");
+                other.GetComponent<Animator>().Play("Disappointed");
             }
         }
     }

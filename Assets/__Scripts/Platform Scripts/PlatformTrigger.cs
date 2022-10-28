@@ -120,8 +120,5 @@ public class PlatformTrigger : MonoBehaviour
             //first disable boost
             other.gameObject.GetComponent<ShortCutRun>().DisableBoost();
         }
-
-        // then disable the script
-        //other.gameObject.GetComponent<ShortCutRun>().enabled = canShortcut;
     }
 }

@@ -18,4 +18,6 @@ public interface IMovement
     void SetPlayerRespawnPosition(Vector3 resPos);
 
     IEnumerator RespawnPlayer();
+
+    public void ReachFinish(bool reachFinish);
 }
