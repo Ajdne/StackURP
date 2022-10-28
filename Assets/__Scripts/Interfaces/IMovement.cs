@@ -20,4 +20,6 @@ public interface IMovement
     IEnumerator RespawnPlayer();
 
     public void ReachFinish(bool reachFinish);
+
+    public GameObject GetPlayerHead();
 }

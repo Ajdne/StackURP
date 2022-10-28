@@ -38,6 +38,9 @@ public class GameManager : MonoBehaviour
     private bool isEndGame;
     public bool IsEndGame { get { return isEndGame; } set { isEndGame = value; } }
 
+    //[Header("Time Settings"), Space(5f)]
+    //[SerializeField] private float testingScaleTime = 1;
+
     // *******************************************************************
     private void Awake()
     {
@@ -49,6 +52,8 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Physics.gravity *= 2;
+
+        //Time.timeScale = testingScaleTime;
 
         //playerAnimator = Player.GetComponent<Animator>();
 

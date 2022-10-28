@@ -143,11 +143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   neutralMaterial: {fileID: 2100000, guid: b0ce1a06ccfd04f49980d24a3fedc2a6, type: 2}
-  playerMaterials:
-  - {fileID: 2100000, guid: d363d1bd3ecea9742a3b70cb6f062ffb, type: 2}
-  - {fileID: 2100000, guid: 2aadcaaf4616d88429b622442407a505, type: 2}
-  - {fileID: 2100000, guid: 8cd9c3bccaf18a443b70c3fe0dff9984, type: 2}
-  - {fileID: 2100000, guid: 8a7cee6c45c7aee418a77d9944dc13b6, type: 2}
+  matHolder: {fileID: 11400000, guid: dcf57fac25654074e98eb1d2200a8158, type: 2}
   brickObj: {fileID: 5784688340862524640}
   mesh: {fileID: 3001646115603293204}
   isEnabled: 0

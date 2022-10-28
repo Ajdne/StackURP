@@ -27,6 +27,8 @@ public class Movement2 : MonoBehaviour, IMovement
 
     private bool finalPlatform;
 
+    [SerializeField] private GameObject playerHead;
+
     private void Start()
     {
         player = GetComponent<CharacterController>();
@@ -142,5 +144,10 @@ public class Movement2 : MonoBehaviour, IMovement
     public void ReachFinish(bool reachFinish)
     {
         finalPlatform = reachFinish;
+    }
+
+    public GameObject GetPlayerHead()
+    {
+        return playerHead;
     }
 }
