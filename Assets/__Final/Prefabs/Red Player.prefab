@@ -2451,6 +2451,7 @@ MonoBehaviour:
   agent: {fileID: 747908369124036925}
   collisionScript: {fileID: 1182352313}
   animator: {fileID: 6184160215195988548}
+  playerHead: {fileID: 2111702590}
 --- !u!195 &747908369124036925
 NavMeshAgent:
   m_ObjectHideFlags: 0

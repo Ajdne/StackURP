@@ -11,7 +11,9 @@ public class GiveCrown : MonoBehaviour
     [SerializeField] private ParticleSystem crownParticles;
 
     [Space]
-    [SerializeField] private List<GameObject> playerHeads = new List<GameObject>();
+    [Header("Players"), Space(5f)]
+    [SerializeField] private List<GameObject> players = new List<GameObject>();
+    private List<GameObject> playerHeads = new List<GameObject>();
     public List<GameObject> PlayerHeads { get { return playerHeads; } }
 
     [SerializeField] private int checkTimer;
@@ -21,7 +23,13 @@ public class GiveCrown : MonoBehaviour
     private void Start()
     {
         crownAnimator = crownPrefab.GetComponent<Animator>();
-        
+
+        // get players heads
+        for (int i = 0; i < players.Count; i++)
+        {
+            // populater the script
+            playerHeads.Add(players[i].GetComponent<IMovement>().GetPlayerHead());
+        }
     }
 
     void Update()

@@ -9,7 +9,7 @@ public class NeutralCollectable : MonoBehaviour
     [SerializeField] private Material neutralMaterial;
 
     // apply adequate material once collected
-    [SerializeField] private List<Material> playerMaterials;
+    [SerializeField] private MaterialHolderSO matHolder;
     // must be placed in the right order - same as player layers
     // number 0 in list is blue, 1 is red etc
 
@@ -28,7 +28,9 @@ public class NeutralCollectable : MonoBehaviour
         if (other.CompareTag("Player")  && isEnabled)
         {
             // check the layer of the player who collected the brick and use his color
-            mesh.material = playerMaterials[other.gameObject.layer - 10];
+            mesh.material = matHolder.PlayerMaterials[other.gameObject.layer - 10];
+
+            //mesh.material = playerMaterials[other.gameObject.layer - 10];
 
             other.GetComponent<IStacking>().AddMoneyToStack(this.gameObject);
 
