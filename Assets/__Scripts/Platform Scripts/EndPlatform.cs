@@ -10,36 +10,82 @@ public class EndPlatform : MonoBehaviour
     [SerializeField] private GameObject multiplierPlatformPrefab;
     [SerializeField] private int numberOfEndPlatforms;
     [SerializeField] private GameObject particle;
+
+    [Header("Crown")]
+    [SerializeField] private GiveCrown crownScript;
     
     [Space]
     [SerializeField] private Animator camAnimator;
 
-    private bool isTriggered;
+    //private bool isFirst = true;
+    private bool isTriggered = false;
+    private GameObject isFirst;
+
+    bool isFirstTriggerd;
+
+    
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.layer == 10 && !isTriggered)
+        if (other.CompareTag("Player"))
         {
-            // save player location
-            other.gameObject.GetComponent<IMovement>().SetPlayerRespawnPosition(transform.position + new Vector3(0, 1, 0));
-            //GameManager.Instance.PlayerRespawnPos = transform.position + new Vector3(0, 1, 0);
+            // change animation
+            if (isFirst == null && !isFirstTriggerd )
+            {
+                isFirstTriggerd = true;
 
-            // camera transition by changing vcam priority
-            GameManager.Instance.CineCamera.Priority += 2;
+                isFirst = other.gameObject;
 
-            StartCoroutine(EndPlatformActivate());
+                if(other.gameObject.layer == 10 && !isTriggered) // blue player layer
+                {
+                    Debug.Log("PRVI");
+                    // save player location
+                    other.GetComponent<IMovement>().SetPlayerRespawnPosition(transform.position + new Vector3(0, 1, 0));
+                    //GameManager.Instance.PlayerRespawnPos = transform.position + new Vector3(0, 1, 0);
 
-            // activate particle
-            //particle.SetActive(true);
+                    // camera transition by changing vcam priority
+                    GameManager.Instance.CineCamera.Priority += 2;
 
-            isTriggered = true;
+                    StartCoroutine(EndPlatformActivate());
 
-            GameManager.Instance.Player.GetComponent<Movement2>().MoveSpeed *= 1.1f;
+                    // activate particle
+                    //particle.SetActive(true);
 
-            // activate BOOL for dance animation
-            GameManager.Instance.IsEndGame = true;
+                    isTriggered = true;
+                    
 
-            GetComponent<GiveCrown>().enabled = false;
+                    other.GetComponent<Movement2>().MoveSpeed *= 1.1f;
+
+                    // activate BOOL for dance animation
+                    GameManager.Instance.IsEndGame = true;
+
+                }
+
+                // then its a bot
+                else
+                {
+                    Debug.Log("BOT JE PRIV");
+                    // turn off bot movement
+                    other.GetComponent<IMovement>().DeactivateMovement();
+
+                    // dance animation
+                    //other.GetComponent<Animator>().Play("Dance");
+                }
+
+                // turn of crown holder change
+                crownScript.enabled = false;
+               // isFirst = false;
+            }
+            // then he is not first
+            else
+            {
+                Debug.Log("NIJE PRVI");
+                // turn off movement
+                other.GetComponent<IMovement>().DeactivateMovement();
+
+                // sad animation
+                //other.GetComponent<Animator>().Play("Sad");
+            }
         }
     }
    
