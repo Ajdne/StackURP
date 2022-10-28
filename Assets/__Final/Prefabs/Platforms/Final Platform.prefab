@@ -1814,6 +1814,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: platforma2
       objectReference: {fileID: 0}
+    - target: {fileID: 2807716453999248334, guid: aa92fbcf0807de44a9e9868fcb230323,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 3295741650073377140, guid: aa92fbcf0807de44a9e9868fcb230323,
         type: 3}
       propertyPath: m_RootOrder
@@ -1877,6 +1882,7 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: -4424120532895306120, guid: aa92fbcf0807de44a9e9868fcb230323, type: 3}
     - {fileID: 1047098433863121687, guid: aa92fbcf0807de44a9e9868fcb230323, type: 3}
+    - {fileID: 6846789543522557340, guid: aa92fbcf0807de44a9e9868fcb230323, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: aa92fbcf0807de44a9e9868fcb230323, type: 3}
 --- !u!1 &5902308045345897162 stripped
 GameObject:
@@ -1937,9 +1943,31 @@ MonoBehaviour:
   endPlatformMultipliers: []
   multiplierPlatformPrefab: {fileID: 5174468478857700337, guid: af201209f38b38441b7a7107f84f6b56,
     type: 3}
-  numberOfEndPlatforms: 8
+  numberOfEndPlatforms: 10
   particle: {fileID: 0}
+  crownScript: {fileID: 1002425564}
   camAnimator: {fileID: 0}
+--- !u!114 &1002425564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5902308045345897162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7ed7063a5052724590deec2db00b385, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crownPrefab: {fileID: 0}
+  crownAnimator: {fileID: 0}
+  crownParticles: {fileID: 0}
+  playerHeads:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  checkTimer: 5
 --- !u!4 &6531034514145534064 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3295741650073377140, guid: aa92fbcf0807de44a9e9868fcb230323,
