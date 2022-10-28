@@ -635,6 +635,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1703365426}
+  - {fileID: 1897695870023777862}
   m_Father: {fileID: 969762494509621082}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1358,6 +1359,7 @@ GameObject:
   - component: {fileID: 969762494618118787}
   - component: {fileID: 969762494618118786}
   - component: {fileID: 699894043}
+  - component: {fileID: 4962963859153843422}
   m_Layer: 10
   m_Name: Basic-Stickman
   m_TagString: Untagged
@@ -1486,6 +1488,24 @@ SkinnedMeshRenderer:
     m_Extent: {x: 1.3441322, y: 1.3852838, z: 0.46953988}
   m_DirtyAABB: 0
 --- !u!114 &699894043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 969762494618118784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0, g: 0, b: 0, a: 1}
+  outlineWidth: 1.5
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+--- !u!114 &4962963859153843422
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2383,8 +2403,8 @@ GameObject:
   - component: {fileID: 6896020662830930331}
   - component: {fileID: 6896020662830930327}
   - component: {fileID: 6896020662830930326}
-  - component: {fileID: 1707018181032602520}
   - component: {fileID: 1707018181032602532}
+  - component: {fileID: 1707018181032602520}
   m_Layer: 10
   m_Name: Micko (1)
   m_TagString: Player
@@ -2663,6 +2683,18 @@ MonoBehaviour:
   animator: {fileID: 6896020662830930327}
   speed: 15
   rotateSpeed: 100
+--- !u!114 &1707018181032602532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932531713802981794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe96d93539499349994c08caa9ae1ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!208 &1707018181032602520
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -2679,18 +2711,37 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 1.05, z: 0}
   m_TimeToStationary: 0.5
---- !u!114 &1707018181032602532
-MonoBehaviour:
+--- !u!1 &8830831585849482349
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1932531713802981794}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fe96d93539499349994c08caa9ae1ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1897695870023777862}
+  m_Layer: 10
+  m_Name: Crown Position
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1897695870023777862
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8830831585849482349}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.663381e-13, y: 0.0000000055879354, z: 0.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 969762493951901913}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &791604076855705278
 PrefabInstance:
   m_ObjectHideFlags: 0

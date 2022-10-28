@@ -11,7 +11,7 @@ public class EndPlatform : MonoBehaviour
     [SerializeField] private int numberOfEndPlatforms;
     [SerializeField] private GameObject particle;
 
-    [Header("Crown")]
+    [Header("Crown Settings"), Space(5f)]
     [SerializeField] private GiveCrown crownScript;
     
     [Space]
@@ -29,22 +29,25 @@ public class EndPlatform : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            // change animation
             if (isFirst == null && !isFirstTriggerd )
             {
                 isFirstTriggerd = true;
 
                 isFirst = other.gameObject;
 
+                // give crown to the first player
+                crownScript.GiveCrownToPlayer(crownScript.PlayerHeads[other.gameObject.layer - 10]);
+
                 if(other.gameObject.layer == 10 && !isTriggered) // blue player layer
                 {
-                    Debug.Log("PRVI");
                     // save player location
                     other.GetComponent<IMovement>().SetPlayerRespawnPosition(transform.position + new Vector3(0, 1, 0));
                     //GameManager.Instance.PlayerRespawnPos = transform.position + new Vector3(0, 1, 0);
 
                     // camera transition by changing vcam priority
                     GameManager.Instance.CineCamera.Priority += 2;
+
+                    other.GetComponent<Movement2>().CalculateCameraOffset();
 
                     StartCoroutine(EndPlatformActivate());
 
@@ -60,13 +63,14 @@ public class EndPlatform : MonoBehaviour
                     GameManager.Instance.IsEndGame = true;
 
                 }
-
                 // then its a bot
                 else
                 {
-                    Debug.Log("BOT JE PRIV");
+                    other.GetComponent<IMovement>().SetPlayerRespawnPosition(transform.position + new Vector3(0, 1, 0));
+                    other.GetComponent<EnemyAI>().SetPositionForVictoryEnd();
                     // turn off bot movement
-                    other.GetComponent<IMovement>().DeactivateMovement();
+
+                    
 
                     // dance animation
                     //other.GetComponent<Animator>().Play("Dance");
@@ -77,14 +81,16 @@ public class EndPlatform : MonoBehaviour
                // isFirst = false;
             }
             // then he is not first
-            else
+            else if(isFirst != other.gameObject)
             {
-                Debug.Log("NIJE PRVI");
                 // turn off movement
                 other.GetComponent<IMovement>().DeactivateMovement();
 
+                // remove leftover stacks from player
+                other.GetComponent<IStacking>().RemoveAllStacks();
+
                 // sad animation
-                //other.GetComponent<Animator>().Play("Sad");
+                other.GetComponent<Animator>().Play("Crying");
             }
         }
     }

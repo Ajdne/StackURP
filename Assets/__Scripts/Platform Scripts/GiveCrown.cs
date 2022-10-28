@@ -12,6 +12,8 @@ public class GiveCrown : MonoBehaviour
 
     [Space]
     [SerializeField] private List<GameObject> playerHeads = new List<GameObject>();
+    public List<GameObject> PlayerHeads { get { return playerHeads; } }
+
     [SerializeField] private int checkTimer;
 
     private float timer;
@@ -36,16 +38,7 @@ public class GiveCrown : MonoBehaviour
             // need to check this condition to prevent animation poping every time
             if (crownPrefab.transform.parent != closestToFinishLine.transform)
             {
-                crownPrefab.transform.parent = closestToFinishLine.transform;
-                crownPrefab.transform.position = closestToFinishLine.transform.position;
-                crownPrefab.transform.rotation = closestToFinishLine.transform.rotation;
-
-                // play crown pop animation
-                crownAnimator.Play("CrownPop");
-
-                // play particles
-                crownParticles.Play();
-                //emission1.enabled=true;
+                GiveCrownToPlayer(closestToFinishLine);
             }
 
             // reset the timer
@@ -66,5 +59,18 @@ public class GiveCrown : MonoBehaviour
         {
             return obj2;
         }
+    }
+
+    public void GiveCrownToPlayer(GameObject playerHead)
+    {
+        crownPrefab.transform.parent = playerHead.transform;
+        crownPrefab.transform.position = playerHead.transform.position;
+        crownPrefab.transform.rotation = playerHead.transform.rotation;
+
+        // play crown pop animation
+        crownAnimator.Play("CrownPop");
+
+        // play particles
+        crownParticles.Play();
     }
 }
