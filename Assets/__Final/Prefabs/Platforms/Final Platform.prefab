@@ -2865,11 +2865,7 @@ MonoBehaviour:
   crownPrefab: {fileID: 5658449264048658096}
   crownAnimator: {fileID: 8716744822444907602}
   crownParticles: {fileID: 2329021733081581862}
-  playerHeads:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  players: []
   checkTimer: 5
 --- !u!114 &8583358241480685836
 MonoBehaviour:
