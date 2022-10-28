@@ -105,7 +105,7 @@ public class EndPlatform : MonoBehaviour
     {
         for (int i = 0; i < endPlatforms.Count; i++)
         {
-            int xRange = endPlatforms.Count;
+            int xRange = i + 2;
             int randomX = Random.Range(-xRange, xRange);
             yield return new WaitForSeconds(0.5f);
 

@@ -16,6 +16,9 @@ public class EnemyAI : MonoBehaviour, IMovement
     [SerializeField] private PlayerCollision collisionScript;
     [SerializeField] private Animator animator;
 
+    [Header("Player Head"), Space(5f)]
+    [SerializeField] private GameObject playerHead;
+
     private Vector3 respawnPosition;
     //public Vector3 RespawnPosition { get { return respawnPosition; } set { respawnPosition = value; } }
     private GameManager gm;
@@ -110,5 +113,10 @@ public class EnemyAI : MonoBehaviour, IMovement
     public void ReachFinish(bool reachFinish)
     {
         finalPlatform = reachFinish;
+    }
+
+    public GameObject GetPlayerHead()
+    {
+        return playerHead;
     }
 }
