@@ -1362,6 +1362,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8583358241178393804}
     m_Modifications:
+    - target: {fileID: 3493127218613582573, guid: 271938400b0c1e247bac25f7b78c6d08,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31c3a8022db44b34cb69edf0f25b18c7, type: 2}
     - target: {fileID: 3681615996817763333, guid: 271938400b0c1e247bac25f7b78c6d08,
         type: 3}
       propertyPath: m_Name
@@ -1422,6 +1427,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6040416443497844143, guid: 271938400b0c1e247bac25f7b78c6d08,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31c3a8022db44b34cb69edf0f25b18c7, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 271938400b0c1e247bac25f7b78c6d08, type: 3}
 --- !u!4 &7155534426762625505 stripped
@@ -1917,6 +1927,27 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 12.313265, y: 3.4674695, z: 7.171076}
   m_Center: {x: 0.0019683838, y: 1.742823, z: -3.5}
+--- !u!114 &1002425564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5902308045345897162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7ed7063a5052724590deec2db00b385, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crownPrefab: {fileID: 0}
+  crownAnimator: {fileID: 0}
+  crownParticles: {fileID: 0}
+  playerHeads:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  checkTimer: 5
 --- !u!114 &8583358241480685836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1947,27 +1978,6 @@ MonoBehaviour:
   particle: {fileID: 0}
   crownScript: {fileID: 1002425564}
   camAnimator: {fileID: 0}
---- !u!114 &1002425564
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5902308045345897162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7ed7063a5052724590deec2db00b385, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  crownPrefab: {fileID: 0}
-  crownAnimator: {fileID: 0}
-  crownParticles: {fileID: 0}
-  playerHeads:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  checkTimer: 5
 --- !u!4 &6531034514145534064 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3295741650073377140, guid: aa92fbcf0807de44a9e9868fcb230323,
