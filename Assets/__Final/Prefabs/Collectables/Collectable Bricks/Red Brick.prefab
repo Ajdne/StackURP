@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 6746228724515510626}
   - component: {fileID: -5313990893456456460}
   - component: {fileID: -2402270379825739122}
+  - component: {fileID: 7780179268052833758}
   m_Layer: 11
   m_Name: Red Brick
   m_TagString: Untagged
@@ -150,6 +151,25 @@ MonoBehaviour:
   brickObj: {fileID: 5784688340862524640}
   mesh: {fileID: 3001646115603293204}
   isEnabled: 0
+  outline: {fileID: 7780179268052833758}
+--- !u!114 &7780179268052833758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4496396300652943561}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0, g: 0, b: 0, a: 1}
+  outlineWidth: 1.5
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1001 &4487711099184370173
 PrefabInstance:
   m_ObjectHideFlags: 0
