@@ -25,6 +25,8 @@ public class Movement2 : MonoBehaviour, IMovement
     private Vector3 forwardOffset;
     private Vector3 rightOffset;
 
+    private bool finalPlatform;
+
     private void Start()
     {
         player = GetComponent<CharacterController>();
@@ -133,7 +135,12 @@ public class Movement2 : MonoBehaviour, IMovement
             //Player.GetComponent<CapsuleCollider>().enabled = false;
             GetComponent<Rigidbody>().isKinematic = true;
         }
-       else  ActivateMovement();
+       else if(!finalPlatform) ActivateMovement();
 
+    }
+
+    public void ReachFinish(bool reachFinish)
+    {
+        finalPlatform = reachFinish;
     }
 }

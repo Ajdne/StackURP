@@ -20,6 +20,8 @@ public class EnemyAI : MonoBehaviour, IMovement
     //public Vector3 RespawnPosition { get { return respawnPosition; } set { respawnPosition = value; } }
     private GameManager gm;
 
+    private bool finalPlatform;
+
     private void Start()
     {
         gm = GameManager.Instance;
@@ -103,5 +105,10 @@ public class EnemyAI : MonoBehaviour, IMovement
     public void IncreaseMovementSpeed(float value)
     {
         throw new System.NotImplementedException();
+    }
+
+    public void ReachFinish(bool reachFinish)
+    {
+        finalPlatform = reachFinish;
     }
 }
