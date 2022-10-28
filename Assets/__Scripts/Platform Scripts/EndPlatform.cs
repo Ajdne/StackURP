@@ -33,6 +33,9 @@ public class EndPlatform : MonoBehaviour
 
                 isFirst = other.gameObject;
 
+                // activate confetti particles
+                particle.SetActive(true);
+
                 // give crown to the first player
                 crownScript.GiveCrownToPlayer(crownScript.PlayerHeads[other.gameObject.layer - 10]);
 
