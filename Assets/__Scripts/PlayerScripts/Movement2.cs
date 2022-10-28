@@ -29,13 +29,19 @@ public class Movement2 : MonoBehaviour, IMovement
     {
         player = GetComponent<CharacterController>();
         
+        CalculateCameraOffset();
     }
 
     private void Update()
     {
-        Vector3 moveDirection = new Vector3(joystick.Horizontal, 0f, joystick.Vertical);
+        //apply the current camera's offset to the joystick input
+        Vector3 forwardRelativeDirection = joystick.Vertical * forwardOffset;
+        Vector3 rightRelativeDirection = joystick.Horizontal * rightOffset;
 
-        if(joystick.Horizontal != 0 || joystick.Vertical != 0)
+        Vector3 moveDirectionRaw = forwardRelativeDirection + rightRelativeDirection; //combine the player's input with the offset
+        Vector3 moveDirection = new Vector3(moveDirectionRaw.x, 0f, moveDirectionRaw.z); //calculate the normalized movement direction by blocking the movement on the Y-axis
+
+        if (joystick.Horizontal != 0 || joystick.Vertical != 0)
         {          
             Quaternion targetRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
 
