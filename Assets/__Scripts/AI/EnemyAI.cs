@@ -14,10 +14,16 @@ public class EnemyAI : MonoBehaviour, IMovement
     [SerializeField] private NavMeshAgent agent;
 
     [SerializeField] private PlayerCollision collisionScript;
+    [SerializeField] private Animator animator;
 
     private Vector3 respawnPosition;
     //public Vector3 RespawnPosition { get { return respawnPosition; } set { respawnPosition = value; } }
+    private GameManager gm;
 
+    private void Start()
+    {
+        gm = GameManager.Instance;
+    }
 
     private void OnDrawGizmosSelected()
     {
@@ -61,19 +67,37 @@ public class EnemyAI : MonoBehaviour, IMovement
         transform.rotation = Quaternion.Euler(0, 180, 0);
         transform.position = respawnPosition;
 
-        //if (IsEndGame)
+        //if (gm.IsEndGame)
         //{
-        //    playerAnimator.SetBool("Idle", false);
-        //    playerAnimator.SetBool("Run", false);
-        //    playerAnimator.SetBool("Dance", true);
+        //    animator.SetBool("Idle", false);
+        //    animator.SetBool("Run", false);
+        //    animator.SetBool("Dance", true);
 
         //    // dont activate player movement
         //    //Player.GetComponent<CapsuleCollider>().enabled = false;
-        //    Player.GetComponent<Rigidbody>().isKinematic = true;
+        //    GetComponent<Rigidbody>().isKinematic = true;
         //}
-        
-        ActivateMovement();
+        //else
 
+        ActivateMovement();
+    }
+
+    public void SetPositionForVictoryEnd()
+    {
+        // remove leftover stacks from player
+        GetComponent<IStacking>().RemoveAllStacks();
+
+        // need to disable movement script in order to move him
+        DeactivateMovement();
+
+        transform.rotation = Quaternion.Euler(0, 180, 0);
+        transform.position = respawnPosition;
+
+        animator.Play("Dancing");
+
+        //animator.SetBool("Idle", false);
+        //animator.SetBool("Run", false);
+        //animator.SetBool("Dance", true);
     }
 
     public void IncreaseMovementSpeed(float value)
