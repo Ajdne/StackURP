@@ -6,16 +6,11 @@ using UnityEngine;
 public class EndPlatform : MonoBehaviour
 {
     [SerializeField] private List<GameObject> endPlatforms;
-    [SerializeField] private List<GameObject> endPlatformMultipliers;
-    [SerializeField] private GameObject multiplierPlatformPrefab;
-    [SerializeField] private int numberOfEndPlatforms;
+
     [SerializeField] private GameObject particle;
 
     [Header("Crown Settings"), Space(5f)]
     [SerializeField] private GiveCrown crownScript;
-    
-    [Space]
-    [SerializeField] private Animator camAnimator;
 
     //private bool isFirst = true;
     private bool isTriggered = false;
@@ -46,6 +41,9 @@ public class EndPlatform : MonoBehaviour
                     // save player location
                     //other.GetComponent<IMovement>().SetPlayerRespawnPosition(transform.position + new Vector3(0, 1, 0));
                     //GameManager.Instance.PlayerRespawnPos = transform.position + new Vector3(0, 1, 0);
+
+                    // give player shortcut run
+                    other.GetComponent<ShortCutRun>().enabled = true;
 
                     // camera transition by changing vcam priority
                     GameManager.Instance.CineCamera.Priority += 2;
