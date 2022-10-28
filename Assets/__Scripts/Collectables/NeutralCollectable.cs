@@ -13,9 +13,13 @@ public class NeutralCollectable : MonoBehaviour
     // must be placed in the right order - same as player layers
     // number 0 in list is blue, 1 is red etc
 
+    [Space]
     [SerializeField] private BoxCollider brickObj;
     [SerializeField] private MeshRenderer mesh; // material component of this collectable
     [SerializeField] private bool isEnabled;
+
+    [Space(5f)]
+    [SerializeField] private Outline outline;
 
     void OnTriggerEnter(Collider other)
     {
@@ -28,12 +32,11 @@ public class NeutralCollectable : MonoBehaviour
 
             other.GetComponent<IStacking>().AddMoneyToStack(this.gameObject);
 
+            outline.enabled = false;
 
             // return the layer to default
             // need this in order for shortcut run to work properly
             //this.gameObject.layer = 0;
-
-    
         }
 
         //if (other.gameObject.layer == 6) // platform layer
@@ -48,6 +51,8 @@ public class NeutralCollectable : MonoBehaviour
 
         // enable box collider
         brickObj.enabled = true;
+
+        outline.enabled = true;
 
         yield return new WaitForSeconds(1);
         isEnabled = true;
