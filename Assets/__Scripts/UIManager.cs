@@ -12,14 +12,14 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject pauseButton;
     [SerializeField] private GameObject levelComplete; 
-    [SerializeField] private GameObject startGame; 
+    [SerializeField] private GameObject startGame;
+    [SerializeField] private GameObject endGame;
 
     [SerializeField] private GameObject joystick;
 
     private void Awake()
     {
         Instance = this;
-      
     }
 
     void Start()
@@ -81,4 +81,14 @@ public class UIManager : MonoBehaviour
     #endregion
     #endregion
 
+
+    public void CheckLevelEnd()
+    {
+        
+    }
+
+    public void NextLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+    }
 }
