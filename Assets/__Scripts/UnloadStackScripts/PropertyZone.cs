@@ -10,6 +10,10 @@ public class PropertyZone : MonoBehaviour
     [SerializeField] private GameObject propertyObj;
     [SerializeField] private GameObject endGate;
 
+    [Header("List of positions for stacks"), Space(10f)]
+    [SerializeField] private List<GameObject> bridgeStackLocations;
+    
+
     // waypoint for AI
     [SerializeField] private Transform endPoint;
 
@@ -49,8 +53,11 @@ public class PropertyZone : MonoBehaviour
                 if(stackingScript.GetStackCount() > 0 && buildCount < stacksToUnlockGate)
                 {
                     buildCount++;
-                    // remove money from the stack
-                    stackingScript.RemoveMoneyToProperty(propertyObj.transform.position + new Vector3(0, 0, -8 + buildCount * 0.75f), false);
+
+                    // remove money from the stack to the right bridge location
+                    stackingScript.RemoveMoneyToProperty(bridgeStackLocations[buildCount-1].transform, false);
+
+                    //stackingScript.RemoveMoneyToProperty(propertyObj.transform.position + new Vector3(0, 0, -8 + buildCount * 0.75f), false);
 
                     stayTimer = 0;
                 }

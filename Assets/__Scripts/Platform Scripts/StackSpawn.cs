@@ -31,23 +31,17 @@ public class StackSpawn : MonoBehaviour
 
     void Update()
     {
-        for (int i = 0; i < unlockedStacksToSpawn.Count; i++)
-        {
-            spawnTime += Time.deltaTime;
+        spawnTime += Time.deltaTime;
 
-            if (spawnTime > stackSpawnTime) // && stacksOnPlat.Count < maxStacks)
+        if (spawnTime > stackSpawnTime) // && stacksOnPlat.Count < maxStacks)
+        {
+            for (int i = 0; i < unlockedStacksToSpawn.Count; i++)
             {
-                SpawnWithRayCast(unlockedStacksToSpawn[i]);
-             
-                //// if its time to spawn for blue player, spawn it again, to make it easier
-                //if(i == 0)
-                //{
-                //    SpawnWithRayCast(unlockedStacksToSpawn[i]);
-                //}
-                
-                // reset the timer
-                spawnTime = 0;
+                SpawnWithRayCast(unlockedStacksToSpawn[i]);                
             }
+
+            // reset the timer
+            spawnTime = 0;
         }    
     }
 
@@ -74,8 +68,14 @@ public class StackSpawn : MonoBehaviour
         {
             if (hit.transform.gameObject.layer == 6) // platform layer
             {
-                Instantiate(stackPref, hit.point + new Vector3(0, stackPref.transform.localScale.y /2, 0), Quaternion.identity);
+                Instantiate(stackPref, hit.point + new Vector3(0, stackPref.transform.localScale.y / 2, 0), Quaternion.identity);
             }
+
+            /* 
+             * Making this function recursive would make the game more "fair"
+             * but with a small risk of potential stack overflow
+             */
+            //else SpawnWithRayCast(stackPref);
         }
     }
 

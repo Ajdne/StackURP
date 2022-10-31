@@ -9,7 +9,7 @@ public interface IStacking
     void DivideStack(int divideTheStackBy);
     void RemoveAllStacks();
     void LoseStacks();
-    void RemoveMoneyToProperty(Vector3 objPos, bool destroy);
+    void RemoveMoneyToProperty(Transform objPos, bool destroy);
     void RemoveStackToShortcut(Vector3 objPos);
     public int GetStackCount();
 }

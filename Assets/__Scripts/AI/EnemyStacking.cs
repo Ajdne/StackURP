@@ -113,7 +113,7 @@ public class EnemyStacking : MonoBehaviour, IStacking
         }
     }
 
-    public void RemoveMoneyToProperty(Vector3 objPos, bool destroy)
+    public void RemoveMoneyToProperty(Transform objPos, bool destroy)
     {
         // local obj
         GameObject moneyObj = stacked[stacked.Count - 1];

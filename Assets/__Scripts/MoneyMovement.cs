@@ -11,11 +11,11 @@ public class MoneyMovement : MonoBehaviour
 
     [SerializeField] private BoxCollider collider; // the non-trigger collider
 
-    private Vector3 moveToVector;
+    private Transform moveToVector;
     private bool destroyStack;
     private Transform backpack;
 
-    public void SetMoveToVector(Vector3 obj, bool destroy)
+    public void SetMoveToVector(Transform obj, bool destroy)
     {
         moveToVector = obj;
         destroyStack = destroy;
@@ -28,11 +28,10 @@ public class MoneyMovement : MonoBehaviour
 
     void Update()
     {
-        
-        transform.position = Vector3.MoveTowards(transform.position, moveToVector, speed * Time.deltaTime);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(Vector3.forward), rotateSpeed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, moveToVector.position, speed * Time.deltaTime);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, moveToVector.localEulerAngles.y, 0), rotateSpeed * Time.deltaTime);
 
-        if (transform.position == moveToVector)
+        if (transform.position == moveToVector.position)
         {
             if(destroyStack)
             {
