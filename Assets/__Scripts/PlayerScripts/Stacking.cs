@@ -36,6 +36,17 @@ public class Stacking : MonoBehaviour , IStacking
         }
     }
 
+
+// ----------------- CHEAT FOR TESTING ---------------
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            InstantiateToStack(40);
+        }
+    }
+// ----------------- ---------------- ---------------
+
     public void AddMoneyToStack(GameObject moneyObj)
     {
         // add obj to list
