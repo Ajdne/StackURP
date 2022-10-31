@@ -26,6 +26,7 @@ public class EndPlatform : MonoBehaviour
         {
             other.GetComponent<IMovement>().ReachFinish(true);
             other.GetComponent<IMovement>().SetPlayerRespawnPosition(transform.position + new Vector3(0, 1, 0));
+            other.GetComponent<Rigidbody>().isKinematic = true;
 
             if (isFirst == null && !isFirstTriggerd )
             {
@@ -90,7 +91,6 @@ public class EndPlatform : MonoBehaviour
                 // camera transition by changing vcam priority
                 if(other.gameObject.layer == 10)
                     GameManager.Instance.CineCamera.Priority += 2;
-
 
                 // turn off movement
                 other.GetComponent<IMovement>().DeactivateMovement();
