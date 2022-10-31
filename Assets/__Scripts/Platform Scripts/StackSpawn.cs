@@ -74,8 +74,9 @@ public class StackSpawn : MonoBehaviour
         {
             if (hit.transform.gameObject.layer == 6) // platform layer
             {
-                Instantiate(stackPref, hit.point + new Vector3(0, stackPref.transform.localScale.y /2, 0), Quaternion.identity);
+                Instantiate(stackPref, hit.point + new Vector3(0, stackPref.transform.localScale.y / 2, 0), Quaternion.identity);
             }
+            else SpawnWithRayCast(stackPref);
         }
     }
 
