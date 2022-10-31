@@ -42,7 +42,7 @@ public class ConstructTransportZone : MonoBehaviour
             if (stayTimer > 0.1f && elementCounter != elements.Count && other.GetComponent<IStacking>().GetStackCount() > 0)
             {
                 // remove money from the stack
-                other.gameObject.GetComponent<IStacking>().RemoveMoneyToProperty(elements[elementCounter].transform.position, true);
+                other.gameObject.GetComponent<IStacking>().RemoveMoneyToProperty(elements[elementCounter].transform, true);
 
                 ActivateBoatFragments(other.gameObject);
             }
