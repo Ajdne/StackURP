@@ -25,7 +25,7 @@ public class EndPlatform : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             other.GetComponent<IMovement>().ReachFinish(true);
-            other.GetComponent<IMovement>().SetPlayerRespawnPosition(transform.position + new Vector3(0, 1, 0));
+            other.GetComponent<IMovement>().SetPlayerRespawnPosition(transform.position + new Vector3(0, 1, 2));
             other.GetComponent<Rigidbody>().isKinematic = true;
 
             if (isFirst == null && !isFirstTriggerd )

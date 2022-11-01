@@ -222,7 +222,7 @@ GameObject:
   m_Layer: 0
   m_Name: endPoint
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -2613,22 +2613,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.003, y: 0.005947041, z: 0.011049499}
   m_Center: {x: 0.0002784377, y: -0.0029739605, z: 0.0055247364}
---- !u!208 &2812622266313177293
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1011209368408758922}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.0005, y: 0.003, z: 0.006}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: -0.003, z: 0.006}
-  m_TimeToStationary: 0.5
 --- !u!23 &2029279523455455964 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 2634737893634761457, guid: 8fe02d59b17eafa42a0da00b964622c7,
@@ -2690,22 +2674,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.003, y: 0.0059458013, z: 0.011049499}
   m_Center: {x: -0.0002777772, y: -0.0029733407, z: 0.0055247364}
---- !u!208 &996703241909549345
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7356181364015003422}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.0005, y: 0.003, z: 0.006}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: -0.003, z: 0.006}
-  m_TimeToStationary: 0.5
 --- !u!23 &8026956713159823426 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 6331058614081495151, guid: 8fe02d59b17eafa42a0da00b964622c7,
@@ -2772,6 +2740,8 @@ MonoBehaviour:
   stacksNeeded: 30
   gateAnimator: {fileID: 2182839878280093508}
   bridgeScript: {fileID: 3083480724365482391}
+  leftGateCollider: {fileID: 6562897521624117158}
+  rightGateCollider: {fileID: 9035315378761363678}
   particleSys1: {fileID: 1951862209109181238}
   particleSys2: {fileID: 4110140680351000463}
   matHolder: {fileID: 11400000, guid: dcf57fac25654074e98eb1d2200a8158, type: 2}
@@ -5186,6 +5156,8 @@ MonoBehaviour:
   stacksNeeded: 2
   gateAnimator: {fileID: 6854591008495698429}
   bridgeScript: {fileID: 3083480724365482391}
+  leftGateCollider: {fileID: 891746706811715711}
+  rightGateCollider: {fileID: 3510185170353114773}
   particleSys1: {fileID: 939911156331889993}
   particleSys2: {fileID: 5309104822626800508}
   matHolder: {fileID: 11400000, guid: dcf57fac25654074e98eb1d2200a8158, type: 2}
@@ -5223,22 +5195,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.00056022534, y: 0.0059458013, z: 0.011049499}
   m_Center: {x: -0.0002777772, y: -0.0029733407, z: 0.0055247364}
---- !u!208 &3434908956533010667
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3900173309352149129}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.00001, y: 0.003, z: 0.006}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: -0.003, z: 0.006}
-  m_TimeToStationary: 0.5
 --- !u!23 &4563043169558030293 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 6331058614081495151, guid: 8fe02d59b17eafa42a0da00b964622c7,
@@ -5276,22 +5232,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.0005602253, y: 0.005947041, z: 0.011049499}
   m_Center: {x: 0.0002784377, y: -0.0029739605, z: 0.0055247364}
---- !u!208 &3240620403247764473
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6791107851610647837}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.00001, y: 0.003, z: 0.006}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: -0.003, z: 0.006}
-  m_TimeToStationary: 0.5
 --- !u!23 &7684520679163603168 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 156422047335378778, guid: 8fe02d59b17eafa42a0da00b964622c7,

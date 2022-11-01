@@ -13,12 +13,14 @@ GameObject:
   - component: {fileID: 6924233241691125191}
   - component: {fileID: -3424655352192071874}
   - component: {fileID: 4463223708808533010}
-  m_Layer: 0
+  - component: {fileID: 3355015078417077970}
+  - component: {fileID: 9017571649720535709}
+  m_Layer: 6
   m_Name: platforma8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8096625157443718824
 Transform:
@@ -98,11 +100,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d29c94831fa085a46a9150dfb6f4bf85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crossingLocations: []
+  waypointLocations: []
   stackSpawnScript: {fileID: 3663947868726047800, guid: be05402a937e4664798fcd8ac4ae0ea8,
     type: 3}
   respawnPosObj: {fileID: 0}
   triggerCollider: {fileID: 0}
+  canUseShortcut: 0
+  stacksToCollect: 0
 --- !u!114 &4463223708808533010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,6 +121,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialNumberOfStacks: 10
   stackSpawnTime: 0.5
+--- !u!114 &3355015078417077970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8869607479057372178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5961f875e3365e40ac3b63124460b44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnTime: 0
+--- !u!64 &9017571649720535709
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8869607479057372178}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3565023736705746690, guid: 380494fdf9d1f1b4bb13f9a6db117c66, type: 3}
 --- !u!1001 &8635165012785242581
 PrefabInstance:
   m_ObjectHideFlags: 0

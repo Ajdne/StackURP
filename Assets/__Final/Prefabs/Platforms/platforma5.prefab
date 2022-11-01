@@ -15,12 +15,12 @@ GameObject:
   - component: {fileID: -8181666563687097759}
   - component: {fileID: 3988371121617755792}
   - component: {fileID: 5226296726792320897}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: platforma5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4240221867317822808
 Transform:
@@ -101,7 +101,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waypointLocations: []
-  spawnCrossingLocations: []
   stackSpawnScript: {fileID: 3663947868726047800, guid: be05402a937e4664798fcd8ac4ae0ea8,
     type: 3}
   respawnPosObj: {fileID: 0}

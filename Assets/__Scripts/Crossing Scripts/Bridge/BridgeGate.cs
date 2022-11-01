@@ -10,7 +10,9 @@ public class BridgeGate : MonoBehaviour
     [SerializeField] private Animator gateAnimator;
     [SerializeField] private PropertyZone bridgeScript;
 
-    //[SerializeField] private GameObject particles;
+    [Header("Gate Box Colliders"), Space(5f)]
+    [SerializeField] private BoxCollider leftGateCollider;
+    [SerializeField] private BoxCollider rightGateCollider;
 
     [SerializeField] private ParticleSystem particleSys1;
     [SerializeField] private ParticleSystem particleSys2;
@@ -52,5 +54,12 @@ public class BridgeGate : MonoBehaviour
 
         // activate gate open animation;
         gateAnimator.enabled = true;
+
+        yield return new WaitForSeconds(1);
+
+        // deactivate gate box colliders to prevent bots from getting stuck
+        leftGateCollider.enabled = false;
+        rightGateCollider.enabled = false;
+
     }
 }

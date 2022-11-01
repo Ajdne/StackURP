@@ -53,7 +53,7 @@ public class MultiplierPlatform : MonoBehaviour
             audioSource.Play();
 
             // increase player speed by (value)
-            playerMovementScript.IncreaseMovementSpeed(1f);
+            playerMovementScript.IncreaseMovementSpeed(2f);
 
             // save player location
             playerMovementScript.SetPlayerRespawnPosition(transform.position + new Vector3(0, 1, 0));  

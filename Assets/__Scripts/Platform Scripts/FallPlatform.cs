@@ -32,12 +32,24 @@ public class FallPlatform : MonoBehaviour
                 audioSource.PlayOneShot(waterSplashClip);
             }
         }
+        else if (other.gameObject.layer == 0)
+        {
+            // using this to optimise performance
+            // deactivate the object - used for neutral bricks after collision
+            StartCoroutine(DeactivateObject(other.gameObject));
+        }
     }
 
     private IEnumerator ResetBool()
     {
         yield return new WaitForSeconds(0.2f);
         isTriggered = false;
+    }
+
+    private IEnumerator DeactivateObject(GameObject obj)
+    {
+        yield return new WaitForSeconds(1);
+        obj.SetActive(false);
     }
 }
 

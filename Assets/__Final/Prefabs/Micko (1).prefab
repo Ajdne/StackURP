@@ -2467,7 +2467,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 127
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -2697,6 +2697,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fe96d93539499349994c08caa9ae1ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 6896020662830930327}
+  uffClip: {fileID: 8300000, guid: 821ceea63c63e6647a727d7d13fef8e4, type: 3}
+  audioSource: {fileID: 1089511437795841575}
 --- !u!208 &1707018181032602520
 NavMeshObstacle:
   m_ObjectHideFlags: 0

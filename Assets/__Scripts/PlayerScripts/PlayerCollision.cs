@@ -6,16 +6,30 @@ public class PlayerCollision : MonoBehaviour
 {
     private IStacking stackingScript;
     private IMovement movementScript;
-    private Animator animator;
+    
     private bool canCollide = true;
     public bool CanCollide { get { return canCollide; } set { canCollide = value; } }
 
+    [SerializeField] private Animator animator;
+
+    [Header("Audio Settings"), Space(10f)]
+    [SerializeField] private AudioClip uffClip;
+    [SerializeField] private AudioSource audioSource;
+    
     private void Start()
     {
         stackingScript = GetComponent<IStacking>();
         movementScript = GetComponent<IMovement>();
 
-        animator = GetComponent<Animator>();
+        if(audioSource == null)
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
+
+        if (animator == null)
+        {
+            animator = GetComponent<Animator>();
+        }
     }
 
     private void OnCollisionEnter(Collision other)
@@ -30,7 +44,12 @@ public class PlayerCollision : MonoBehaviour
             //animator.SetBool("Collision", true);
 
             animator.Play("Player Collision");
-            //animator.SetTrigger("Collision 0");
+
+            // reset audio source pitch - need this for blue player
+            // stacking script changes the pitch
+            audioSource.pitch = 1;
+            // play audio clip once
+            audioSource.PlayOneShot(uffClip);
 
             // lose stacks
             stackingScript.LoseStacks();
