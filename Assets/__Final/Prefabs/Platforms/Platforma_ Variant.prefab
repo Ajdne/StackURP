@@ -295,6 +295,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Platforma_ Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 1536557432161003937, guid: ea0bee2ab187249e6b437d4dcd8a2fe2,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f5e1fa49cafe6c842b9369ba61a7f47d, type: 2}
     - target: {fileID: 1691127679920019557, guid: ea0bee2ab187249e6b437d4dcd8a2fe2,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -305,6 +310,16 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 5969948877094080802, guid: ea0bee2ab187249e6b437d4dcd8a2fe2,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f5e1fa49cafe6c842b9369ba61a7f47d, type: 2}
+    - target: {fileID: 7401271830521184240, guid: ea0bee2ab187249e6b437d4dcd8a2fe2,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f5e1fa49cafe6c842b9369ba61a7f47d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea0bee2ab187249e6b437d4dcd8a2fe2, type: 3}
 --- !u!4 &1280609002546813929 stripped
