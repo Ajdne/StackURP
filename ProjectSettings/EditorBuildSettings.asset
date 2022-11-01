@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/_Scenes/level 2.unity
+    guid: d326cc26b822847c684de24176e6f568
+  - enabled: 0
     path: Assets/_Scenes/Stacking Normalized.unity
     guid: b0822f4c97b70a9428ff75f2631a01ac
   m_configObjects: {}
