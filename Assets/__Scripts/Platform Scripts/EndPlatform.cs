@@ -62,7 +62,7 @@ public class EndPlatform : MonoBehaviour
                     isTriggered = true;
                     
 
-                    other.GetComponent<Movement2>().MoveSpeed *= 1.1f;
+                    other.GetComponent<Movement2>().MoveSpeed += 2f;
 
                     // activate BOOL for dance animation
                     GameManager.Instance.IsEndGame = true;
@@ -100,6 +100,9 @@ public class EndPlatform : MonoBehaviour
 
                 // sad animation
                 other.GetComponent<Animator>().Play("Disappointed");
+
+                // activate level failed canvas
+                UIManager.Instance.LevelFailed();
             }
         }
     }
