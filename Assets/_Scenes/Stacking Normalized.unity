@@ -4643,6 +4643,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2060976802}
     m_Modifications:
+    - target: {fileID: 582470925, guid: be05402a937e4664798fcd8ac4ae0ea8, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 692199901636698832, guid: be05402a937e4664798fcd8ac4ae0ea8,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 1325215432442090754, guid: be05402a937e4664798fcd8ac4ae0ea8,
         type: 3}
       propertyPath: m_Enabled
@@ -13081,6 +13090,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6787834614576904511, guid: 8af30082decdc4e42ba558491a412628,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7214459248954704611, guid: 8af30082decdc4e42ba558491a412628,
         type: 3}
