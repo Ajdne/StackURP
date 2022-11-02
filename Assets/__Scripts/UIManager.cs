@@ -16,7 +16,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject startGame;
     [SerializeField] private GameObject endGame;
 
-    [SerializeField] private GameObject joystick;
+    [SerializeField] private GameObject joystickCanvas;
 
     private void Awake()
     {
@@ -33,7 +33,7 @@ public class UIManager : MonoBehaviour
     {       
         Time.timeScale = 1.0f;
         startGame.SetActive(false);
-        joystick.SetActive(true);
+        joystickCanvas.SetActive(true);
 
     }
 
@@ -45,7 +45,7 @@ public class UIManager : MonoBehaviour
         pauseMenu.SetActive(true);
         pauseButton.SetActive(false);
 
-        joystick.SetActive(false);
+        joystickCanvas.SetActive(false);
     }
 
 
@@ -55,7 +55,7 @@ public class UIManager : MonoBehaviour
         // deactivate pause menu
         pauseMenu.SetActive(false);
         pauseButton.SetActive(true);
-        joystick.SetActive(true);
+        joystickCanvas.SetActive(true);
         Time.timeScale = 1;
     }
 
@@ -89,7 +89,7 @@ public class UIManager : MonoBehaviour
         levelComplete.SetActive(true);
 
         // deactivate joystick
-        joystick.SetActive(false);
+        joystickCanvas.SetActive(false);
     }
 
     public void LevelFailed()
@@ -98,7 +98,7 @@ public class UIManager : MonoBehaviour
         levelFail.SetActive(true);
 
         // deactivate joystick
-        joystick.SetActive(false);
+        joystickCanvas.SetActive(false);
     }
     #endregion
 
