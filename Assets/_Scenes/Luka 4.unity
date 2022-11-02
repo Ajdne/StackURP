@@ -6508,6 +6508,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1802013410756456074, guid: 1e92de32cc948cf49a7dd22fd5f2f6d2,
         type: 3}
+      propertyPath: stacksToCollect
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802013410756456074, guid: 1e92de32cc948cf49a7dd22fd5f2f6d2,
+        type: 3}
       propertyPath: triggerCollider
       value: 
       objectReference: {fileID: 206007899}
@@ -10334,6 +10339,7 @@ MonoBehaviour:
   pauseMenu: {fileID: 4154812131531747831}
   pauseButton: {fileID: 4154812131231619823}
   levelComplete: {fileID: 4154812131428245558}
+  levelFail: {fileID: 0}
   startGame: {fileID: 4154812131448177703}
   endGame: {fileID: 0}
   joystick: {fileID: 1609081856}
