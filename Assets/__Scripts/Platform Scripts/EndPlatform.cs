@@ -90,7 +90,12 @@ public class EndPlatform : MonoBehaviour
             {
                 // camera transition by changing vcam priority
                 if(other.gameObject.layer == 10)
+                {
                     GameManager.Instance.CineCamera.Priority += 2;
+
+                    // activate level failed canvas
+                    UIManager.Instance.LevelFailed();
+                }
 
                 // turn off movement
                 other.GetComponent<IMovement>().DeactivateMovement();
@@ -100,9 +105,6 @@ public class EndPlatform : MonoBehaviour
 
                 // sad animation
                 other.GetComponent<Animator>().Play("Disappointed");
-
-                // activate level failed canvas
-                UIManager.Instance.LevelFailed();
             }
         }
     }

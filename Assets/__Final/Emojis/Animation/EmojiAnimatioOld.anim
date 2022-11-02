@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: EmojiAnimation
+  m_Name: EmojiAnimatioOld
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -420,4 +420,19 @@ AnimationClip:
     script: {fileID: 0}
   m_HasGenericRootTransform: 1
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0
+    functionName: ActivateEmoji
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.8666667
+    functionName: DeactivateEmoji
+    data: 
+    objectReferenceParameter: {fileID: 848936156572771006, guid: 8531ff7e093633a4a8b33db5269ab2bc,
+      type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

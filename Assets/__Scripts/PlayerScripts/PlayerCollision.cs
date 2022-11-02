@@ -15,7 +15,11 @@ public class PlayerCollision : MonoBehaviour
     [Header("Audio Settings"), Space(10f)]
     [SerializeField] private AudioClip uffClip;
     [SerializeField] private AudioSource audioSource;
-    
+
+    [Header("Emoji Settings"), Space(10f)]
+    [SerializeField] private Animator emojiAnimator;
+    [SerializeField] private List<GameObject> loseEmojis = new List<GameObject>();
+
     private void Start()
     {
         stackingScript = GetComponent<IStacking>();
@@ -34,34 +38,54 @@ public class PlayerCollision : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("Player") &&
-            canCollide &&
-            stackingScript.GetStackCount() < other.gameObject.GetComponent<IStacking>().GetStackCount())
+        if (other.gameObject.CompareTag("Player") && canCollide)
         {
-            // play animation
-            animator.SetBool("Idle", false);
-            animator.SetBool("Run", false);
-            //animator.SetBool("Collision", true);
+            if (stackingScript.GetStackCount() < other.gameObject.GetComponent<IStacking>().GetStackCount())
+            {
+                // play animation
+                animator.SetBool("Idle", false);
+                animator.SetBool("Run", false);
+                //animator.SetBool("Collision", true);
 
-            animator.Play("Player Collision");
+                animator.Play("Player Collision");
 
-            // reset audio source pitch - need this for blue player
-            // stacking script changes the pitch
-            audioSource.pitch = 1;
-            // play audio clip once
-            audioSource.PlayOneShot(uffClip);
+                // reset audio source pitch - need this for blue player
+                // stacking script changes the pitch
+                audioSource.pitch = 1;
+                // play audio clip once
+                audioSource.PlayOneShot(uffClip);
 
-            // lose stacks
-            stackingScript.LoseStacks();
-            //stackingScript.RemoveAllStacks();
+                // activate emoji
+                //emojis[0].SetActive(true);
 
-            // stop the player from moving during animation
-            movementScript.DeactivateMovement();
+                int randomEmoji = Random.Range(0, loseEmojis.Count);
+                CanvasLookAt.currentEmoji = loseEmojis[randomEmoji];
 
-            // activate movement again in the animation
+                // play emoji animation
+                emojiAnimator.Play("EmojiAnimation");
+
+                // lose stacks
+                stackingScript.LoseStacks();
+                //stackingScript.RemoveAllStacks();
+
+                // stop the player from moving during animation
+                movementScript.DeactivateMovement();
+
+                // activate movement again in the animation
 
 
-            StartCoroutine(DeactivateAnimation());
+                StartCoroutine(DeactivateAnimation());
+            }
+            //else
+            //{
+            //    int randomChance = Random.Range(0, 101);
+
+            //    if(randomChance > 30)
+            //    {
+            //        // play emoji animation
+            //        emojiAnimator.Play("EmojiAnimation");
+            //    }
+            //}
         }
     }
 
