@@ -60,7 +60,7 @@ public class PlayerCollision : MonoBehaviour
 
                 int randomEmoji = Random.Range(0, loseEmojis.Count);
                 CanvasLookAt.currentEmoji = loseEmojis[randomEmoji];
-
+                
                 // play emoji animation
                 emojiAnimator.Play("EmojiAnimation");
 
