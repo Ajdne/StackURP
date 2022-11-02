@@ -11,7 +11,8 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject pauseButton;
-    [SerializeField] private GameObject levelComplete; 
+    [SerializeField] private GameObject levelComplete;
+    [SerializeField] private GameObject levelFail;
     [SerializeField] private GameObject startGame;
     [SerializeField] private GameObject endGame;
 
@@ -81,11 +82,25 @@ public class UIManager : MonoBehaviour
     #endregion
     #endregion
 
-
-    public void CheckLevelEnd()
+    #region Level End
+    public void LevelComplete()
     {
-        
+        // activate canvas
+        levelComplete.SetActive(true);
+
+        // deactivate joystick
+        joystick.SetActive(false);
     }
+
+    public void LevelFailed()
+    {
+        // activate canvas
+        levelFail.SetActive(true);
+
+        // deactivate joystick
+        joystick.SetActive(false);
+    }
+    #endregion
 
     public void NextLevel()
     {
