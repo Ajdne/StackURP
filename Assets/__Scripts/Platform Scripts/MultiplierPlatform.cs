@@ -64,6 +64,9 @@ public class MultiplierPlatform : MonoBehaviour
                 // set the player pn the middle of the platform
                 StartCoroutine(playerMovementScript.RespawnPlayer());
 
+                // activate level complete UI
+                UIManager.Instance.LevelComplete();
+
                 // turn off all bots
                 for (int i = 0; i < GameManager.Instance.Bots.Count; i++)
                 {
