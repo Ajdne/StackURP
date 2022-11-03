@@ -38,16 +38,18 @@ public class GameManager : MonoBehaviour
     private bool isEndGame;
     public bool IsEndGame { get { return isEndGame; } set { isEndGame = value; } }
 
-    //[Header("Time Settings"), Space(5f)]
-    //[SerializeField] private float testingScaleTime = 1;
+    // use this to save playerPref value
+    public static int level;
 
     // *******************************************************************
     private void Awake()
     {
         Instance = this;
 
+        level = PlayerPrefs.GetInt("level", 0);
+
         Application.targetFrameRate = 60;   // this fixes everything
-    }
+    } 
 
     private void Start()
     {
@@ -55,26 +57,6 @@ public class GameManager : MonoBehaviour
 
         //Time.timeScale = testingScaleTime;
 
-        //playerAnimator = Player.GetComponent<Animator>();
-
-        //SpawnRandomPlatforms();
-    }
-
-    private void SpawnRandomPlatforms()
-    {
-        for (int i = 0; i < maxNumberOfPlatforms; i++)
-        {
-            if(i != maxNumberOfPlatforms - 1)
-            {
-                Instantiate(GetRandomItem(platforms), new Vector3(0, 0, 53 * numberOfPlatforms), Quaternion.identity);
-            }
-            else
-            {
-                Instantiate(finalPlatform, new Vector3(0, 0, 53 * numberOfPlatforms), Quaternion.identity);
-            }
-            
-            numberOfPlatforms++;
-        }
     }
    
     public GameObject GetRandomItem(List<GameObject> itemList)
@@ -88,9 +70,6 @@ public class GameManager : MonoBehaviour
 
     public void RevertPlayerControls(GameObject player)
     {
-        //Player.GetComponent<ShortCutRun>().enabled = false;
-        //player.GetComponent<CapsuleCollider>().enabled = false;
-
         player.GetComponent<IMovement>().DeactivateMovement();
         //player.GetComponent<IMovement>().DeactivateMovement();
         player.GetComponent<Rigidbody>().isKinematic = true;

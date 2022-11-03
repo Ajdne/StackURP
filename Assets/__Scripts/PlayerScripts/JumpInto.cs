@@ -21,9 +21,13 @@ public class JumpInto : MonoBehaviour
 
     private void OnEnable()
     {
+        GetComponent<Rigidbody>().isKinematic = true;
+
         animator.SetBool("Run", false);
         animator.SetBool("Idle", false);
         animator.SetBool("Jump", true);
+
+        if (GetComponent<NavMeshAgent>() != null) GetComponent<NavMeshAgent>().enabled = false;
     }
 
     public void JumpStarted()   // method called in animation
@@ -47,7 +51,7 @@ public class JumpInto : MonoBehaviour
 
                 // set bool
                 jumped = false;
-               
+                GetComponent<Rigidbody>().isKinematic = false;
 
                 // disable this script
                 this.enabled = false;

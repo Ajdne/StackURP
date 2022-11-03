@@ -104,6 +104,32 @@ public class UIManager : MonoBehaviour
 
     public void NextLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+        // increment level
+        GameManager.level++;
+
+        // save level data
+        PlayerPrefs.SetInt("level", GameManager.level);
+
+        if(GameManager.level > 10)
+        {
+            // randomize next scene - recursive
+            SceneManager.LoadScene(GetRandomlevel());
+        }
+        else
+        {
+            // load next scene
+            SceneManager.LoadScene(GameManager.level);
+        }
+    }
+
+    private int GetRandomlevel()    // recursive function
+    {
+        int randomLevel = Random.Range(0, 11);
+
+        if(randomLevel == SceneManager.GetActiveScene().buildIndex)
+        {
+            return GetRandomlevel();
+        }
+        return randomLevel;
     }
 }

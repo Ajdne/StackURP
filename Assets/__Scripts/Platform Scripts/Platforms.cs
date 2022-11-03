@@ -14,7 +14,7 @@ public class Platforms : MonoBehaviour
     [SerializeField] private GameObject respawnPosObj;
     public GameObject RespawnPosObj { get { return respawnPosObj; } }
 
-    [SerializeField] private GameObject triggerCollider;
+    [SerializeField] private GameObject platformActivationTrigger;
 
     [SerializeField] private bool canUseShortcut;
     public bool CanUseShortcut { get { return canUseShortcut; } }

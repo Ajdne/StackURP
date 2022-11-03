@@ -11,6 +11,7 @@ public class EndPlatform : MonoBehaviour
 
     [Header("Crown Settings"), Space(5f)]
     [SerializeField] private GiveCrown crownScript;
+    [SerializeField] private GameObject glowingRing;
 
     //private bool isFirst = true;
     private bool isTriggered = false;
@@ -73,9 +74,9 @@ public class EndPlatform : MonoBehaviour
                 {
                     //other.GetComponent<IMovement>().SetPlayerRespawnPosition(transform.position + new Vector3(0, 1, 0));
                     other.GetComponent<EnemyAI>().SetPositionForVictoryEnd();
-                    // turn off bot movement
 
-                    
+                    glowingRing.SetActive(true);
+                    glowingRing.transform.position = other.transform.position + new Vector3(0, -1, 0);
 
                     // dance animation
                     //other.GetComponent<Animator>().Play("Dance");
