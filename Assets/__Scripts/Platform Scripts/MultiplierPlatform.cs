@@ -49,7 +49,7 @@ public class MultiplierPlatform : MonoBehaviour
             popAnimator.enabled = true;
 
             // play audio
-            audioSource.pitch = 0.5f + multiplierValue * 0.1f;
+            audioSource.pitch = 0.4f + multiplierValue * 0.08f;
             audioSource.Play();
 
             // increase player speed by (value)

@@ -27,7 +27,7 @@ public class GiveCrown : MonoBehaviour
         // get players heads
         for (int i = 0; i < players.Count; i++)
         {
-            // populater the script
+            // populate the script
             playerHeads.Add(players[i].GetComponent<IMovement>().GetPlayerHead());
         }
     }

@@ -8,11 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     [Space(5f), Header("Platform Settings"), Space(2f)]
-    [SerializeField] private List<GameObject> platforms; // insert platform prefabs here
     [SerializeField] private GameObject finalPlatform;
-    [SerializeField] private List<GameObject> crossings; // insert crossing prefabs here
-
-    public List<GameObject> Crossings { get { return crossings; } }
 
     #region Camera Settings
     [Space(5f), Header("Camera Settings"), Space(2f)]
