@@ -1429,7 +1429,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 8
-  rotateSpeed: 50
+  rotateSpeed: 100
   boatController: {fileID: 0}
   animator: {fileID: 8502466085575242502}
   boat: {fileID: 8502466085730976037}

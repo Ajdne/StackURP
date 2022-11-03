@@ -19,6 +19,7 @@ public class PlayerCollision : MonoBehaviour
     [Header("Emoji Settings"), Space(10f)]
     [SerializeField] private Animator emojiAnimator;
     [SerializeField] private List<GameObject> loseEmojis = new List<GameObject>();
+    [SerializeField] private CanvasLookAt emojiCanvasScript;
 
     private void Start()
     {
@@ -59,8 +60,9 @@ public class PlayerCollision : MonoBehaviour
                 //emojis[0].SetActive(true);
 
                 int randomEmoji = Random.Range(0, loseEmojis.Count);
-                CanvasLookAt.currentEmoji = loseEmojis[randomEmoji];
-                
+                emojiCanvasScript.CurrentEmoji = loseEmojis[randomEmoji];
+                StartCoroutine(emojiCanvasScript.DeactivateEmoji());
+
                 // play emoji animation
                 emojiAnimator.Play("EmojiAnimation");
 
