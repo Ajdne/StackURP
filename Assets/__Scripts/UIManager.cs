@@ -40,6 +40,10 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 0;
 
         audioListener = Camera.main.GetComponent<AudioListener>();
+
+        // load users sound setting
+        if (PlayerPrefs.GetInt("sound", 1) == 0) TurnSoundOff();
+        if(PlayerPrefs.GetInt("music", 1) == 0) TurnMusicOff();
     }
 
     public void Play()
@@ -152,6 +156,9 @@ public class UIManager : MonoBehaviour
         musicOff.SetActive(true);
 
         musicSource.enabled = false;
+
+        // save music settings
+        PlayerPrefs.SetInt("music", 0);
     }
 
     public void TurnMusicOn()
@@ -160,6 +167,9 @@ public class UIManager : MonoBehaviour
         musicOn.SetActive(true);
 
         musicSource.enabled = true;
+
+        // save music settings
+        PlayerPrefs.SetInt("music", 1);
     }
 
     public void TurnSoundOff()
@@ -168,6 +178,9 @@ public class UIManager : MonoBehaviour
         soundOff.SetActive(true);
 
         audioListener.enabled = false;
+
+        // save sound settings
+        PlayerPrefs.SetInt("sound", 0);
     }
 
     public void TurnSoundOn()
@@ -176,5 +189,8 @@ public class UIManager : MonoBehaviour
         soundOn.SetActive(true);
 
         audioListener.enabled = true;
+
+        // save sound settings
+        PlayerPrefs.SetInt("sound", 1);
     }
 }

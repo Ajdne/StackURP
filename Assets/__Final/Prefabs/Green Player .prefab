@@ -2673,6 +2673,7 @@ MonoBehaviour:
   - {fileID: 2404622503859974629}
   - {fileID: 3321269773704246854}
   - {fileID: 8054158775485985099}
+  emojiCanvasScript: {fileID: 3939849842806293572}
 --- !u!82 &1801198561577145917
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3270,6 +3271,18 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 4494180541468132109}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3939849842806293572 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 645037201905108809, guid: 8531ff7e093633a4a8b33db5269ab2bc,
+    type: 3}
+  m_PrefabInstance: {fileID: 4494180541468132109}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78f72d10e810f034197b18af6710af3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8054158775485985099 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5879616301386805830, guid: 8531ff7e093633a4a8b33db5269ab2bc,

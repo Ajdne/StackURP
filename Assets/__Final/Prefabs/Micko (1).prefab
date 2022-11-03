@@ -2711,6 +2711,7 @@ MonoBehaviour:
   - {fileID: 2096366526853605305}
   - {fileID: 1323671338350092314}
   - {fileID: 6021097100076705559}
+  emojiCanvasScript: {fileID: 784767475047862808}
 --- !u!208 &1707018181032602520
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -2996,6 +2997,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 150778463487612241}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &784767475047862808 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 645037201905108809, guid: 8531ff7e093633a4a8b33db5269ab2bc,
+    type: 3}
+  m_PrefabInstance: {fileID: 150778463487612241}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78f72d10e810f034197b18af6710af3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1323671338350092314 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1173482539588547915, guid: 8531ff7e093633a4a8b33db5269ab2bc,

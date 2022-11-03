@@ -373,7 +373,7 @@ MonoBehaviour:
     type: 3}
   fragmentParticle: {fileID: 6104912915994724318, guid: 6586e3b5c922b414c9d276f816aa512f,
     type: 3}
-  spawnLocation: {fileID: 5473995344161326006}
+  spawnLocation: {fileID: 5736920189377934480}
   triggerCollider: {fileID: 5473995343168562275}
 --- !u!1 &5473995343175352872
 GameObject:
