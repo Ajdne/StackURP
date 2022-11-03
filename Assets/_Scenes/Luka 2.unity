@@ -719,7 +719,7 @@ MonoBehaviour:
   - {fileID: 351418465}
   stackSpawnScript: {fileID: 59185405}
   respawnPosObj: {fileID: 1142957059}
-  triggerCollider: {fileID: 239752840}
+  platformActivationTrigger: {fileID: 0}
   canUseShortcut: 1
   stacksToCollect: 10
 --- !u!65 &59185404
@@ -1852,18 +1852,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1758408850}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &520938531 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5571430314453044847, guid: 09565cda63789774e8d56104827e9495,
-    type: 3}
-  m_PrefabInstance: {fileID: 4337957977721664725}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a47f546fc70ec8428172694e78e4288, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &599873767
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1876,6 +1864,21 @@ PrefabInstance:
       propertyPath: joystickCanvas
       value: 
       objectReference: {fileID: 1609081856}
+    - target: {fileID: 8718674002780784569, guid: a21cb553e6892e848936aa7d649e2fbc,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8718674002780784569, guid: a21cb553e6892e848936aa7d649e2fbc,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8718674002780784569, guid: a21cb553e6892e848936aa7d649e2fbc,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8718674003101667514, guid: a21cb553e6892e848936aa7d649e2fbc,
         type: 3}
       propertyPath: m_Name
@@ -2131,6 +2134,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 33945280}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &740895474 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5538297578961525093, guid: 09565cda63789774e8d56104827e9495,
+    type: 3}
+  m_PrefabInstance: {fileID: 4337957977721664725}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba0d0e7a039f526499c356a3c5cd6d3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &747105912
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6237,7 +6252,7 @@ PrefabInstance:
         type: 3}
       propertyPath: joystick
       value: 
-      objectReference: {fileID: 520938531}
+      objectReference: {fileID: 740895474}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a862e70bd386b343bfcb54d76e151b5, type: 3}
 --- !u!114 &1341964387235861498
@@ -6571,9 +6586,9 @@ MonoBehaviour:
   - {fileID: 7423120611605935161}
   stackSpawnScript: {fileID: 6187046423786597519}
   respawnPosObj: {fileID: 7423120611822043608}
-  triggerCollider: {fileID: 2185916460968071631}
+  platformActivationTrigger: {fileID: 0}
   canUseShortcut: 1
-  stacksToCollect: 5
+  stacksToCollect: 15
 --- !u!114 &2839641339926021824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6591,7 +6606,7 @@ MonoBehaviour:
   - {fileID: 2391405126495996638}
   stackSpawnScript: {fileID: 6187046423545283457}
   respawnPosObj: {fileID: 7423120611115445974}
-  triggerCollider: {fileID: 2185916461196541633}
+  platformActivationTrigger: {fileID: 0}
   canUseShortcut: 0
   stacksToCollect: 8
 --- !u!1 &2882296297344716608
@@ -6843,7 +6858,7 @@ PrefabInstance:
     - target: {fileID: 5538297578961525099, guid: 09565cda63789774e8d56104827e9495,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5571430315430628340, guid: 09565cda63789774e8d56104827e9495,
         type: 3}
@@ -9501,7 +9516,7 @@ MonoBehaviour:
   - {fileID: 8710035661155116202}
   stackSpawnScript: {fileID: 870167739882384885}
   respawnPosObj: {fileID: 4524853041720950946}
-  triggerCollider: {fileID: 5159531376247656629}
+  platformActivationTrigger: {fileID: 0}
   canUseShortcut: 1
   stacksToCollect: 5
 --- !u!114 &9126500402948455853
@@ -9521,6 +9536,6 @@ MonoBehaviour:
   - {fileID: 4524853042344362676}
   stackSpawnScript: {fileID: 870167739362785516}
   respawnPosObj: {fileID: 168310836}
-  triggerCollider: {fileID: 5159531376800810412}
+  platformActivationTrigger: {fileID: 0}
   canUseShortcut: 1
   stacksToCollect: 5
