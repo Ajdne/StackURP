@@ -2700,7 +2700,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 6896020662830930327}
-  uffClip: {fileID: 8300000, guid: 821ceea63c63e6647a727d7d13fef8e4, type: 3}
+  uffClip: {fileID: 8300000, guid: 9d6eb1d778afb3d42b3f3c219cffc666, type: 3}
   audioSource: {fileID: 3125779056593335125}
   emojiAnimator: {fileID: 711475117052671980}
   loseEmojis:
