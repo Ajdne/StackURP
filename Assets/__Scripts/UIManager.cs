@@ -1,21 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
-    private GameManager gm;
 
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject pauseButton;
     [SerializeField] private GameObject levelComplete;
     [SerializeField] private GameObject levelFail;
     [SerializeField] private GameObject startGame;
-    [SerializeField] private GameObject endGame;
+    [Space]
 
+    [Header("Music Settings"), Space(5f)]
+    [SerializeField] private GameObject musicOn;
+    [SerializeField] private GameObject musicOff;
+    [SerializeField] private AudioSource musicSource;   // only the background music source - this canvas
+
+    [Space(5f)]
+    [Header("Sound Settings"), Space(5f)]
+    [SerializeField] private AudioListener audioListener;   // main camera
+    [SerializeField] private GameObject soundOn;
+    [SerializeField] private GameObject soundOff;
+
+    [Header("Joystick Canvas"), Space(5f)]
     [SerializeField] private GameObject joystickCanvas;
 
     private void Awake()
@@ -25,8 +37,9 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-        gm = GameManager.Instance;
         Time.timeScale = 0;
+
+        audioListener = Camera.main.GetComponent<AudioListener>();
     }
 
     public void Play()
@@ -131,5 +144,37 @@ public class UIManager : MonoBehaviour
             return GetRandomlevel();
         }
         return randomLevel;
+    }
+
+    public void TurnMusicOff()
+    {
+        musicOn.SetActive(false);
+        musicOff.SetActive(true);
+
+        musicSource.enabled = false;
+    }
+
+    public void TurnMusicOn()
+    {
+        musicOff.SetActive(false);
+        musicOn.SetActive(true);
+
+        musicSource.enabled = true;
+    }
+
+    public void TurnSoundOff()
+    {
+        soundOn.SetActive(false);
+        soundOff.SetActive(true);
+
+        audioListener.enabled = false;
+    }
+
+    public void TurnSoundOn()
+    {
+        soundOff.SetActive(false);
+        soundOn.SetActive(true);
+
+        audioListener.enabled = true;
     }
 }

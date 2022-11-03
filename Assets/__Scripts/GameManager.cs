@@ -11,8 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<GameObject> platforms; // insert platform prefabs here
     [SerializeField] private GameObject finalPlatform;
     [SerializeField] private List<GameObject> crossings; // insert crossing prefabs here
-    private int numberOfPlatforms;
-    [SerializeField] private int maxNumberOfPlatforms = 4;
+
     public List<GameObject> Crossings { get { return crossings; } }
 
     #region Camera Settings
