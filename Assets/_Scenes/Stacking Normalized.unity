@@ -2215,7 +2215,7 @@ MonoBehaviour:
   - {fileID: 1984852088}
   stackSpawnScript: {fileID: 517001713}
   respawnPosObj: {fileID: 1950547164}
-  triggerCollider: {fileID: 1033612722}
+  platformActivationTrigger: {fileID: 0}
   canUseShortcut: 0
   stacksToCollect: 20
 --- !u!114 &517001713
@@ -4167,7 +4167,7 @@ MonoBehaviour:
   - {fileID: 549501438}
   stackSpawnScript: {fileID: 932311836}
   respawnPosObj: {fileID: 1882640354}
-  triggerCollider: {fileID: 979156329}
+  platformActivationTrigger: {fileID: 0}
   canUseShortcut: 1
   stacksToCollect: 10
 --- !u!114 &932311836
