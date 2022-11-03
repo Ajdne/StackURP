@@ -87,7 +87,7 @@ public class Stacking : MonoBehaviour , IStacking
     private void PlayStackAudio()
     {
         audioSource.clip = stackClip;
-        audioSource.pitch = 0.5f + stacked.Count * 0.02f;
+        audioSource.pitch = 0.3f + stacked.Count * 0.01f;
         audioSource.Play();
     }
 
@@ -231,37 +231,6 @@ public class Stacking : MonoBehaviour , IStacking
         stacked.Clear();
     }
 
-    //public void AddToStack(GameObject moneyObj)
-    //{
-    //    // add obj to list
-    //    stacked.Add(moneyObj.gameObject);
-
-    //    Rigidbody rb = moneyObj.gameObject.GetComponent<Rigidbody>();
-    //    // remove rigidbody
-    //    Destroy(rb);
-
-    //    // disable colliders
-    //    moneyObj.GetComponent<BoxCollider>().enabled = false;
-
-    //    // set parent
-    //    //moneyObj.gameObject.transform.SetParent(backpackObj.transform);
-
-    //    // activate move component
-    //    moneyObj.GetComponent<MoneyMovement>().SetMoveToVector(backpackObj.transform.position + new Vector3(0, stacked.Count * moneyObj.transform.localScale.y, 0));
-
-    //    // set parent
-    //    moneyObj.GetComponent<MoneyMovement>().SetParent(backpackObj.transform);
-
-    //    // enable the script
-    //    moneyObj.GetComponent<MoneyMovement>().enabled = true;
-
-
-    //// ------------- AUDIO -----------------
-    //    audioSource.clip = stackClip;
-    //    audioSource.pitch = 0.8f + stacked.Count * 0.05f;
-    //    audioSource.Play();
-    //}
-
     public void RemoveMoneyToProperty(Transform objPos, bool destroy)
     {
         // local obj
@@ -333,7 +302,7 @@ public class Stacking : MonoBehaviour , IStacking
     private void PlayUnloadAudio()
     {
         audioSource.clip = payClip;
-        audioSource.pitch = 0.5f + stacked.Count * 0.01f;
+        audioSource.pitch = 0.3f + stacked.Count * 0.01f;
         audioSource.Play();
     }
     public int GetStackCount()
