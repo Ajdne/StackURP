@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6846789543522557340}
   - component: {fileID: -4424120532895306120}
   - component: {fileID: 1047098433863121687}
+  - component: {fileID: 8086281099048926223}
   m_Layer: 6
   m_Name: platforma2
   m_TagString: Untagged
@@ -103,7 +104,7 @@ MonoBehaviour:
   stackSpawnScript: {fileID: 3663947868726047800, guid: be05402a937e4664798fcd8ac4ae0ea8,
     type: 3}
   respawnPosObj: {fileID: 0}
-  triggerCollider: {fileID: 0}
+  platformActivationTrigger: {fileID: 0}
   canUseShortcut: 0
   stacksToCollect: 0
 --- !u!114 &-4424120532895306120
@@ -133,6 +134,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnTime: 0
+--- !u!114 &8086281099048926223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2807716453999248334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79bac3dee55374046b94f42377e35e66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  endPlatforms:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  particle: {fileID: 0}
+  crownScript: {fileID: 0}
+  glowingRing: {fileID: 0}
 --- !u!1001 &3041736162953454250
 PrefabInstance:
   m_ObjectHideFlags: 0
