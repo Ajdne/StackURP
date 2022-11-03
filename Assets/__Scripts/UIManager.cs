@@ -14,8 +14,20 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject levelComplete;
     [SerializeField] private GameObject levelFail;
     [SerializeField] private GameObject startGame;
-    [SerializeField] private GameObject endGame;
+    [Space]
 
+    [Header("Music Settings"), Space(5f)]
+    [SerializeField] private GameObject musicOn;
+    [SerializeField] private GameObject musicOff;
+    [SerializeField] private AudioSource musicSource;   // only the background music source - this canvas
+
+    [Space(5f)]
+    [Header("Sound Settings"), Space(5f)]
+    [SerializeField] private AudioListener audioListener;   // main camera
+    [SerializeField] private GameObject soundOn;
+    [SerializeField] private GameObject soundOff;
+
+    [Header("Joystick Canvas"), Space(5f)]
     [SerializeField] private GameObject joystickCanvas;
 
     private void Awake()
@@ -27,10 +39,16 @@ public class UIManager : MonoBehaviour
     {
         gm = GameManager.Instance;
         Time.timeScale = 0;
+
+        audioListener = Camera.main.GetComponent<AudioListener>();
+
+        // load users sound setting
+        if (PlayerPrefs.GetInt("sound", 1) == 0) TurnSoundOff();
+        if (PlayerPrefs.GetInt("music", 1) == 0) TurnMusicOff();
     }
 
     public void Play()
-    {       
+    {
         Time.timeScale = 1.0f;
         startGame.SetActive(false);
         joystickCanvas.SetActive(true);
@@ -109,9 +127,9 @@ public class UIManager : MonoBehaviour
 
         // save level data
         PlayerPrefs.SetInt("level", GameManager.level);
-        
 
-        if(GameManager.level > 10)
+
+        if (GameManager.level > 10)
         {
             // randomize next scene - recursive
             SceneManager.LoadScene(GetRandomlevel());
@@ -122,17 +140,53 @@ public class UIManager : MonoBehaviour
             SceneManager.LoadScene(GameManager.level);
         }
 
-        
+
     }
 
     private int GetRandomlevel()    // recursive function
     {
         int randomLevel = Random.Range(0, 11);
 
-        if(randomLevel == SceneManager.GetActiveScene().buildIndex)
+        if (randomLevel == SceneManager.GetActiveScene().buildIndex)
         {
             return GetRandomlevel();
         }
         return randomLevel;
     }
+
+    #region Audio Controlls
+    public void TurnMusicOff()
+    {
+        musicOn.SetActive(false);
+        musicOff.SetActive(true);
+
+        musicSource.enabled = false;
+    }
+
+    public void TurnMusicOn()
+    {
+        musicOff.SetActive(false);
+        musicOn.SetActive(true);
+
+        musicSource.enabled = true;
+    }
+
+    public void TurnSoundOff()
+    {
+        soundOn.SetActive(false);
+        soundOff.SetActive(true);
+
+        audioListener.enabled = false;
+    }
+
+    public void TurnSoundOn()
+    {
+        soundOff.SetActive(false);
+        soundOn.SetActive(true);
+
+        audioListener.enabled = true;
+    }
+
+
+    #endregion
 }
