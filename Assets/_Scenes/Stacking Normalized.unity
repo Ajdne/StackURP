@@ -8665,56 +8665,6 @@ PrefabInstance:
       propertyPath: players.Array.data[3]
       value: 
       objectReference: {fileID: 1341601544}
-    - target: {fileID: 631107530799086321, guid: 3cc7430771de9004c94ffd8c83b4ab20,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 31c3a8022db44b34cb69edf0f25b18c7, type: 2}
-    - target: {fileID: 2512284185389991438, guid: 3cc7430771de9004c94ffd8c83b4ab20,
-        type: 3}
-      propertyPath: m_Volume
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 2806941802755270209, guid: 3cc7430771de9004c94ffd8c83b4ab20,
-        type: 3}
-      propertyPath: m_Volume
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3024877726920138545, guid: 3cc7430771de9004c94ffd8c83b4ab20,
-        type: 3}
-      propertyPath: m_Volume
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3372831865632049069, guid: 3cc7430771de9004c94ffd8c83b4ab20,
-        type: 3}
-      propertyPath: m_Volume
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5554862664632620228, guid: 3cc7430771de9004c94ffd8c83b4ab20,
-        type: 3}
-      propertyPath: m_Volume
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5651244220426662122, guid: 3cc7430771de9004c94ffd8c83b4ab20,
-        type: 3}
-      propertyPath: m_Volume
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 6573005100179791213, guid: 3cc7430771de9004c94ffd8c83b4ab20,
-        type: 3}
-      propertyPath: m_Volume
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 7740542645116702131, guid: 3cc7430771de9004c94ffd8c83b4ab20,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 31c3a8022db44b34cb69edf0f25b18c7, type: 2}
-    - target: {fileID: 7939864400158448427, guid: 3cc7430771de9004c94ffd8c83b4ab20,
-        type: 3}
-      propertyPath: m_Volume
-      value: 0.8
-      objectReference: {fileID: 0}
     - target: {fileID: 8583358241178393804, guid: 3cc7430771de9004c94ffd8c83b4ab20,
         type: 3}
       propertyPath: m_RootOrder
@@ -8774,16 +8724,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Final Platform
-      objectReference: {fileID: 0}
-    - target: {fileID: 8781317549646024920, guid: 3cc7430771de9004c94ffd8c83b4ab20,
-        type: 3}
-      propertyPath: m_Volume
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8882217142401810641, guid: 3cc7430771de9004c94ffd8c83b4ab20,
-        type: 3}
-      propertyPath: m_Volume
-      value: 0.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3cc7430771de9004c94ffd8c83b4ab20, type: 3}
