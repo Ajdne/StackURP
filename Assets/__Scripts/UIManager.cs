@@ -16,7 +16,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject startGame;
     [SerializeField] private GameObject endGame;
 
-    [SerializeField] private GameObject joystick;
+    [SerializeField] private GameObject joystickCanvas;
 
     private void Awake()
     {
@@ -33,7 +33,7 @@ public class UIManager : MonoBehaviour
     {       
         Time.timeScale = 1.0f;
         startGame.SetActive(false);
-        joystick.SetActive(true);
+        joystickCanvas.SetActive(true);
 
     }
 
@@ -45,7 +45,7 @@ public class UIManager : MonoBehaviour
         pauseMenu.SetActive(true);
         pauseButton.SetActive(false);
 
-        joystick.SetActive(false);
+        joystickCanvas.SetActive(false);
     }
 
 
@@ -55,7 +55,7 @@ public class UIManager : MonoBehaviour
         // deactivate pause menu
         pauseMenu.SetActive(false);
         pauseButton.SetActive(true);
-        joystick.SetActive(true);
+        joystickCanvas.SetActive(true);
         Time.timeScale = 1;
     }
 
@@ -89,7 +89,7 @@ public class UIManager : MonoBehaviour
         levelComplete.SetActive(true);
 
         // deactivate joystick
-        joystick.SetActive(false);
+        joystickCanvas.SetActive(false);
     }
 
     public void LevelFailed()
@@ -98,12 +98,38 @@ public class UIManager : MonoBehaviour
         levelFail.SetActive(true);
 
         // deactivate joystick
-        joystick.SetActive(false);
+        joystickCanvas.SetActive(false);
     }
     #endregion
 
     public void NextLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+        // increment level
+        GameManager.level++;
+
+        // save level data
+        PlayerPrefs.SetInt("level", GameManager.level);
+
+        if(GameManager.level > 10)
+        {
+            // randomize next scene - recursive
+            SceneManager.LoadScene(GetRandomlevel());
+        }
+        else
+        {
+            // load next scene
+            SceneManager.LoadScene(GameManager.level);
+        }
+    }
+
+    private int GetRandomlevel()    // recursive function
+    {
+        int randomLevel = Random.Range(0, 11);
+
+        if(randomLevel == SceneManager.GetActiveScene().buildIndex)
+        {
+            return GetRandomlevel();
+        }
+        return randomLevel;
     }
 }
