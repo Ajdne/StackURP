@@ -17,13 +17,22 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/level 4.unity
     guid: 934345e7d75374477b009498152dde48
-  - enabled: 0
-    path: Assets/_Scenes/level 5.unity
-    guid: f013bfd6d194f41a39ded2741dc05801
-  - enabled: 0
-    path: Assets/_Scenes/level 6.unity
-    guid: b7c98a508f98846778e96fa52c06e358
-  - enabled: 0
-    path: Assets/_Scenes/level 7.unity
-    guid: 1ba20116c339f4003920aef23f83dcd1
+  - enabled: 1
+    path: Assets/_Scenes/Luka 1.unity
+    guid: 9f6e78d2c37f4e349a4a1a4ac329dfd5
+  - enabled: 1
+    path: Assets/_Scenes/Luka 2.unity
+    guid: f7dd11fc78d624d47ae9dc829fc66ecc
+  - enabled: 1
+    path: Assets/_Scenes/Luka 3.unity
+    guid: 212c77e18f333dd4f84ab71d14fe30d6
+  - enabled: 1
+    path: Assets/_Scenes/Luka 4.unity
+    guid: c015b8bfba2fc1c4ca2365497d86c141
+  - enabled: 1
+    path: Assets/_Scenes/Luka 5.unity
+    guid: d132903870648ae4e860dd10ca31c499
+  - enabled: 1
+    path: Assets/_Scenes/Srki Level 1.unity
+    guid: 99a13e8a6698dba40822ca9ebf07675f
   m_configObjects: {}

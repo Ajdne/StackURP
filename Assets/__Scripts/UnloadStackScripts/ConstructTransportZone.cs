@@ -35,16 +35,19 @@ public class ConstructTransportZone : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if(other.CompareTag("Player") && playerOnTrigger == other.gameObject)
+        if(other.CompareTag("Player"))
         {
-            stayTimer += Time.deltaTime;
-
-            if (stayTimer > 0.1f && elementCounter != elements.Count && other.GetComponent<IStacking>().GetStackCount() > 0)
+            if (playerOnTrigger == other.gameObject)
             {
-                // remove money from the stack
-                other.gameObject.GetComponent<IStacking>().RemoveMoneyToProperty(elements[elementCounter].transform, true);
+                stayTimer += Time.deltaTime;
 
-                ActivateBoatFragments(other.gameObject);
+                if (stayTimer > 0.1f && elementCounter != elements.Count && other.GetComponent<IStacking>().GetStackCount() > 0)
+                {
+                    // remove money from the stack
+                    other.gameObject.GetComponent<IStacking>().RemoveMoneyToProperty(elements[elementCounter].transform, true);
+
+                    ActivateBoatFragments(other.gameObject);
+                }
             }
 
             if (playerOnTrigger == null)
@@ -52,6 +55,7 @@ public class ConstructTransportZone : MonoBehaviour
                 playerOnTrigger = other.gameObject;
             }
         }
+
 
     }
 
