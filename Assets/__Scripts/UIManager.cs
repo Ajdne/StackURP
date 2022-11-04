@@ -162,7 +162,7 @@ public class UIManager : MonoBehaviour
 
     private int GetRandomlevel()    // recursive function
     {
-        int randomLevel = Random.Range(0, 15);
+        int randomLevel = Random.Range(0, 14);
 
         if (randomLevel == SceneManager.GetActiveScene().buildIndex)
         {
