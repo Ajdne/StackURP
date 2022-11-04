@@ -37,8 +37,18 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        if(GameManager.FirstLoad)
+        {
+            startGame.SetActive(true);
+            GameManager.FirstLoad = false;
+            Time.timeScale = 0;
+        }
+        else
+        {
+            Play();
+        }
+
         gm = GameManager.Instance;
-        Time.timeScale = 0;
 
         audioListener = Camera.main.GetComponent<AudioListener>();
 

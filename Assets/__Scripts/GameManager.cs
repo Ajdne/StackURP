@@ -36,6 +36,8 @@ public class GameManager : MonoBehaviour
     // use this to save playerPref value
     public static int level;
 
+    public static bool FirstLoad = true;
+
     // *******************************************************************
     private void Awake()
     {

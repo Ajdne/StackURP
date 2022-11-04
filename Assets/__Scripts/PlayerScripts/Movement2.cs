@@ -29,6 +29,8 @@ public class Movement2 : MonoBehaviour, IMovement
 
     [SerializeField] private GameObject playerHead;
 
+    [SerializeField] private GameObject confetti;
+
     private void Start()
     {
         player = GetComponent<CharacterController>();
@@ -137,6 +139,8 @@ public class Movement2 : MonoBehaviour, IMovement
             //Player.GetComponent<CapsuleCollider>().enabled = false;
             GetComponent<Rigidbody>().isKinematic = true;
             UIManager.Instance.LevelComplete();
+
+            confetti.SetActive(true);
         }
        else if(!finalPlatform) ActivateMovement();
 
