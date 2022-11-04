@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject levelComplete;
     [SerializeField] private GameObject levelFail;
     [SerializeField] private GameObject startGame;
+    [SerializeField] private TextMeshProUGUI levelTxt;
     [Space]
 
     [Header("Music Settings"), Space(5f)]
@@ -42,6 +43,8 @@ public class UIManager : MonoBehaviour
             startGame.SetActive(true);
             GameManager.FirstLoad = false;
             Time.timeScale = 0;
+
+            pauseButton.SetActive(false);
         }
         else
         {
@@ -63,6 +66,7 @@ public class UIManager : MonoBehaviour
         startGame.SetActive(false);
         joystickCanvas.SetActive(true);
 
+        pauseButton.SetActive(true);
     }
 
     public void PauseGame()
@@ -113,6 +117,9 @@ public class UIManager : MonoBehaviour
     #region Level End
     public void LevelComplete()
     {
+        // update text
+        levelTxt.text = "LEVEL " + (GameManager.level + 1).ToString();
+
         // activate canvas
         levelComplete.SetActive(true);
 

@@ -51,7 +51,7 @@ public class JumpInto : MonoBehaviour
 
                 // set bool
                 jumped = false;
-                GetComponent<Rigidbody>().isKinematic = false;
+                //GetComponent<Rigidbody>().isKinematic = false;
 
                 // disable this script
                 this.enabled = false;
