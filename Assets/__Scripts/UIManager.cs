@@ -57,7 +57,7 @@ public class UIManager : MonoBehaviour
 
         // load users sound setting
         if (PlayerPrefs.GetInt("sound", 1) == 0) TurnSoundOff();
-        if (PlayerPrefs.GetInt("music", 1) == 0) TurnMusicOff();
+        if (PlayerPrefs.GetInt("music", 0) == 0) TurnMusicOff();
     }
 
     public void Play()
@@ -67,6 +67,10 @@ public class UIManager : MonoBehaviour
         joystickCanvas.SetActive(true);
 
         pauseButton.SetActive(true);
+        int level = PlayerPrefs.GetInt("level");
+
+        TinySauce.OnGameStarted(level.ToString());
+
     }
 
     public void PauseGame()
@@ -125,6 +129,10 @@ public class UIManager : MonoBehaviour
 
         // deactivate joystick
         joystickCanvas.SetActive(false);
+        int level = PlayerPrefs.GetInt("level");
+
+        TinySauce.OnGameFinished(true, 1, level.ToString(), null);
+
     }
 
     public void LevelFailed()
@@ -134,6 +142,10 @@ public class UIManager : MonoBehaviour
 
         // deactivate joystick
         joystickCanvas.SetActive(false);
+        int level = PlayerPrefs.GetInt("level");
+
+        TinySauce.OnGameFinished(false, 1, level.ToString(), null);
+
     }
     #endregion
 
