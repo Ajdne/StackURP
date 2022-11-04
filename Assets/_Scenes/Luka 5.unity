@@ -1615,6 +1615,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.02
       objectReference: {fileID: 0}
+    - target: {fileID: 1921825478483411429, guid: a93f242f959da1744800fb61f7c26343,
+        type: 3}
+      propertyPath: canUseShortcut
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3717317987278998569, guid: a93f242f959da1744800fb61f7c26343,
         type: 3}
       propertyPath: m_RootOrder
