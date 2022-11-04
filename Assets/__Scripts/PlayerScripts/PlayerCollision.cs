@@ -78,16 +78,38 @@ public class PlayerCollision : MonoBehaviour
 
                 StartCoroutine(DeactivateAnimation());
             }
-            //else
-            //{
-            //    int randomChance = Random.Range(0, 101);
+        }
+        else if(other.gameObject.layer == 15 && canCollide) // obstacle layer
+        {
+            animator.Play("Player Collision");
 
-            //    if(randomChance > 30)
-            //    {
-            //        // play emoji animation
-            //        emojiAnimator.Play("EmojiAnimation");
-            //    }
-            //}
+            // reset audio source pitch - need this for blue player
+            // stacking script changes the pitch
+            audioSource.pitch = 1;
+            // play audio clip once
+            audioSource.PlayOneShot(uffClip);
+
+            // activate emoji
+            //emojis[0].SetActive(true);
+
+            int randomEmoji = Random.Range(0, loseEmojis.Count);
+            emojiCanvasScript.CurrentEmoji = loseEmojis[randomEmoji];
+            StartCoroutine(emojiCanvasScript.DeactivateEmoji());
+
+            // play emoji animation
+            emojiAnimator.Play("EmojiAnimation");
+
+            // lose stacks
+            stackingScript.LoseStacks();
+            //stackingScript.RemoveAllStacks();
+
+            // stop the player from moving during animation
+            movementScript.DeactivateMovement();
+
+            // activate movement again in the animation
+
+
+            StartCoroutine(DeactivateAnimation());
         }
     }
 
