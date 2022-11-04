@@ -1801,6 +1801,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8718674003008852053, guid: a21cb553e6892e848936aa7d649e2fbc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8718674003101667514, guid: a21cb553e6892e848936aa7d649e2fbc,
         type: 3}
       propertyPath: m_Name
@@ -7154,20 +7159,6 @@ Transform:
   m_Father: {fileID: 5357617105235818094}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &4524853041736525142
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4688745237350411476}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -1573413843781084662, guid: 548767cb4fb6bd44cb869dbd9a6917ec, type: 3}
 --- !u!4 &4524853042229630144
 Transform:
   m_ObjectHideFlags: 0
@@ -7422,7 +7413,6 @@ GameObject:
   - component: {fileID: 870167739882384885}
   - component: {fileID: 3219965657123982543}
   - component: {fileID: 4524853042805354003}
-  - component: {fileID: 4524853041736525142}
   m_Layer: 6
   m_Name: Platform 3 Variant
   m_TagString: Untagged
