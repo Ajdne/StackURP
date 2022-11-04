@@ -43,12 +43,6 @@ public class MoneyMovement : MonoBehaviour
                 this.gameObject.transform.localScale *= 2;
                 // add colliders for bridge
                 collider.enabled = true;
-
-                this.gameObject.isStatic = true;
-                
-                //NavMeshBuilder.BuildNavMesh();
-                // enable nav mesh obstacle
-                //navObstacle.enabled = true;
             }
 
             // disable this script

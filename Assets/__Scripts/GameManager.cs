@@ -47,14 +47,6 @@ public class GameManager : MonoBehaviour
 
         Application.targetFrameRate = 60;   // this fixes everything
     } 
-
-    private void Start()
-    {
-        Physics.gravity *= 2;
-
-        //Time.timeScale = testingScaleTime;
-
-    }
    
     public GameObject GetRandomItem(List<GameObject> itemList)
     {

@@ -246,7 +246,7 @@ public class Stacking : MonoBehaviour , IStacking
         moneyObj.GetComponent<MoneyMovement>().SetMoveToVector(objPos, destroy);
 
         // change the stacked travel speed based on the number of stacks
-        moneyObj.GetComponent<MoneyMovement>().Speed += stacked.Count * 0.2f;
+        moneyObj.GetComponent<MoneyMovement>().Speed += stacked.Count * 0.1f;
 
         // enable the script
         moneyObj.GetComponent<MoneyMovement>().enabled = true;
