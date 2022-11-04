@@ -136,6 +136,7 @@ public class Movement2 : MonoBehaviour, IMovement
             // dont activate player movement
             //Player.GetComponent<CapsuleCollider>().enabled = false;
             GetComponent<Rigidbody>().isKinematic = true;
+            UIManager.Instance.LevelComplete();
         }
        else if(!finalPlatform) ActivateMovement();
 
