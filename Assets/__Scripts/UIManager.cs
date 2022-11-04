@@ -118,7 +118,7 @@ public class UIManager : MonoBehaviour
     public void LevelComplete()
     {
         // update text
-        levelTxt.text = "LEVEL " + GameManager.level.ToString();
+        levelTxt.text = "LEVEL " + (GameManager.level + 1).ToString();
 
         // activate canvas
         levelComplete.SetActive(true);
