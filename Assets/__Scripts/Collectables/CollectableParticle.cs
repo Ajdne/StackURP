@@ -8,6 +8,6 @@ public class CollectableParticle : MonoBehaviour
 
     public void ActivateStackParticle()
     {
-        stackParticles.SetActive(true);
+        if(stackParticles != null) stackParticles.SetActive(true);
     }
 }
