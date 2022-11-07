@@ -17,9 +17,7 @@ public class EndPlatform : MonoBehaviour
     private bool isTriggered = false;
     private GameObject isFirst;
 
-    bool isFirstTriggerd;
-
-    
+    bool isFirstTriggerd;    
 
     private void OnTriggerEnter(Collider other)
     {
@@ -27,7 +25,7 @@ public class EndPlatform : MonoBehaviour
         {
             other.GetComponent<IMovement>().ReachFinish(true);
             other.GetComponent<IMovement>().SetPlayerRespawnPosition(transform.position + new Vector3(0, 1, 2));
-            other.GetComponent<Rigidbody>().isKinematic = true;
+            //other.GetComponent<Rigidbody>().isKinematic = true;
 
             if (isFirst == null && !isFirstTriggerd )
             {
